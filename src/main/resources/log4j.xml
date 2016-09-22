@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="CONSOLE-DEBUG" class="org.apache.log4j.ConsoleAppender">
+        <param name="target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} [%t]  %m at %l%n"/>
+        </layout>
+    </appender>
+
+    <logger name="org.hibernate.SQL" additivity="true">
+        <level value="TRACE"/>
+        <appender-ref ref="CONSOLE-DEBUG"/>
+    </logger>
+    <logger name="org.hibernate.type" additivity="true">
+        <level value="DEBUG"/>
+        <appender-ref ref="CONSOLE-DEBUG"/>
+    </logger>
+
+    <root>
+        <appender-ref ref="CONSOLE-DEBUG"/>
+
+    </root>
+
+</log4j:configuration>
