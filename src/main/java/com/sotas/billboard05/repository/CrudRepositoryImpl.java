@@ -41,7 +41,7 @@ public class CrudRepositoryImpl<E, PK> implements CrudRepository<E, PK> {
         return em.createQuery("SELECT e FROM " + entityClass.getSimpleName() + " e", entityClass).getResultList();
     }
 
-    public void setEntityManager(EntityManager em) {
-        this.em = em;
+    public EntityManager getEntityManager() {
+        return em;
     }
 }

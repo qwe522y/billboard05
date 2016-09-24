@@ -1,5 +1,7 @@
 package com.sotas.billboard05.entity;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -18,7 +20,7 @@ public class Billboard {
     private String location;
     @Column(name = "owner_id")
     private int ownerId;
-    @Version
+    @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
     private Date createDate;
@@ -69,6 +71,22 @@ public class Billboard {
         result = 31 * result + ownerId;
         result = 31 * result + createDate.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Billboard{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", city=" + city +
+                ", address='" + address + '\'' +
+                ", type=" + type +
+                ", light=" + light +
+                ", rent=" + rent +
+                ", location='" + location + '\'' +
+                ", ownerId=" + ownerId +
+                ", createDate=" + createDate +
+                '}';
     }
 
     public int getId() {

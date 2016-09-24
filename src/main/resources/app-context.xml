@@ -48,9 +48,10 @@
         <property name="entityManagerFactory" ref="emf" />
     </bean>
 
-    <bean class="org.springframework.transaction.support.TransactionTemplate">
+    <bean id="txTemplate" class="org.springframework.transaction.support.TransactionTemplate">
         <property name="transactionManager" ref="transactionManager"/>
     </bean>
+
     <!-- aop -->
     <bean id="aopLogger" class="com.sotas.billboard05.utils.AopRoundLogger">
         <property name="log">

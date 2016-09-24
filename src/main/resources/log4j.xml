@@ -9,6 +9,7 @@
         </layout>
     </appender>
 
+    <!--
     <logger name="org.hibernate.SQL" additivity="true">
         <level value="TRACE"/>
         <appender-ref ref="CONSOLE-DEBUG"/>
@@ -17,10 +18,11 @@
         <level value="DEBUG"/>
         <appender-ref ref="CONSOLE-DEBUG"/>
     </logger>
+    -->
 
     <root>
+        <level value="INFO"/>
         <appender-ref ref="CONSOLE-DEBUG"/>
-
     </root>
 
 </log4j:configuration>

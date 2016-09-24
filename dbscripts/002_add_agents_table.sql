@@ -1,0 +1,10 @@
+CREATE TABLE `billboard`.`agents` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `login` VARCHAR(255) DEFAULT NULL,
+  `password` VARCHAR(255) DEFAULT NULL,
+  `name` VARCHAR(255) DEFAULT NULL,
+  `phone` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) DEFAULT NULL,
+  `create_date` DATETIME NOT NULL,
+  PRIMARY KEY (`id`),
+UNIQUE INDEX `login_UNIQUE` (`login` ASC));
