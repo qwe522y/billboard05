@@ -12,11 +12,6 @@ public class MainController {
         return "home";
     }
 
-    @RequestMapping(value = "agent/", method = RequestMethod.GET)
-    public String agent() {
-        return "agent";
-    }
-
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login() {
         return "login";
