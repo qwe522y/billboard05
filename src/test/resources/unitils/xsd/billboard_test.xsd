@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="billboard_test" targetNamespace="billboard_test">
+	<xsd:element name="billboards" type="billboards__type" />
+	<xsd:element name="dbmaintain_scripts" type="dbmaintain_scripts__type" />
+	<xsd:element name="agents" type="agents__type" />
+	<xsd:complexType name="billboards__type">
+		<xsd:attribute name="address" use="optional" />
+		<xsd:attribute name="city" use="optional" />
+		<xsd:attribute name="light" use="optional" />
+		<xsd:attribute name="owner_id" use="optional" />
+		<xsd:attribute name="name" use="optional" />
+		<xsd:attribute name="location" use="optional" />
+		<xsd:attribute name="id" use="optional" />
+		<xsd:attribute name="type" use="optional" />
+		<xsd:attribute name="rent" use="optional" />
+		<xsd:attribute name="create_date" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="dbmaintain_scripts__type">
+		<xsd:attribute name="file_name" use="optional" />
+		<xsd:attribute name="executed_at" use="optional" />
+		<xsd:attribute name="checksum" use="optional" />
+		<xsd:attribute name="file_last_modified_at" use="optional" />
+		<xsd:attribute name="version" use="optional" />
+		<xsd:attribute name="succeeded" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="agents__type">
+		<xsd:attribute name="password" use="optional" />
+		<xsd:attribute name="phone" use="optional" />
+		<xsd:attribute name="name" use="optional" />
+		<xsd:attribute name="id" use="optional" />
+		<xsd:attribute name="login" use="optional" />
+		<xsd:attribute name="create_date" use="optional" />
+		<xsd:attribute name="email" use="optional" />
+	</xsd:complexType>
+</xsd:schema>
