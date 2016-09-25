@@ -1,4 +1,4 @@
-CREATE TABLE `billboard`.`billboards` (
+CREATE TABLE `billboards` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) DEFAULT NULL,
   `city` INT NOT NULL,

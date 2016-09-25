@@ -1,4 +1,4 @@
-CREATE TABLE `billboard`.`agents` (
+CREATE TABLE `agents` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(255) DEFAULT NULL,
   `password` VARCHAR(255) DEFAULT NULL,
