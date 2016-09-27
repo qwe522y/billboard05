@@ -1,0 +1,70 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:utils="http://www.springframework.org/schema/util"
+       xmlns:sec="http://www.springframework.org/schema/security"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-2.5.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <!-- security -->
+    <sec:http use-expressions="true">
+        <sec:csrf />
+        <sec:intercept-url pattern="/agent/*" access="hasRole('ROLE_USER')" />
+        <sec:intercept-url pattern="/*" access="permitAll" />
+        <sec:form-login
+                login-page="/login"
+                authentication-failure-url="/loginfail"
+                default-target-url="/agent"/>
+        <sec:logout logout-success-url="/"/>
+    </sec:http>
+
+    <bean id="authProvider" class="com.sotas.billboard05.AuthProvider"/>
+
+    <sec:authentication-manager>
+        <sec:authentication-provider user-service-ref="authProvider">
+            <sec:password-encoder hash="md5"/>
+        </sec:authentication-provider>
+    </sec:authentication-manager>
+
+    <!-- security
+    <sec:http auto-config='true' use-expressions="false">
+        <sec:csrf />
+        <sec:access-denied-handler error-page="/login"/>
+        <sec:intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <sec:intercept-url pattern="/favicon.ico" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <sec:intercept-url pattern="/res/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <sec:intercept-url pattern="/**" access="ROLE_USER" />
+        <sec:form-login login-processing-url="/login_processing"
+                        login-page="/login"
+                        username-parameter="login"
+                        password-parameter="password"
+                        default-target-url="/"
+                        authentication-failure-url="/login?err=1"/>
+        <sec:logout logout-url="/logout" logout-success-url="/login" />
+    </sec:http>
+
+    <sec:authentication-manager>
+        <sec:authentication-provider user-service-ref="authProvider">
+            <sec:password-encoder hash="md5"/>
+        </sec:authentication-provider>
+    </sec:authentication-manager>
+    -->
+
+</beans>

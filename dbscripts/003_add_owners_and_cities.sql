@@ -1,0 +1,13 @@
+CREATE TABLE `cities` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) DEFAULT NULL,
+  `location` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `owners` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) DEFAULT NULL,
+  `phone` VARCHAR(255) NOT NULL,
+  `create_date` DATETIME NOT NULL,
+  PRIMARY KEY (`id`));
+

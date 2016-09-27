@@ -4,8 +4,10 @@
 	<xsd:element name="dataset">
 		<xsd:complexType>
 			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="cities" type="dflt:cities__type" />
 				<xsd:element name="billboards" type="dflt:billboards__type" />
 				<xsd:element name="dbmaintain_scripts" type="dflt:dbmaintain_scripts__type" />
+				<xsd:element name="owners" type="dflt:owners__type" />
 				<xsd:element name="agents" type="dflt:agents__type" />
 				<xsd:any namespace="billboard_test" />
 			</xsd:choice>

@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.NoResultException;
 
 @Repository
-public class AgentRepositoryImpl extends CrudRepositoryImpl<Agent, Integer> implements AgentRepository {
-    public AgentRepositoryImpl() {
+public class AgentRepositoryJpaImpl extends CrudRepositoryJpaImpl<Agent, Integer> implements AgentRepository {
+    public AgentRepositoryJpaImpl() {
         super(Agent.class);
     }
 

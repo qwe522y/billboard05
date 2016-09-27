@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class BillboardRepositoryImpl extends CrudRepositoryImpl<Billboard, Integer> implements BillboardRepository {
+public class BillboardRepositoryJpaImpl extends CrudRepositoryJpaImpl<Billboard, Integer> implements BillboardRepository {
 
-    public BillboardRepositoryImpl() {
+    public BillboardRepositoryJpaImpl() {
         super(Billboard.class);
     }
 

@@ -4,12 +4,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-public class CrudRepositoryImpl<E, PK> implements CrudRepository<E, PK> {
+public class CrudRepositoryJpaImpl<E, PK> implements CrudRepository<E, PK> {
     @PersistenceContext
     private EntityManager em;
     private Class<E> entityClass;
 
-    public CrudRepositoryImpl(Class<E> entityClass) {
+    public CrudRepositoryJpaImpl(Class<E> entityClass) {
         this.entityClass = entityClass;
     }
 

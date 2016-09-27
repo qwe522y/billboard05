@@ -1,7 +1,7 @@
 package com.sotas.billboard05.service;
 
 import com.sotas.billboard05.entity.Billboard;
-import com.sotas.billboard05.repository.BillboardRepositoryImpl;
+import com.sotas.billboard05.repository.BillboardRepositoryJpaImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 
 public class BillboardServiceImplTest extends AbstractServiceTest {
     @SpringBeanByType
-    private BillboardRepositoryImpl billboardRepository;
+    private BillboardRepositoryJpaImpl billboardRepository;
     private BillboardServiceImpl service;
     @Test
     @DataSet
