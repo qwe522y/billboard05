@@ -1,6 +1,6 @@
 package com.sotas.billboard05.repository;
 
-import java.security.acl.Owner;
+import com.sotas.billboard05.entity.Owner;
 
 public interface OwnerRepository extends CrudRepository<Owner, Integer> {
 }
