@@ -1,5 +1,0 @@
-<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
-    <billboards id="97" name="tname" city="1"  address="taddress" type="1"  light="true" rent="100.00" location="123,123,123" owner_id="1" create_date="2016-01-01 01:01:01"/>
-    <billboards id="98" name="tname" city="2"  address="taddress" type="1"  light="true" rent="100.00" location="123,123,123" owner_id="1" create_date="2016-01-01 01:01:01"/>
-    <billboards id="99" name="tname" city="1"  address="taddress" type="1"  light="true" rent="100.00" location="123,123,123" owner_id="1" create_date="2016-01-01 01:01:01"/>
-</dataset>

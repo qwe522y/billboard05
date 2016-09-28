@@ -16,4 +16,9 @@ public class BillboardRepositoryJpaImpl extends CrudRepositoryJpaImpl<Billboard,
     public List<Billboard> getListByCity(int cityId) {
         return getEntityManager().createQuery("SELECT e FROM Billboard e WHERE e.city=:city", Billboard.class).setParameter("city", cityId).getResultList();
     }
+
+    @Override
+    public List<Billboard> getListByAgent(int agentId) {
+        return getEntityManager().createQuery("SELECT e FROM Billboard e WHERE e.agent=:agent", Billboard.class).setParameter("agent", agentId).getResultList();
+    }
 }

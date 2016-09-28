@@ -8,5 +8,6 @@ CREATE TABLE `billboards` (
   `rent` DECIMAL(10,2) NOT NULL,
   `location` VARCHAR(255) NOT NULL,
   `owner_id` INT NOT NULL,
+  `agent_id` INT NOT NULL,
   `create_date` DATETIME NOT NULL,
   PRIMARY KEY (`id`));

@@ -3,8 +3,10 @@ package com.sotas.billboard05.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "cities")
 public class City {
     @Id @GeneratedValue
     private int id;

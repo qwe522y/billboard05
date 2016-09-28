@@ -1,0 +1,6 @@
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
+    <billboards id="96" name="Боль" city="1"  agent_id="1" address="Калинина 1" type="1"  light="true" rent="100.00" location="123,123,123" owner_id="1"/>
+    <billboards id="97" name="Паника" city="2"  agent_id="1" address="Шамиля 2" type="1"  light="true" rent="100.00" location="123,123,123" owner_id="1"/>
+    <billboards id="98" name="Тревога" city="1"  agent_id="2" address="Ливаневского 3" type="1"  light="true" rent="100.00" location="123,123,123" owner_id="1"/>
+    <billboards id="99" name="Страх" city="2"  agent_id="2" address="Тахогоди 4" type="1"  light="true" rent="100.00" location="123,123,123" owner_id="1"/>
+</dataset>

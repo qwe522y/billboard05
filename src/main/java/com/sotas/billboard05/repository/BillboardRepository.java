@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BillboardRepository extends CrudRepository<Billboard, Integer> {
     List<Billboard> getListByCity(int cityId);
+    List<Billboard> getListByAgent(int agentId);
 }

@@ -20,12 +20,14 @@ public class Billboard {
     private String location;
     @Column(name = "owner_id")
     private int ownerId;
+    @Column(name = "agent_id")
+    private int agentId;
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
     private Date createDate;
 
-    public Billboard(int city, String address, int type, boolean light, BigDecimal rent, String location, int ownerId) {
+    public Billboard(int city, String address, int type, boolean light, BigDecimal rent, String location, int ownerId, int agentId) {
         this.city = city;
         this.address = address;
         this.type = type;
@@ -33,44 +35,10 @@ public class Billboard {
         this.rent = rent;
         this.location = location;
         this.ownerId = ownerId;
+        this.agentId = agentId;
     }
 
     public Billboard() {
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Billboard billboard = (Billboard) o;
-
-        if (id != billboard.id) return false;
-        if (city != billboard.city) return false;
-        if (type != billboard.type) return false;
-        if (light != billboard.light) return false;
-        if (ownerId != billboard.ownerId) return false;
-        if (name != null ? !name.equals(billboard.name) : billboard.name != null) return false;
-        if (address != null ? !address.equals(billboard.address) : billboard.address != null) return false;
-        if (rent != null ? !rent.equals(billboard.rent) : billboard.rent != null) return false;
-        if (location != null ? !location.equals(billboard.location) : billboard.location != null) return false;
-        return createDate.equals(billboard.createDate);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + city;
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + type;
-        result = 31 * result + (light ? 1 : 0);
-        result = 31 * result + (rent != null ? rent.hashCode() : 0);
-        result = 31 * result + (location != null ? location.hashCode() : 0);
-        result = 31 * result + ownerId;
-        result = 31 * result + createDate.hashCode();
-        return result;
     }
 
     @Override
@@ -85,8 +53,46 @@ public class Billboard {
                 ", rent=" + rent +
                 ", location='" + location + '\'' +
                 ", ownerId=" + ownerId +
+                ", agentId=" + agentId +
                 ", createDate=" + createDate +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Billboard)) return false;
+
+        Billboard billboard = (Billboard) o;
+
+        if (id != billboard.id) return false;
+        if (city != billboard.city) return false;
+        if (type != billboard.type) return false;
+        if (light != billboard.light) return false;
+        if (ownerId != billboard.ownerId) return false;
+        if (agentId != billboard.agentId) return false;
+        if (name != null ? !name.equals(billboard.name) : billboard.name != null) return false;
+        if (address != null ? !address.equals(billboard.address) : billboard.address != null) return false;
+        if (rent != null ? !rent.equals(billboard.rent) : billboard.rent != null) return false;
+        if (location != null ? !location.equals(billboard.location) : billboard.location != null) return false;
+        return createDate != null ? createDate.equals(billboard.createDate) : billboard.createDate == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + city;
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + type;
+        result = 31 * result + (light ? 1 : 0);
+        result = 31 * result + (rent != null ? rent.hashCode() : 0);
+        result = 31 * result + (location != null ? location.hashCode() : 0);
+        result = 31 * result + ownerId;
+        result = 31 * result + agentId;
+        result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
+        return result;
     }
 
     public int getId() {
@@ -167,5 +173,13 @@ public class Billboard {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public int getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(int agentId) {
+        this.agentId = agentId;
     }
 }

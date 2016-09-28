@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="billboard_test" targetNamespace="billboard_test">
 	<xsd:element name="cities" type="cities__type" />
+	<xsd:element name="billboard_types" type="billboard_types__type" />
 	<xsd:element name="billboards" type="billboards__type" />
 	<xsd:element name="dbmaintain_scripts" type="dbmaintain_scripts__type" />
 	<xsd:element name="owners" type="owners__type" />
@@ -10,8 +11,14 @@
 		<xsd:attribute name="location" use="optional" />
 		<xsd:attribute name="id" use="optional" />
 	</xsd:complexType>
+	<xsd:complexType name="billboard_types__type">
+		<xsd:attribute name="surface" use="optional" />
+		<xsd:attribute name="name" use="optional" />
+		<xsd:attribute name="id" use="optional" />
+	</xsd:complexType>
 	<xsd:complexType name="billboards__type">
 		<xsd:attribute name="address" use="optional" />
+		<xsd:attribute name="agent_id" use="optional" />
 		<xsd:attribute name="city" use="optional" />
 		<xsd:attribute name="light" use="optional" />
 		<xsd:attribute name="owner_id" use="optional" />

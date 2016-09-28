@@ -1,0 +1,5 @@
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
+    <cities id="97" location="123.123.123" name="Moscow"/>
+    <cities id="98" location="123.123.123" name="Paris"/>
+    <cities id="99" location="123.123.123" name="London"/>
+</dataset>

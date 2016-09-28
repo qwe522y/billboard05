@@ -1,6 +1,6 @@
 package com.sotas.billboard05.repository;
 
-import com.sotas.billboard05.entity.City;
+import com.sotas.billboard05.entity.BillboardType;
 import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.dbunit.annotation.ExpectedDataSet;
@@ -8,35 +8,36 @@ import org.unitils.spring.annotation.SpringBeanByType;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 
-public class CityRepositoryJpaImpTest extends AbstractRepositoryTest {
+public class BillboardTypeJpaImplTest extends AbstractRepositoryTest {
     @SpringBeanByType
-    private CityRepositoryJpaImpl repository;
+    private BillboardTypeRepositoryJpaImpl repository;
 
     @Test
     @ExpectedDataSet
     public void addWithGenerationId() {
-        final City e = new City("Berlin", "123.123.123");
-        City e2 = txTemplate.execute(transactionStatus -> repository.add(e));
+        final BillboardType e = new BillboardType("Обычный щит", 2);
+        BillboardType e2 = txTemplate.execute(transactionStatus -> repository.add(e));
         assertNotEquals(0, e2.getId());
     }
 
     @Test
     @DataSet
     public void get() {
-        City e = repository.get(99);
+        BillboardType e = repository.get(99);
         System.out.println(e);
-        assertEquals("London", e.getName());
+        assertEquals("Щит", e.getName());
     }
 
     @Test
     @DataSet
     @ExpectedDataSet
     public void update() {
-        City e = repository.get(99);
-        e.setLocation("newlocation");
+        BillboardType e = repository.get(99);
+        e.setName("Новое название");
         txTemplate.execute(transactionStatus -> repository.update(e));
     }
 
@@ -50,10 +51,10 @@ public class CityRepositoryJpaImpTest extends AbstractRepositoryTest {
     @Test
     @DataSet
     public void getAll() {
-        List<City> list = repository.getAll();
+        List<BillboardType> list = repository.getAll();
         assertEquals(3, list.size());
-        assertEquals(97, list.get(0).getId());
-        assertEquals(98, list.get(1).getId());
-        assertEquals(99, list.get(2).getId());
+        assertEquals("Обычный баннер", list.get(0).getName());
+        assertEquals("Растяжка", list.get(1).getName());
+        assertEquals("Щит", list.get(2).getName());
     }
 }

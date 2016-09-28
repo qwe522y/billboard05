@@ -1,6 +1,6 @@
 package com.sotas.billboard05.repository;
 
-import com.sotas.billboard05.entity.Owner;
+import com.sotas.billboard05.entity.Agent;
 import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.dbunit.annotation.ExpectedDataSet;
@@ -10,15 +10,16 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class OwnerRepositoryTest extends AbstractRepositoryTest {
+public class AgentRepositoryJpaImplTest extends AbstractRepositoryTest {
     @SpringBeanByType
-    private OwnerRepositoryJpaImpl repository;
+    AgentRepositoryJpaImpl repository;
 
     @Test
     @ExpectedDataSet
     public void addWithGenerationIdAndCreateFields() {
-        final Owner e = new Owner("newtname", "newtphone");
-        Owner e2 = txTemplate.execute(transactionStatus -> repository.add(e));
+        final Agent e = new Agent("tlogin", "dc829bf0d79e690c59cee708b527e6b7");
+        e.setName("tname");
+        Agent e2 = txTemplate.execute(transactionStatus -> repository.add(e));
         assertNotEquals(0, e2.getId());
         assertNotNull(e2.getCreateDate());
     }
@@ -26,17 +27,25 @@ public class OwnerRepositoryTest extends AbstractRepositoryTest {
     @Test
     @DataSet
     public void get() {
-        Owner e = repository.get(99);
-        System.out.println(e);
-        assertEquals("tname", e.getName());
+        Agent e = repository.get(99);
+        assertEquals(99, e.getId());
+        assertEquals("tlogin99", e.getLogin());
+    }
+
+    @Test
+    @DataSet
+    public void getByLogin() {
+        Agent e = repository.getByLogin("tlogin99");
+        assertEquals(99, e.getId());
+        assertEquals("tlogin99", e.getLogin());
     }
 
     @Test
     @DataSet
     @ExpectedDataSet
     public void update() {
-        Owner e = repository.get(99);
-        e.setPhone("newtphone");
+        Agent e = repository.get(99);
+        e.setPhone("tphone");
         txTemplate.execute(transactionStatus -> repository.update(e));
     }
 
@@ -50,10 +59,12 @@ public class OwnerRepositoryTest extends AbstractRepositoryTest {
     @Test
     @DataSet
     public void getAll() {
-        List<Owner> list = repository.getAll();
+        List<Agent> list = repository.getAll();
         assertEquals(3, list.size());
         assertEquals(97, list.get(0).getId());
         assertEquals(98, list.get(1).getId());
         assertEquals(99, list.get(2).getId());
     }
+
+
 }
