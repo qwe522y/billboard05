@@ -1,0 +1,18 @@
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
+    <agents id="1" login="barak" name="Барак Обама"/>
+    <agents id="2" login="bill" name="Билл Клинтон"/>
+
+    <owners id="3" name="Саб-зиро"/>
+    <owners id="4" name="Скорпион"/>
+
+    <cities id="5" name="Москва"/>
+    <cities id="6" name="Берлин"/>
+
+    <billboard_types id="7" surface="1"/>
+    <billboard_types id="8" surface="2"/>
+
+    <billboards id="96" name="Боль" city="6"  agent_id="1" type="7" owner_id="4" light="true"/>
+    <billboards id="97" name="Паника" city="5"  agent_id="1" type="8" owner_id="4" light="true"/>
+    <billboards id="98" name="Тревога" city="6"  agent_id="2" type="7" owner_id="3" light="true"/>
+    <billboards id="99" name="Страх" city="5"  agent_id="2" type="8"  owner_id="3" light="true"/>
+</dataset>

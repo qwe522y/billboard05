@@ -31,7 +31,7 @@
         <sec:form-login
                 login-page="/login"
                 authentication-failure-url="/loginfail"
-                default-target-url="/agent"/>
+                default-target-url="/agent/"/>
         <sec:logout logout-success-url="/"/>
     </sec:http>
 

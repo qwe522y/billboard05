@@ -21,13 +21,12 @@ public class BillboardServiceImpl implements BillboardService {
     private AgentRepository agentRepository;
 
     @Autowired
-    public BillboardServiceImpl(BillboardRepository repository) {
+    public BillboardServiceImpl(BillboardRepository repository, CityRepository cityRepository, OwnerRepository ownerRepository, BillboardTypeRepository billboardTypeRepository, AgentRepository agentRepository) {
         this.repository = repository;
-    }
-
-    @Override
-    public List<Billboard> getListByCity(int cityId) {
-        return repository.getListByCity(cityId);
+        this.cityRepository = cityRepository;
+        this.ownerRepository = ownerRepository;
+        this.billboardTypeRepository = billboardTypeRepository;
+        this.agentRepository = agentRepository;
     }
 
     @Override
@@ -44,7 +43,6 @@ public class BillboardServiceImpl implements BillboardService {
         for(Billboard e : list) {
             res.add(new BillboardDto(e, ownerMap.get(e.getOwnerId()), agent, cityMap.get(e.getCity()), billboardTypeMap.get(e.getType())));
         }
-        return null;
-        //return res;
+        return res;
     }
 }
