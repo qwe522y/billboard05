@@ -66,8 +66,8 @@
         <ul class="sidebar-menu">
             <li class="header">ГЛАВНОЕ МЕНЮ</li>
             <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-table"></i> <span>Рекламные носители</span>
+                <a href="${root}agent/">
+                    <i class="fa fa-table"></i> <span>Точки рекламы</span>
                     <span class="pull-right-container"></span>
                 </a>
             </li>

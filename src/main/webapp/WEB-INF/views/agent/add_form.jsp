@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <jsp:include page="../parts/init.jsp"/>
 <!DOCTYPE html>
@@ -17,8 +18,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="${res}plugins/datatables/dataTables.bootstrap.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="${res}plugins/daterangepicker/daterangepicker.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="${res}plugins/datepicker/datepicker3.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="${res}plugins/iCheck/all.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="${res}plugins/colorpicker/bootstrap-colorpicker.min.css">
+    <!-- Bootstrap time Picker -->
+    <link rel="stylesheet" href="${res}plugins/timepicker/bootstrap-timepicker.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="${res}plugins/select2/select2.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="${res}dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -38,22 +49,10 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Data Tables
-                <small>advanced tables</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Tables</a></li>
-                <li class="active">Data tables</li>
-            </ol>
-        </section>
 
         <section class="content-header">
             <h1>
-                General Form Elements
-                <small>Preview</small>
+                Добавление новой рекламной точки
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -68,47 +67,83 @@
 
                 <!--/.col (left) -->
                 <!-- right column -->
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <!-- Horizontal Form -->
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Horizontal Form</h3>
+                            <h3 class="box-title">Заполните форму</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form class="form-horizontal">
+                        <sf:form method="post" modelAttribute="billboard" class="form-horizontal">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label" for="inputEmail3">Email</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="email" placeholder="Email" id="inputEmail3" class="form-control">
+                                    <label class="col-sm-3 control-label" for="nameField">Наименование</label>
+                                    <div class="col-sm-9">
+                                        <sf:input path="name" id="nameField" type="text" placeholder="Можно оставить пустым" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label" for="inputPassword3">Password</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="password" placeholder="Password" id="inputPassword3" class="form-control">
+                                    <label class="col-sm-3 control-label" for="cityField">Город</label>
+                                    <div class="col-sm-9">
+                                        <sf:select path="city" class="form-control select2" style="width: 100%;" id="cityField">
+                                            <c:forEach items="${cities}" var="city">
+                                                <sf:option value="${city.id}">${city.name}</sf:option>
+                                            </c:forEach>
+                                        </sf:select>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
+                                    <label class="col-sm-3 control-label" for="addressField">Адрес</label>
+                                    <div class="col-sm-9">
+                                        <sf:input path="address" id="addressField" type="text" placeholder="Адрес" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="billboardTypeField">Тип</label>
+                                    <div class="col-sm-9">
+                                        <sf:select path="type" class="form-control select2" style="width: 100%;" id="billboardTypeField">
+                                            <c:forEach items="${billboardTypes}" var="type">
+                                                <sf:option value="${type.id}">${type.name} ( кол-во поверхностей: ${type.surface} ) </sf:option>
+                                            </c:forEach>
+                                        </sf:select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                        <div class="light">
                                             <label>
-                                                <input type="checkbox"> Remember me
+                                                <spring:bind path="light">
+                                                    <sf:checkbox path="light"/>
+                                                </spring:bind>
+                                                Освещение
                                             </label>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="rentField">Месячная рента</label>
+                                    <div class="col-sm-9">
+                                        <sf:input path="rent" id="rentField" type="number" placeholder="Месячная рента" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="ownerField">Владелец</label>
+                                    <div class="col-sm-9">
+                                        <sf:select path="ownerId" class="form-control select2" style="width: 100%;" id="ownerField">
+                                            <c:forEach items="${owners}" var="owner">
+                                                <sf:option  value="${owner.id}">${owner.name} ${owner.phone}</sf:option>
+                                            </c:forEach>
+                                        </sf:select>
                                     </div>
                                 </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button class="btn btn-default" type="submit">Cancel</button>
-                                <button class="btn btn-info pull-right" type="submit">Sign in</button>
+                                <button class="btn btn-info pull-right" type="submit">Добавить</button>
                             </div>
                             <!-- /.box-footer -->
-                        </form>
+                        </sf:form>
                     </div>
                     <!-- /.box -->
                     <!-- general form elements disabled -->
@@ -144,28 +179,96 @@
 <script src="${res}plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="${res}bootstrap/js/bootstrap.min.js"></script>
-<!-- DataTables -->
-<script src="${res}plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="${res}plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
+<!-- Select2 -->
+<script src="${res}plugins/select2/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="${res}plugins/input-mask/jquery.inputmask.js"></script>
+<script src="${res}plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="${res}plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="${res}plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="${res}plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="${res}plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="${res}plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- SlimScroll 1.3.0 -->
 <script src="${res}plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="${res}plugins/iCheck/icheck.min.js"></script>
 <!-- FastClick -->
 <script src="${res}plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="${res}dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="${res}dist/js/demo.js"></script>
-<!-- page script -->
+<!-- Page script -->
 <script>
     $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false
+        //Initialize Select2 Elements
+        $(".select2").select2();
+
+        //Datemask dd/mm/yyyy
+        $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+        //Datemask2 mm/dd/yyyy
+        $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+        //Money Euro
+        $("[data-mask]").inputmask();
+
+        //Date range picker
+        $('#reservation').daterangepicker();
+        //Date range picker with time picker
+        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+        //Date range as a button
+        $('#daterange-btn').daterangepicker(
+                {
+                    ranges: {
+                        'Today': [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                    },
+                    startDate: moment().subtract(29, 'days'),
+                    endDate: moment()
+                },
+                function (start, end) {
+                    $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                }
+        );
+
+        //Date picker
+        $('#datepicker').datepicker({
+            autoclose: true
+        });
+
+        //iCheck for checkbox and radio inputs
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
+        //Red color scheme for iCheck
+        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+            checkboxClass: 'icheckbox_minimal-red',
+            radioClass: 'iradio_minimal-red'
+        });
+        //Flat red color scheme for iCheck
+        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+            checkboxClass: 'icheckbox_flat-green',
+            radioClass: 'iradio_flat-green'
+        });
+
+        //Colorpicker
+        $(".my-colorpicker1").colorpicker();
+        //color picker with addon
+        $(".my-colorpicker2").colorpicker();
+
+        //Timepicker
+        $(".timepicker").timepicker({
+            showInputs: false
         });
     });
 </script>

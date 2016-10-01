@@ -4,6 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <spring:url var="res" value="/res/" scope="application"/>
+<spring:url var="root" value="/" scope="application"/>
 <spring:url var="home" value="/" scope="application"/>
 <spring:url var="loginUrl" value="/j_spring_security_check" scope="application"/>
 <spring:url var="logoutUrl" value="/j_spring_security_logout" scope="application"/>

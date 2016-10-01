@@ -2,8 +2,8 @@ package com.sotas.billboard05.controller;
 
 import com.sotas.billboard05.AuthUser;
 import com.sotas.billboard05.dto.BillboardDto;
-import com.sotas.billboard05.service.AuthUserService;
-import com.sotas.billboard05.service.BillboardService;
+import com.sotas.billboard05.entity.Billboard;
+import com.sotas.billboard05.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +16,17 @@ import java.util.List;
 @RequestMapping("/agent/")
 public class AgentController {
     private BillboardService billboardService;
+    private BillboardTypeService billboardTypeService;
+    private CityService cityService;
+    private OwnerService ownerService;
     private AuthUserService authUserService;
 
     @Autowired
-    public AgentController(BillboardService billboardService, AuthUserService authUserService) {
+    public AgentController(BillboardService billboardService, BillboardTypeService billboardTypeService, CityService cityService, OwnerService ownerService, AuthUserService authUserService) {
         this.billboardService = billboardService;
+        this.billboardTypeService = billboardTypeService;
+        this.cityService = cityService;
+        this.ownerService = ownerService;
         this.authUserService = authUserService;
     }
 
@@ -33,7 +39,20 @@ public class AgentController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
-    public String add(Model model) {
+    public String showAddForm(Model model) {
+        model.addAttribute("cities", cityService.getAll());
+        model.addAttribute("owners", ownerService.getAll());
+        model.addAttribute("billboardTypes", billboardTypeService.getAll());
+        model.addAttribute("billboard", new Billboard());
         return "agent/add_form";
+    }
+
+    @RequestMapping(value = "add", method = RequestMethod.POST)
+    public String addBillboard(Model model, Billboard billboard) {
+        AuthUser authUser = authUserService.getAuthUser();
+        billboard.setLocation("test");
+        billboard.setAgentId(authUser.getAgent().getId());
+        billboardService.add(billboard);
+        return "redirect:.";
     }
 }

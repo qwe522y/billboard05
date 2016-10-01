@@ -5,6 +5,7 @@ import com.sotas.billboard05.entity.*;
 import com.sotas.billboard05.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,5 +45,11 @@ public class BillboardServiceImpl implements BillboardService {
             res.add(new BillboardDto(e, ownerMap.get(e.getOwnerId()), agent, cityMap.get(e.getCity()), billboardTypeMap.get(e.getType())));
         }
         return res;
+    }
+
+    @Override
+    @Transactional
+    public void add(Billboard billboard) {
+        repository.add(billboard);
     }
 }
