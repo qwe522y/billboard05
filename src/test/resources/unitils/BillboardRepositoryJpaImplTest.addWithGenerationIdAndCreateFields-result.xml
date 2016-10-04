@@ -1,3 +1,3 @@
 <dataset >
-    <billboards name="Скепсис" city="1"  address="Марсианская 5" type="1"  light="true" rent="100.00" location="123,123,123" owner_id="1" agent_id="1"/>
+    <billboards city_id="1"  address="Новый адрес" light="true" rent="1.00"/>
 </dataset>

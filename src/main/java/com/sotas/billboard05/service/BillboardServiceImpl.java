@@ -42,7 +42,7 @@ public class BillboardServiceImpl implements BillboardService {
         Map<Integer, Owner> ownerMap =  owners.stream().collect(Collectors.toMap(Owner::getId, Function.identity()));
         List<BillboardDto> res = new ArrayList<>();
         for(Billboard e : list) {
-            res.add(new BillboardDto(e, ownerMap.get(e.getOwnerId()), agent, cityMap.get(e.getCity()), billboardTypeMap.get(e.getType())));
+            res.add(new BillboardDto(e, ownerMap.get(e.getOwnerId()), agent, cityMap.get(e.getCityId()), billboardTypeMap.get(e.getTypeId())));
         }
         return res;
     }

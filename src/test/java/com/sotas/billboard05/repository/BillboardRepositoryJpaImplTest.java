@@ -16,10 +16,10 @@ public class BillboardRepositoryJpaImplTest extends AbstractRepositoryTest {
     BillboardRepositoryJpaImpl repository;
 
     @Test
+    @DataSet
     @ExpectedDataSet
     public void addWithGenerationIdAndCreateFields() {
-        final Billboard e = new Billboard(1, "Марсианская 5", 1, true, new BigDecimal("100.00"), "123,123,123", 1, 1);
-        e.setName("Скепсис");
+        Billboard e = new Billboard(1, "Новый адрес", 1, 2, true, 3, 4, BigDecimal.ONE, null, 5, 6, null);
         Billboard e2 = txTemplate.execute(transactionStatus -> repository.add(e));
         assertNotEquals(0, e2.getId());
         assertNotNull(e2.getCreateDate());
@@ -31,15 +31,13 @@ public class BillboardRepositoryJpaImplTest extends AbstractRepositoryTest {
         Billboard e = repository.get(99);
         System.out.println(e);
         assertEquals(99, e.getId());
-        assertEquals(2, e.getCity());
-        assertEquals("Тахогоди 4", e.getAddress());
-        assertEquals(1, e.getType());
+        assertEquals(2, e.getCityId());
+        assertEquals("Пр. Шамиля 4", e.getAddress());
+        assertEquals(1, e.getTypeId());
         assertEquals(true, e.isLight());
         assertEquals(new BigDecimal("100.00"), e.getRent());
-        assertEquals("123,123,123", e.getLocation());
         assertEquals(1, e.getOwnerId());
         assertEquals(2, e.getAgentId());
-        assertEquals("Страх", e.getName());
     }
 
     @Test
@@ -54,6 +52,7 @@ public class BillboardRepositoryJpaImplTest extends AbstractRepositoryTest {
     @Test
     @DataSet
     public void remove() {
+        assertNotNull(repository.get(99));
         txTemplate.execute(transactionStatus -> repository.remove(99));
         assertNull(repository.get(99));
     }

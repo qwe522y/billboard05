@@ -19,15 +19,18 @@
 	<xsd:complexType name="billboards__type">
 		<xsd:attribute name="address" use="optional" />
 		<xsd:attribute name="agent_id" use="optional" />
-		<xsd:attribute name="city" use="optional" />
-		<xsd:attribute name="light" use="optional" />
+		<xsd:attribute name="type_id" use="optional" />
 		<xsd:attribute name="owner_id" use="optional" />
-		<xsd:attribute name="name" use="optional" />
-		<xsd:attribute name="location" use="optional" />
-		<xsd:attribute name="id" use="optional" />
-		<xsd:attribute name="type" use="optional" />
+		<xsd:attribute name="side_num" use="optional" />
+		<xsd:attribute name="surface_num_per_side" use="optional" />
 		<xsd:attribute name="rent" use="optional" />
+		<xsd:attribute name="light" use="optional" />
+		<xsd:attribute name="format_id" use="optional" />
+		<xsd:attribute name="location" use="optional" />
+		<xsd:attribute name="comment" use="optional" />
+		<xsd:attribute name="id" use="optional" />
 		<xsd:attribute name="create_date" use="optional" />
+		<xsd:attribute name="city_id" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="dbmaintain_scripts__type">
 		<xsd:attribute name="file_name" use="optional" />

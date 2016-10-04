@@ -19,9 +19,6 @@ public class BillboardServiceImplTest extends AbstractServiceTest {
         List<BillboardDto> list = billboardServiceImpl.getListByAgent(1);
         assertEquals(2, list.size());
 
-        assertEquals("Боль", list.get(0).getE().getName());
-        assertEquals("Паника", list.get(1).getE().getName());
-
         assertEquals("Берлин", list.get(0).getCity().getName());
         assertEquals("Москва", list.get(1).getCity().getName());
 
