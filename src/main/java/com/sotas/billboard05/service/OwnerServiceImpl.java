@@ -4,6 +4,7 @@ import com.sotas.billboard05.entity.Owner;
 import com.sotas.billboard05.repository.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,7 +18,13 @@ public class OwnerServiceImpl implements OwnerService {
     }
 
     @Override
-    public List<Owner> getAll() {
+    public List<Owner> getByAgent(int id) {
         return repository.getAll();
+    }
+
+    @Transactional
+    @Override
+    public Owner add(Owner owner) {
+        return repository.add(owner);
     }
 }

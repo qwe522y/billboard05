@@ -8,6 +8,7 @@ CREATE TABLE `owners` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) DEFAULT NULL,
   `phone` VARCHAR(255) NOT NULL,
+  `agent_id` INT NOT NULL,
   `create_date` DATETIME NOT NULL,
   PRIMARY KEY (`id`));
 

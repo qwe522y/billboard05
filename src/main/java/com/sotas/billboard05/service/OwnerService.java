@@ -5,6 +5,6 @@ import com.sotas.billboard05.entity.Owner;
 import java.util.List;
 
 public interface OwnerService {
-    List<Owner> getAll();
-
+    List<Owner> getByAgent(int id);
+    Owner add(Owner owner);
 }

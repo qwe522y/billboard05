@@ -41,6 +41,7 @@
 		<xsd:attribute name="succeeded" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="owners__type">
+		<xsd:attribute name="agent_id" use="optional" />
 		<xsd:attribute name="phone" use="optional" />
 		<xsd:attribute name="name" use="optional" />
 		<xsd:attribute name="id" use="optional" />

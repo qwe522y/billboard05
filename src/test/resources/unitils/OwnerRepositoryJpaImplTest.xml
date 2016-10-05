@@ -1,5 +1,6 @@
 <dataset>
-    <owners id="97" name="tname" phone="tphone"/>
-    <owners id="98" name="tname" phone="tphone"/>
-    <owners id="99" name="tname" phone="tphone"/>
+    <owners id="96" name="Имя1" phone="+7111" agent_id="1"/>
+    <owners id="97" name="Имя2" phone="+7222" agent_id="2"/>
+    <owners id="98" name="Имя3" phone="+7333" agent_id="1"/>
+    <owners id="99" name="Имя4" phone="+7444" agent_id="2"/>
 </dataset>

@@ -12,14 +12,17 @@ public class Owner {
     private int id;
     private String name;
     private String phone;
+    @Column(name = "agent_id")
+    private int agentId;
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
     private Date createDate;
 
-    public Owner(String name, String phone) {
+    public Owner(String name, String phone, int agentId) {
         this.name = name;
         this.phone = phone;
+        this.agentId = agentId;
     }
 
     public Owner() {
@@ -33,6 +36,7 @@ public class Owner {
         Owner owner = (Owner) o;
 
         if (id != owner.id) return false;
+        if (agentId != owner.agentId) return false;
         if (name != null ? !name.equals(owner.name) : owner.name != null) return false;
         if (phone != null ? !phone.equals(owner.phone) : owner.phone != null) return false;
         return createDate != null ? createDate.equals(owner.createDate) : owner.createDate == null;
@@ -44,6 +48,7 @@ public class Owner {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + agentId;
         result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
         return result;
     }
@@ -54,6 +59,7 @@ public class Owner {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
+                ", agentId=" + agentId +
                 ", createDate=" + createDate +
                 '}';
     }
@@ -88,5 +94,13 @@ public class Owner {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public int getAgentId() {
+        return agentId;
+    }
+
+    public void setAgentId(int agentId) {
+        this.agentId = agentId;
     }
 }

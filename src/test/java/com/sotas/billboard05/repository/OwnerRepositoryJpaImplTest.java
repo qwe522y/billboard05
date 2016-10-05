@@ -17,7 +17,7 @@ public class OwnerRepositoryJpaImplTest extends AbstractRepositoryTest {
     @Test
     @ExpectedDataSet
     public void addWithGenerationIdAndCreateFields() {
-        final Owner e = new Owner("newtname", "newtphone");
+        final Owner e = new Owner("new_name", "new_phone", 1);
         Owner e2 = txTemplate.execute(transactionStatus -> repository.add(e));
         assertNotEquals(0, e2.getId());
         assertNotNull(e2.getCreateDate());
@@ -28,7 +28,7 @@ public class OwnerRepositoryJpaImplTest extends AbstractRepositoryTest {
     public void get() {
         Owner e = repository.get(99);
         System.out.println(e);
-        assertEquals("tname", e.getName());
+        assertEquals("Имя4", e.getName());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class OwnerRepositoryJpaImplTest extends AbstractRepositoryTest {
     @ExpectedDataSet
     public void update() {
         Owner e = repository.get(99);
-        e.setPhone("newtphone");
+        e.setPhone("new_phone");
         txTemplate.execute(transactionStatus -> repository.update(e));
     }
 
@@ -51,9 +51,25 @@ public class OwnerRepositoryJpaImplTest extends AbstractRepositoryTest {
     @DataSet
     public void getAll() {
         List<Owner> list = repository.getAll();
-        assertEquals(3, list.size());
-        assertEquals(97, list.get(0).getId());
-        assertEquals(98, list.get(1).getId());
-        assertEquals(99, list.get(2).getId());
+        assertEquals(4, list.size());
+        assertEquals(96, list.get(0).getId());
+        assertEquals(97, list.get(1).getId());
+        assertEquals(98, list.get(2).getId());
+        assertEquals(99, list.get(3).getId());
+
+        assertEquals("Имя1", list.get(0).getName());
+        assertEquals("Имя2", list.get(1).getName());
+        assertEquals("Имя3", list.get(2).getName());
+        assertEquals("Имя4", list.get(3).getName());
+    }
+
+    @Test
+    @DataSet
+    public void getByAgent(){
+        List<Owner> owners = repository.getByAgent(1);
+        assertEquals(96, owners.get(0).getId());
+        assertEquals("Имя1", owners.get(0).getName());
+        assertEquals(98, owners.get(1).getId());
+        assertEquals("Имя3", owners.get(1).getName());
     }
 }
