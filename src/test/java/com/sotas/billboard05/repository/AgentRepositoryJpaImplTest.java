@@ -15,10 +15,10 @@ public class AgentRepositoryJpaImplTest extends AbstractRepositoryTest {
     AgentRepositoryJpaImpl repository;
 
     @Test
+    @DataSet
     @ExpectedDataSet
     public void addWithGenerationIdAndCreateFields() {
-        final Agent e = new Agent("tlogin", "dc829bf0d79e690c59cee708b527e6b7");
-        e.setName("tname");
+        final Agent e = new Agent("login4", "dc829bf0d79e690c59cee708b527e6b7", "Четвертый", "Калинина 4", "+7111", null);
         Agent e2 = txTemplate.execute(transactionStatus -> repository.add(e));
         assertNotEquals(0, e2.getId());
         assertNotNull(e2.getCreateDate());
@@ -29,15 +29,15 @@ public class AgentRepositoryJpaImplTest extends AbstractRepositoryTest {
     public void get() {
         Agent e = repository.get(99);
         assertEquals(99, e.getId());
-        assertEquals("tlogin99", e.getLogin());
+        assertEquals("login99", e.getLogin());
     }
 
     @Test
     @DataSet
     public void getByLogin() {
-        Agent e = repository.getByLogin("tlogin99");
+        Agent e = repository.getByLogin("login99");
         assertEquals(99, e.getId());
-        assertEquals("tlogin99", e.getLogin());
+        assertEquals("login99", e.getLogin());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class AgentRepositoryJpaImplTest extends AbstractRepositoryTest {
     @ExpectedDataSet
     public void update() {
         Agent e = repository.get(99);
-        e.setPhone("tphone");
+        e.setName("Новое имя");
         txTemplate.execute(transactionStatus -> repository.update(e));
     }
 

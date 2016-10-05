@@ -13,6 +13,7 @@ public class Agent {
     private String login;
     private String password;
     private String name;
+    private String address;
     private String phone;
     private String email;
     @UpdateTimestamp
@@ -23,9 +24,13 @@ public class Agent {
     public Agent() {
     }
 
-    public Agent(String login, String password) {
+    public Agent(String login, String password, String name, String address, String phone, String email) {
         this.login = login;
         this.password = password;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
     }
 
     @Override
@@ -35,6 +40,7 @@ public class Agent {
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", createDate=" + createDate +
@@ -52,6 +58,7 @@ public class Agent {
         if (login != null ? !login.equals(agent.login) : agent.login != null) return false;
         if (password != null ? !password.equals(agent.password) : agent.password != null) return false;
         if (name != null ? !name.equals(agent.name) : agent.name != null) return false;
+        if (address != null ? !address.equals(agent.address) : agent.address != null) return false;
         if (phone != null ? !phone.equals(agent.phone) : agent.phone != null) return false;
         if (email != null ? !email.equals(agent.email) : agent.email != null) return false;
         return createDate != null ? createDate.equals(agent.createDate) : agent.createDate == null;
@@ -64,6 +71,7 @@ public class Agent {
         result = 31 * result + (login != null ? login.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
@@ -124,5 +132,13 @@ public class Agent {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

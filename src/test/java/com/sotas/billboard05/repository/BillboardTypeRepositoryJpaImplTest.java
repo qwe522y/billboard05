@@ -17,35 +17,11 @@ public class BillboardTypeRepositoryJpaImplTest extends AbstractRepositoryTest {
     private BillboardTypeRepositoryJpaImpl repository;
 
     @Test
-    @ExpectedDataSet
-    public void addWithGenerationId() {
-        final BillboardType e = new BillboardType("Обычный щит", 2);
-        BillboardType e2 = txTemplate.execute(transactionStatus -> repository.add(e));
-        assertNotEquals(0, e2.getId());
-    }
-
-    @Test
     @DataSet
     public void get() {
         BillboardType e = repository.get(99);
         System.out.println(e);
         assertEquals("Щит", e.getName());
-    }
-
-    @Test
-    @DataSet
-    @ExpectedDataSet
-    public void update() {
-        BillboardType e = repository.get(99);
-        e.setName("Новое название");
-        txTemplate.execute(transactionStatus -> repository.update(e));
-    }
-
-    @Test
-    @DataSet
-    public void remove() {
-        txTemplate.execute(transactionStatus -> repository.remove(99));
-        assertNull(repository.get(99));
     }
 
     @Test

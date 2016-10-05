@@ -1,0 +1,5 @@
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
+    <billboard_types id="97" name="Обычный баннер"/>
+    <billboard_types id="98" name="Растяжка"/>
+    <billboard_types id="99" name="Щит"/>
+</dataset>

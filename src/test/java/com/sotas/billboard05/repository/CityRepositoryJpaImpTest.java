@@ -16,35 +16,11 @@ public class CityRepositoryJpaImpTest extends AbstractRepositoryTest {
     private CityRepositoryJpaImpl repository;
 
     @Test
-    @ExpectedDataSet
-    public void addWithGenerationId() {
-        final City e = new City("Berlin", "123.123.123");
-        City e2 = txTemplate.execute(transactionStatus -> repository.add(e));
-        assertNotEquals(0, e2.getId());
-    }
-
-    @Test
     @DataSet
     public void get() {
         City e = repository.get(99);
         System.out.println(e);
         assertEquals("London", e.getName());
-    }
-
-    @Test
-    @DataSet
-    @ExpectedDataSet
-    public void update() {
-        City e = repository.get(99);
-        e.setLocation("newlocation");
-        txTemplate.execute(transactionStatus -> repository.update(e));
-    }
-
-    @Test
-    @DataSet
-    public void remove() {
-        txTemplate.execute(transactionStatus -> repository.remove(99));
-        assertNull(repository.get(99));
     }
 
     @Test

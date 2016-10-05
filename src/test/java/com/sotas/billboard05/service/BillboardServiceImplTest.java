@@ -28,7 +28,6 @@ public class BillboardServiceImplTest extends AbstractServiceTest {
         assertEquals("Барак Обама", list.get(0).getAgent().getName());
         assertEquals("Барак Обама", list.get(1).getAgent().getName());
 
-        assertEquals(1, list.get(0).getType().getSurface());
-        assertEquals(2, list.get(1).getType().getSurface());
+
     }
 }

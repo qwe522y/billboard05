@@ -9,6 +9,7 @@
 				<xsd:element name="billboards" type="dflt:billboards__type" />
 				<xsd:element name="dbmaintain_scripts" type="dflt:dbmaintain_scripts__type" />
 				<xsd:element name="owners" type="dflt:owners__type" />
+				<xsd:element name="billboard_formats" type="dflt:billboard_formats__type" />
 				<xsd:element name="agents" type="dflt:agents__type" />
 				<xsd:any namespace="billboard_test" />
 			</xsd:choice>

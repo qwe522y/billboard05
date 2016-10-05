@@ -6,25 +6,26 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "billboard_types")
-public class BillboardType {
-    @Id @GeneratedValue
+@Table(name = "billboard_formats")
+public class BillboardFormat {
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
 
-    public BillboardType() {
+    public BillboardFormat() {
     }
 
-    public BillboardType(String name) {
+    public BillboardFormat(String name) {
         this.name = name;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof BillboardType)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
-        BillboardType that = (BillboardType) o;
+        BillboardFormat that = (BillboardFormat) o;
 
         if (id != that.id) return false;
         return name != null ? name.equals(that.name) : that.name == null;
@@ -40,7 +41,7 @@ public class BillboardType {
 
     @Override
     public String toString() {
-        return "BillboardType{" +
+        return "BillboardFormat{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

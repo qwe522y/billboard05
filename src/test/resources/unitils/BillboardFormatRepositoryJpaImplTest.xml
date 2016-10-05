@@ -1,3 +1,4 @@
 <dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
-    <cities location="123.123.123" name="Berlin"/>
+    <billboard_formats id="98" name="Динамика"/>
+    <billboard_formats id="99" name="Статика"/>
 </dataset>

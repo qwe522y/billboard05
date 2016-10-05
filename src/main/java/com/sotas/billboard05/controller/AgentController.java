@@ -3,6 +3,8 @@ package com.sotas.billboard05.controller;
 import com.sotas.billboard05.AuthUser;
 import com.sotas.billboard05.dto.BillboardDto;
 import com.sotas.billboard05.entity.Billboard;
+import com.sotas.billboard05.repository.BillboardTypeRepository;
+import com.sotas.billboard05.repository.CityRepository;
 import com.sotas.billboard05.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,16 +18,16 @@ import java.util.List;
 @RequestMapping("/agent/")
 public class AgentController {
     private BillboardService billboardService;
-    private BillboardTypeService billboardTypeService;
-    private CityService cityService;
+    private BillboardTypeRepository billboardTypeRepository;
+    private CityRepository cityRepository;
     private OwnerService ownerService;
     private AuthUserService authUserService;
 
     @Autowired
-    public AgentController(BillboardService billboardService, BillboardTypeService billboardTypeService, CityService cityService, OwnerService ownerService, AuthUserService authUserService) {
+    public AgentController(BillboardService billboardService, BillboardTypeRepository billboardTypeRepository, CityRepository cityRepository, OwnerService ownerService, AuthUserService authUserService) {
         this.billboardService = billboardService;
-        this.billboardTypeService = billboardTypeService;
-        this.cityService = cityService;
+        this.billboardTypeRepository = billboardTypeRepository;
+        this.cityRepository = cityRepository;
         this.ownerService = ownerService;
         this.authUserService = authUserService;
     }
@@ -40,9 +42,9 @@ public class AgentController {
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String showAddForm(Model model) {
-        model.addAttribute("cities", cityService.getAll());
+        model.addAttribute("cities", cityRepository.getAll());
         model.addAttribute("owners", ownerService.getAll());
-        model.addAttribute("billboardTypes", billboardTypeService.getAll());
+        model.addAttribute("billboardTypes", billboardTypeRepository.getAll());
         model.addAttribute("billboard", new Billboard());
         return "agent/add_form";
     }

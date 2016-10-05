@@ -3,6 +3,7 @@ CREATE TABLE `agents` (
   `login` VARCHAR(255) DEFAULT NULL,
   `password` VARCHAR(255) DEFAULT NULL,
   `name` VARCHAR(255) DEFAULT NULL,
+  `address` VARCHAR(512) DEFAULT NULL,
   `phone` VARCHAR(255) NOT NULL,
   `email` VARCHAR(255) DEFAULT NULL,
   `create_date` DATETIME NOT NULL,

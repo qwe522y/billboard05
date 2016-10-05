@@ -2,5 +2,9 @@ package com.sotas.billboard05.repository;
 
 import com.sotas.billboard05.entity.City;
 
-public interface CityRepository extends CrudRepository<City, Integer> {
+import java.util.List;
+
+public interface CityRepository {
+    City get(Integer id);
+    List<City> getAll();
 }

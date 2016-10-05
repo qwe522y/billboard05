@@ -5,6 +5,7 @@
 	<xsd:element name="billboards" type="billboards__type" />
 	<xsd:element name="dbmaintain_scripts" type="dbmaintain_scripts__type" />
 	<xsd:element name="owners" type="owners__type" />
+	<xsd:element name="billboard_formats" type="billboard_formats__type" />
 	<xsd:element name="agents" type="agents__type" />
 	<xsd:complexType name="cities__type">
 		<xsd:attribute name="name" use="optional" />
@@ -12,7 +13,6 @@
 		<xsd:attribute name="id" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="billboard_types__type">
-		<xsd:attribute name="surface" use="optional" />
 		<xsd:attribute name="name" use="optional" />
 		<xsd:attribute name="id" use="optional" />
 	</xsd:complexType>
@@ -46,8 +46,13 @@
 		<xsd:attribute name="id" use="optional" />
 		<xsd:attribute name="create_date" use="optional" />
 	</xsd:complexType>
+	<xsd:complexType name="billboard_formats__type">
+		<xsd:attribute name="name" use="optional" />
+		<xsd:attribute name="id" use="optional" />
+	</xsd:complexType>
 	<xsd:complexType name="agents__type">
 		<xsd:attribute name="password" use="optional" />
+		<xsd:attribute name="address" use="optional" />
 		<xsd:attribute name="phone" use="optional" />
 		<xsd:attribute name="name" use="optional" />
 		<xsd:attribute name="id" use="optional" />

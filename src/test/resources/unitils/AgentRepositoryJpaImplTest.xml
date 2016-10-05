@@ -1,5 +1,5 @@
 <dataset>
-    <agents id="97" login="tlogin97" password="dc829bf0d79e690c59cee708b527e6b7"/>
-    <agents id="98" login="tlogin98" password="dc829bf0d79e690c59cee708b527e6b7"/>
-    <agents id="99" login="tlogin99" password="dc829bf0d79e690c59cee708b527e6b7"/>
+    <agents id="97" login="login97" password="dc829bf0d79e690c59cee708b527e6b7" name="Первый"/>
+    <agents id="98" login="login98" password="dc829bf0d79e690c59cee708b527e6b7" name="Второй"/>
+    <agents id="99" login="login99" password="dc829bf0d79e690c59cee708b527e6b7" name="Третий"/>
 </dataset>
