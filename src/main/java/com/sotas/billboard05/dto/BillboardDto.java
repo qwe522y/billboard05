@@ -8,13 +8,15 @@ public class BillboardDto {
     private Agent agent;
     private City city;
     private BillboardType type;
+    private BillboardFormat format;
 
-    public BillboardDto(Billboard billboard, Owner owner, Agent agent, City city, BillboardType type) {
-        this.e = billboard;
+    public BillboardDto(Billboard e, Owner owner, Agent agent, City city, BillboardType type, BillboardFormat format) {
+        this.e = e;
         this.owner = owner;
         this.agent = agent;
         this.city = city;
         this.type = type;
+        this.format = format;
     }
 
     @Override
@@ -50,6 +52,7 @@ public class BillboardDto {
                 ", agent=" + agent +
                 ", city=" + city +
                 ", type=" + type +
+                ", format=" + format +
                 '}';
     }
 
@@ -91,5 +94,13 @@ public class BillboardDto {
 
     public void setType(BillboardType type) {
         this.type = type;
+    }
+
+    public BillboardFormat getFormat() {
+        return format;
+    }
+
+    public void setFormat(BillboardFormat format) {
+        this.format = format;
     }
 }

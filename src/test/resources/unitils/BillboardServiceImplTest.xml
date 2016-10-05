@@ -8,11 +8,14 @@
     <cities id="5" name="Москва"/>
     <cities id="6" name="Берлин"/>
 
-    <billboard_types id="7" surface="1"/>
-    <billboard_types id="8" surface="2"/>
+    <billboard_types id="7" name="Тип1"/>
+    <billboard_types id="8" name="Тип2"/>
 
-    <billboards id="96" name="Боль" city="6"  agent_id="1" type="7" owner_id="4" light="true"/>
-    <billboards id="97" name="Паника" city="5"  agent_id="1" type="8" owner_id="4" light="true"/>
-    <billboards id="98" name="Тревога" city="6"  agent_id="2" type="7" owner_id="3" light="true"/>
-    <billboards id="99" name="Страх" city="5"  agent_id="2" type="8"  owner_id="3" light="true"/>
+    <billboard_formats id="1" name="Формат1"/>
+    <billboard_formats id="2" name="Формат2"/>
+
+    <billboards id="96" city_id="6"  agent_id="1" type_id="7" owner_id="4" format_id="2" light="true" side_num="3" surface_num_per_side="2" address="Пр. Шамиля 1"/>
+    <billboards id="97" city_id="5"  agent_id="1" type_id="8" owner_id="4" format_id="1" light="true" side_num="3" surface_num_per_side="2" address="Пр. Шамиля 2"/>
+    <billboards id="98" city_id="6"  agent_id="2" type_id="7" owner_id="3" format_id="2" light="true" side_num="3" surface_num_per_side="2" address="Пр. Шамиля 3"/>
+    <billboards id="99" city_id="5"  agent_id="2" type_id="8" owner_id="3" format_id="1" light="true" side_num="3" surface_num_per_side="2" address="Пр. Шамиля 4"/>
 </dataset>

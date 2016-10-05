@@ -19,14 +19,16 @@ public class BillboardServiceImpl implements BillboardService {
     private CityRepository cityRepository;
     private OwnerRepository ownerRepository;
     private BillboardTypeRepository billboardTypeRepository;
+    private BillboardFormatRepository billboardFormatRepository;
     private AgentRepository agentRepository;
 
     @Autowired
-    public BillboardServiceImpl(BillboardRepository repository, CityRepository cityRepository, OwnerRepository ownerRepository, BillboardTypeRepository billboardTypeRepository, AgentRepository agentRepository) {
+    public BillboardServiceImpl(BillboardRepository repository, CityRepository cityRepository, OwnerRepository ownerRepository, BillboardTypeRepository billboardTypeRepository, BillboardFormatRepository billboardFormatRepository, AgentRepository agentRepository) {
         this.repository = repository;
         this.cityRepository = cityRepository;
         this.ownerRepository = ownerRepository;
         this.billboardTypeRepository = billboardTypeRepository;
+        this.billboardFormatRepository = billboardFormatRepository;
         this.agentRepository = agentRepository;
     }
 
@@ -37,12 +39,14 @@ public class BillboardServiceImpl implements BillboardService {
         List<Owner> owners = ownerRepository.getAll();
         List<BillboardType> billboardTypes = billboardTypeRepository.getAll();
         List<City> cities = cityRepository.getAll();
+        List<BillboardFormat> billboardFormats = billboardFormatRepository.getAll();
         Map<Integer, City> cityMap =  cities.stream().collect(Collectors.toMap(City::getId, Function.identity()));
         Map<Integer, BillboardType> billboardTypeMap =  billboardTypes.stream().collect(Collectors.toMap(BillboardType::getId, Function.identity()));
         Map<Integer, Owner> ownerMap =  owners.stream().collect(Collectors.toMap(Owner::getId, Function.identity()));
+        Map<Integer, BillboardFormat> billboardFormatMap = billboardFormats.stream().collect(Collectors.toMap(BillboardFormat::getId, Function.identity()));
         List<BillboardDto> res = new ArrayList<>();
         for(Billboard e : list) {
-            res.add(new BillboardDto(e, ownerMap.get(e.getOwnerId()), agent, cityMap.get(e.getCityId()), billboardTypeMap.get(e.getTypeId())));
+            res.add(new BillboardDto(e, ownerMap.get(e.getOwnerId()), agent, cityMap.get(e.getCityId()), billboardTypeMap.get(e.getTypeId()), billboardFormatMap.get(e.getFormatId())));
         }
         return res;
     }
