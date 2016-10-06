@@ -7,6 +7,7 @@
 				<xsd:element name="cities" type="dflt:cities__type" />
 				<xsd:element name="billboard_types" type="dflt:billboard_types__type" />
 				<xsd:element name="billboards" type="dflt:billboards__type" />
+				<xsd:element name="timetables" type="dflt:timetables__type" />
 				<xsd:element name="dbmaintain_scripts" type="dflt:dbmaintain_scripts__type" />
 				<xsd:element name="owners" type="dflt:owners__type" />
 				<xsd:element name="billboard_formats" type="dflt:billboard_formats__type" />

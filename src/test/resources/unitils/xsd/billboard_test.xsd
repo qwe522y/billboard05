@@ -3,6 +3,7 @@
 	<xsd:element name="cities" type="cities__type" />
 	<xsd:element name="billboard_types" type="billboard_types__type" />
 	<xsd:element name="billboards" type="billboards__type" />
+	<xsd:element name="timetables" type="timetables__type" />
 	<xsd:element name="dbmaintain_scripts" type="dbmaintain_scripts__type" />
 	<xsd:element name="owners" type="owners__type" />
 	<xsd:element name="billboard_formats" type="billboard_formats__type" />
@@ -31,6 +32,16 @@
 		<xsd:attribute name="id" use="optional" />
 		<xsd:attribute name="create_date" use="optional" />
 		<xsd:attribute name="city_id" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="timetables__type">
+		<xsd:attribute name="billboard_id" use="optional" />
+		<xsd:attribute name="side" use="optional" />
+		<xsd:attribute name="surface" use="optional" />
+		<xsd:attribute name="month" use="optional" />
+		<xsd:attribute name="year" use="optional" />
+		<xsd:attribute name="id" use="optional" />
+		<xsd:attribute name="rent" use="optional" />
+		<xsd:attribute name="create_date" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="dbmaintain_scripts__type">
 		<xsd:attribute name="file_name" use="optional" />

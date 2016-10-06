@@ -19,7 +19,7 @@ public class OwnerServiceImpl implements OwnerService {
 
     @Override
     public List<Owner> getByAgent(int id) {
-        return repository.getAll();
+        return repository.getByAgent(id);
     }
 
     @Transactional

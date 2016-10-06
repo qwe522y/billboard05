@@ -3,6 +3,7 @@ package com.sotas.billboard05.controller;
 import com.sotas.billboard05.AuthUser;
 import com.sotas.billboard05.dto.BillboardDto;
 import com.sotas.billboard05.entity.Billboard;
+import com.sotas.billboard05.repository.BillboardFormatRepository;
 import com.sotas.billboard05.repository.BillboardTypeRepository;
 import com.sotas.billboard05.repository.CityRepository;
 import com.sotas.billboard05.service.*;
@@ -16,20 +17,22 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/agent/")
-public class AgentController {
+public class BillboardController {
     private BillboardService billboardService;
-    private BillboardTypeRepository billboardTypeRepository;
-    private CityRepository cityRepository;
     private OwnerService ownerService;
     private AuthUserService authUserService;
+    private BillboardTypeRepository billboardTypeRepository;
+    private CityRepository cityRepository;
+    private BillboardFormatRepository billboardFormatRepository;
 
     @Autowired
-    public AgentController(BillboardService billboardService, BillboardTypeRepository billboardTypeRepository, CityRepository cityRepository, OwnerService ownerService, AuthUserService authUserService) {
+    public BillboardController(BillboardService billboardService, OwnerService ownerService, AuthUserService authUserService, BillboardTypeRepository billboardTypeRepository, CityRepository cityRepository, BillboardFormatRepository billboardFormatRepository) {
         this.billboardService = billboardService;
-        this.billboardTypeRepository = billboardTypeRepository;
-        this.cityRepository = cityRepository;
         this.ownerService = ownerService;
         this.authUserService = authUserService;
+        this.billboardTypeRepository = billboardTypeRepository;
+        this.cityRepository = cityRepository;
+        this.billboardFormatRepository = billboardFormatRepository;
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -46,6 +49,7 @@ public class AgentController {
         model.addAttribute("cities", cityRepository.getAll());
         model.addAttribute("owners", ownerService.getByAgent(authUser.getAgent().getId()));
         model.addAttribute("billboardTypes", billboardTypeRepository.getAll());
+        model.addAttribute("billboardFormats", billboardFormatRepository.getAll());
         model.addAttribute("billboard", new Billboard());
         return "billboard/add_form";
     }

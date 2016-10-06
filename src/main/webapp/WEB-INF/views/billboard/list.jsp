@@ -67,9 +67,10 @@
                                     <th>Адрес</th>
                                     <th>Цена</th>
                                     <th>Тип</th>
-                                    <th>Кол-во поверхностей</th>
+                                    <th>Поверхности</th>
                                     <th>Владелец</th>
                                     <th>Телефон</th>
+                                    <th>Дополонительно</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -78,10 +79,11 @@
                                             <td>${i.city.name}</td>
                                             <td>${i.e.address}</td>
                                             <td>${i.e.rent}</td>
-                                            <td>${i.type.name}</td>
-                                            <td>${i.type.surface}</td>
+                                            <td>${i.type.name} - ${i.format.name}</td>
+                                            <td>${i.e.sideNum * i.e.surfaceNumPerSide}</td>
                                             <td>${i.owner.name}</td>
                                             <td>${i.owner.phone}</td>
+                                            <td><a href="timetable/${i.e.id}/">Расписание</a></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

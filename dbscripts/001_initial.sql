@@ -1,7 +1,7 @@
 CREATE TABLE `billboards` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `city_id` INT NOT NULL,
-  `address` VARCHAR(255) NOT NULL,
+  `address` VARCHAR(255) CHARACTER SET 'utf8' NOT NULL,
   `type_id` INT NOT NULL,
   `format_id` INT NOT NULL,
   `light` TINYINT(1) NOT NULL,
@@ -11,6 +11,6 @@ CREATE TABLE `billboards` (
   `location` VARCHAR(255) NOT NULL,
   `owner_id` INT NOT NULL,
   `agent_id` INT NOT NULL,
-  `comment` VARCHAR(512) DEFAULT NULL,
+  `comment` VARCHAR(512) CHARACTER SET 'utf8' DEFAULT NULL,
   `create_date` DATETIME NOT NULL,
   PRIMARY KEY (`id`));

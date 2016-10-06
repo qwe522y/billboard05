@@ -98,7 +98,7 @@
                                     <div class="col-sm-9">
                                         <sf:select path="typeId" class="form-control select2" style="width: 100%;" id="billboardTypeField">
                                             <c:forEach items="${billboardTypes}" var="type">
-                                                <sf:option value="${type.id}">${type.name} ( кол-во поверхностей: ${type.surface} ) </sf:option>
+                                                <sf:option value="${type.id}">${type.name}</sf:option>
                                             </c:forEach>
                                         </sf:select>
                                     </div>
@@ -132,9 +132,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="surfaceNumBySideField">Месячная рента</label>
+                                    <label class="col-sm-3 control-label" for="surfaceNumPerSideField">Количество поверхностей на сторону</label>
                                     <div class="col-sm-9">
-                                        <sf:input path="surfaceNumBySideField" id="surfaceNumBySideField" type="number" placeholder="Количество поверхностей на стороне" class="form-control"/>
+                                        <sf:input path="surfaceNumPerSide" id="surfaceNumPerSideField" type="number" placeholder="Количество поверхностей на сторону" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="form-group">

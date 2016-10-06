@@ -145,11 +145,12 @@
               <driverClassName>com.mysql.jdbc.Driver</driverClassName>
               <userName>root</userName>
               <password>root</password>
-              <url>jdbc:mysql://localhost:3306/billboard</url>
+              <url>jdbc:mysql://localhost:3306/billboard?characterEncoding=UTF-8</url>
               <schemaNames>billboard</schemaNames>
               <dialect>mysql</dialect>
             </database>
           </databases>
+          <scriptEncoding>UTF-8</scriptEncoding>
           <scriptLocations>dbscripts</scriptLocations>
           <autoCreateDbMaintainScriptsTable>true</autoCreateDbMaintainScriptsTable>
         </configuration>

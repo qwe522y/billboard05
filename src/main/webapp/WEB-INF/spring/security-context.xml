@@ -26,7 +26,7 @@
     <!-- security -->
     <sec:http use-expressions="true">
         <sec:csrf />
-        <sec:intercept-url pattern="/agent/*" access="hasRole('ROLE_USER')" />
+        <sec:intercept-url pattern="/agent/**" access="hasRole('ROLE_USER')" />
         <sec:intercept-url pattern="/*" access="permitAll" />
         <sec:form-login
                 login-page="/login"
