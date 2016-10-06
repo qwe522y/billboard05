@@ -71,6 +71,12 @@
                     <span class="pull-right-container"></span>
                 </a>
             </li>
+            <li class="treeview">
+                <a href="${root}agent/owner/">
+                    <i class="glyphicon glyphicon-user"></i> <span>Владельцы</span>
+                    <span class="pull-right-container"></span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

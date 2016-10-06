@@ -78,15 +78,9 @@
                         <sf:form method="post" modelAttribute="billboard" class="form-horizontal">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="nameField">Наименование</label>
-                                    <div class="col-sm-9">
-                                        <sf:input path="name" id="nameField" type="text" placeholder="Можно оставить пустым" class="form-control"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label class="col-sm-3 control-label" for="cityField">Город</label>
                                     <div class="col-sm-9">
-                                        <sf:select path="city" class="form-control select2" style="width: 100%;" id="cityField">
+                                        <sf:select path="cityId" class="form-control select2" style="width: 100%;" id="cityField">
                                             <c:forEach items="${cities}" var="city">
                                                 <sf:option value="${city.id}">${city.name}</sf:option>
                                             </c:forEach>
@@ -102,9 +96,19 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label" for="billboardTypeField">Тип</label>
                                     <div class="col-sm-9">
-                                        <sf:select path="type" class="form-control select2" style="width: 100%;" id="billboardTypeField">
+                                        <sf:select path="typeId" class="form-control select2" style="width: 100%;" id="billboardTypeField">
                                             <c:forEach items="${billboardTypes}" var="type">
                                                 <sf:option value="${type.id}">${type.name} ( кол-во поверхностей: ${type.surface} ) </sf:option>
+                                            </c:forEach>
+                                        </sf:select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="billboardFormatField">Тип</label>
+                                    <div class="col-sm-9">
+                                        <sf:select path="formatId" class="form-control select2" style="width: 100%;" id="billboardFormatField">
+                                            <c:forEach items="${billboardFormats}" var="format">
+                                                <sf:option value="${format.id}">${format.name}</sf:option>
                                             </c:forEach>
                                         </sf:select>
                                     </div>
@@ -119,6 +123,18 @@
                                                 Освещение
                                             </label>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="sideNumField">Количество сторон</label>
+                                    <div class="col-sm-9">
+                                        <sf:input path="sideNum" id="sideNumField" type="number" placeholder="Количество сторон" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="surfaceNumBySideField">Месячная рента</label>
+                                    <div class="col-sm-9">
+                                        <sf:input path="surfaceNumBySideField" id="surfaceNumBySideField" type="number" placeholder="Количество поверхностей на стороне" class="form-control"/>
                                     </div>
                                 </div>
                                 <div class="form-group">

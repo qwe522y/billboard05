@@ -37,16 +37,17 @@ public class AgentController {
         AuthUser authUser = authUserService.getAuthUser();
         List<BillboardDto> list = billboardService.getListByAgent(authUser.getAgent().getId());
         model.addAttribute("billboards", list);
-        return "agent/main";
+        return "billboard/list";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String showAddForm(Model model) {
+        AuthUser authUser = authUserService.getAuthUser();
         model.addAttribute("cities", cityRepository.getAll());
-        model.addAttribute("owners", ownerService.getAll());
+        model.addAttribute("owners", ownerService.getByAgent(authUser.getAgent().getId()));
         model.addAttribute("billboardTypes", billboardTypeRepository.getAll());
         model.addAttribute("billboard", new Billboard());
-        return "agent/add_form";
+        return "billboard/add_form";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)

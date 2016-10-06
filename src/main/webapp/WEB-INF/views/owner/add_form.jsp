@@ -75,7 +75,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <sf:form method="post" modelAttribute="owner" class="form-horizontal">
+                        <sf:form method="post" modelAttribute="owner" class="form-horizontal" action=".">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label" for="nameField">Ф.И.О.</label>

@@ -28,7 +28,7 @@ public class OwnerCrudController {
     public String list(Model model) {
         AuthUser authUser = authUserService.getAuthUser();
         List<Owner> owners = ownerService.getByAgent(authUser.getAgent().getId());
-        model.addAttribute("owners", "owners");
+        model.addAttribute("owners", owners);
         return "owner/list";
     }
 
