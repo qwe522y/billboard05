@@ -26,7 +26,7 @@ public class Timetable {
     public Timetable() {
     }
 
-    public Timetable(int billboardId, int side, int surface, int month, int year, BigDecimal rent) {
+    public Timetable(int billboardId, int side, int surface, int year, int month, BigDecimal rent) {
         this.billboardId = billboardId;
         this.side = side;
         this.surface = surface;

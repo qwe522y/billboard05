@@ -1,6 +1,5 @@
 package com.sotas.billboard05.repository;
 
-import com.sotas.billboard05.entity.Billboard;
 import com.sotas.billboard05.entity.Timetable;
 import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
@@ -21,8 +20,7 @@ public class TimetableRepositoryJpaImplTest extends AbstractRepositoryTest {
     @Test
     @DataSet
     public void getByBillboardSortedByYearAndMonth() {
-        Billboard bb = billboardRepository.get(98);
-        List<Timetable> list = repository.getActualsByBillboard(bb, 2016, 10);
+        List<Timetable> list = repository.getActualsByBillboard(98, 2016, 10);
         for(Timetable e : list) {
             System.out.println(e);
             assertEquals(e.getRent(), new BigDecimal("100.00"));
