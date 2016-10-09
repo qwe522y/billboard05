@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns="billboard_test" targetNamespace="billboard_test">
+	<xsd:element name="billboard_sides" type="billboard_sides__type" />
 	<xsd:element name="cities" type="cities__type" />
 	<xsd:element name="billboard_types" type="billboard_types__type" />
 	<xsd:element name="billboards" type="billboards__type" />
@@ -8,6 +9,12 @@
 	<xsd:element name="owners" type="owners__type" />
 	<xsd:element name="billboard_formats" type="billboard_formats__type" />
 	<xsd:element name="agents" type="agents__type" />
+	<xsd:complexType name="billboard_sides__type">
+		<xsd:attribute name="billboard_id" use="optional" />
+		<xsd:attribute name="name" use="optional" />
+		<xsd:attribute name="id" use="optional" />
+		<xsd:attribute name="rent" use="optional" />
+	</xsd:complexType>
 	<xsd:complexType name="cities__type">
 		<xsd:attribute name="name" use="optional" />
 		<xsd:attribute name="location" use="optional" />
@@ -20,17 +27,12 @@
 	<xsd:complexType name="billboards__type">
 		<xsd:attribute name="address" use="optional" />
 		<xsd:attribute name="agent_id" use="optional" />
+		<xsd:attribute name="light" use="optional" />
 		<xsd:attribute name="type_id" use="optional" />
 		<xsd:attribute name="owner_id" use="optional" />
-		<xsd:attribute name="side_num" use="optional" />
-		<xsd:attribute name="surface_num_per_side" use="optional" />
-		<xsd:attribute name="rent" use="optional" />
-		<xsd:attribute name="light" use="optional" />
 		<xsd:attribute name="format_id" use="optional" />
 		<xsd:attribute name="location" use="optional" />
-		<xsd:attribute name="comment" use="optional" />
 		<xsd:attribute name="id" use="optional" />
-		<xsd:attribute name="create_date" use="optional" />
 		<xsd:attribute name="city_id" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="timetables__type">

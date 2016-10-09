@@ -1,6 +1,6 @@
 package com.sotas.billboard05.repository;
 
-import com.sotas.billboard05.entity.Billboard;
+import com.sotas.billboard05.entity.BillboardSide;
 import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.dbunit.annotation.ExpectedDataSet;
@@ -11,39 +11,34 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class BillboardRepositoryJpaImplTest extends AbstractRepositoryTest {
+public class BillboardSideRepositoryJpaImplTest extends AbstractRepositoryTest {
     @SpringBeanByType
-    BillboardRepositoryJpaImpl repository;
+    private BillboardSideRepositoryJpaImpl repository;
 
     @Test
     @DataSet
     @ExpectedDataSet
     public void addWithGenerationId() {
-        Billboard e = new Billboard(1, "Новый адрес", 1, 2, true, null, 5, 6);
-        Billboard e2 = txTemplate.execute(transactionStatus -> repository.add(e));
+        BillboardSide e = new BillboardSide(100, "A", BigDecimal.TEN);
+        BillboardSide e2 = txTemplate.execute(transactionStatus -> repository.add(e));
         assertNotEquals(0, e2.getId());
     }
 
     @Test
     @DataSet
     public void get() {
-        Billboard e = repository.get(99);
+        BillboardSide e = repository.get(99);
         System.out.println(e);
         assertEquals(99, e.getId());
-        assertEquals(2, e.getCityId());
-        assertEquals("Пр. Шамиля 4", e.getAddress());
-        assertEquals(1, e.getTypeId());
-        assertEquals(true, e.isLight());
-        assertEquals(1, e.getOwnerId());
-        assertEquals(2, e.getAgentId());
+        assertEquals("B", e.getName());
     }
 
     @Test
     @DataSet
     @ExpectedDataSet
     public void update() {
-        Billboard e = repository.get(99);
-        e.setLight(false);
+        BillboardSide e = repository.get(99);
+        e.setRent(new BigDecimal("11.00"));
         txTemplate.execute(transactionStatus -> repository.update(e));
     }
 
@@ -58,7 +53,7 @@ public class BillboardRepositoryJpaImplTest extends AbstractRepositoryTest {
     @Test
     @DataSet
     public void getAll() {
-        List<Billboard> list = repository.getAll();
+        List<BillboardSide> list = repository.getAll();
         assertEquals(4, list.size());
         assertEquals(96, list.get(0).getId());
         assertEquals(97, list.get(1).getId());
@@ -68,19 +63,10 @@ public class BillboardRepositoryJpaImplTest extends AbstractRepositoryTest {
 
     @Test
     @DataSet
-    public void getByAgent() {
-        List<Billboard> list = repository.getListByAgent(2);
+    public void getByBillboard() {
+        List<BillboardSide> list = repository.getByBillboard(2);
         assertEquals(2, list.size());
         assertEquals(98, list.get(0).getId());
-        assertEquals(99, list.get(1).getId());
-    }
-
-    @Test
-    @DataSet
-    public void getByCity() {
-        List<Billboard> list = repository.getListByCity(2);
-        assertEquals(2, list.size());
-        assertEquals(97, list.get(0).getId());
         assertEquals(99, list.get(1).getId());
     }
 }

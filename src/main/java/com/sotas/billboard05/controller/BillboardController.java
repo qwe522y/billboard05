@@ -55,7 +55,7 @@ public class BillboardController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String addBillboard(Model model, Billboard billboard) {
+    public String addBillboard(Model model, Billboard billboard, String qwe_________________________________) {
         AuthUser authUser = authUserService.getAuthUser();
         billboard.setLocation("test");
         billboard.setAgentId(authUser.getAgent().getId());

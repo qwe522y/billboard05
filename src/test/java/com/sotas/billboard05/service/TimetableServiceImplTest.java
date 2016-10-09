@@ -15,9 +15,9 @@ public class TimetableServiceImplTest {
     @Test
     public void filterForSurface() {
         Billboard bb = new Billboard();
-        bb.setRent(BigDecimal.TEN);
-        bb.setSideNum(2);
-        bb.setSurfaceNumPerSide(2);
+        //bb.setRent(BigDecimal.TEN);
+        //bb.setSideNum(2);
+        //bb.setSurfaceNumPerSide(2);
         List<Timetable> list = new ArrayList<>();
         list.add(new Timetable(99, 0, 0, 2016, 10, new BigDecimal(1)));
         list.add(new Timetable(99, 0, 1, 2016, 10, new BigDecimal(2)));

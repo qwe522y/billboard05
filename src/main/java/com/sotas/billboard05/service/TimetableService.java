@@ -15,7 +15,7 @@ public interface TimetableService {
      * @param monthNum кол-во месяцев от начальной даты
      * @return возвращает отфильтрованный по дате расписание по поверхности
      */
-    List<Timetable> filterForSurface(List<Timetable> list, Date curDate, int monthNum, int billboardId, int side, int surface);
+    List<Timetable> filterForSurface(List<Timetable> list, int year, int month, int monthNum, int billboardId, int side, int surface);
 
     /**
      * @return заполняет недостающие фрагменты расписание автоматически сгенерированными фрагментами

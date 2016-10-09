@@ -153,6 +153,12 @@
                                         </sf:select>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="qweField">qwe</label>
+                                    <div class="col-sm-9">
+                                            <input name="qwe" id="qweField" placeholder="qwe" class="form-control"/>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">

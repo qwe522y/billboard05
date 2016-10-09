@@ -40,6 +40,7 @@ public class TimetableServiceImpl implements TimetableService {
                 return new Integer(o1.getYear()*12 + o1.getMonth()).compareTo(o2.getYear()*12 + o2.getMonth());
             }
         });
+        return list;
     }
 
     @Override

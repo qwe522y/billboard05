@@ -4,6 +4,7 @@
 	<xsd:element name="dataset">
 		<xsd:complexType>
 			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element name="billboard_sides" type="dflt:billboard_sides__type" />
 				<xsd:element name="cities" type="dflt:cities__type" />
 				<xsd:element name="billboard_types" type="dflt:billboard_types__type" />
 				<xsd:element name="billboards" type="dflt:billboards__type" />

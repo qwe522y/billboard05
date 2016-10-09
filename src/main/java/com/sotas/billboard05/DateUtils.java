@@ -13,11 +13,13 @@ public class DateUtils {
 
     public static Calendar getEndOfMonth(int year, int month, int addMonth) {
         Calendar cal = new GregorianCalendar(year, month, 1);
+        cal.add(Calendar.MONTH, addMonth);
         cal.set(Calendar.DAY_OF_MONTH, cal.getMaximum(Calendar.DAY_OF_MONTH));
         return cal;
     }
 
     public static Calendar getBeginOfMonth(int year, int month) {
-        return new GregorianCalendar(year, month, 1);
+        GregorianCalendar res = new GregorianCalendar(year, month, 1);
+        return res;
     }
 }
