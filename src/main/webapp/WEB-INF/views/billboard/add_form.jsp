@@ -43,7 +43,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="skin-blue">
 <jsp:include page="/WEB-INF/views/parts/panels.jsp"/>
 <div class="wrapper">
     <!-- Content Wrapper. Contains page content -->
@@ -126,24 +126,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="sideNumField">Количество сторон</label>
-                                    <div class="col-sm-9">
-                                        <sf:input path="sideNum" id="sideNumField" type="number" placeholder="Количество сторон" class="form-control"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="surfaceNumPerSideField">Количество поверхностей на сторону</label>
-                                    <div class="col-sm-9">
-                                        <sf:input path="surfaceNumPerSide" id="surfaceNumPerSideField" type="number" placeholder="Количество поверхностей на сторону" class="form-control"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="rentField">Месячная рента</label>
-                                    <div class="col-sm-9">
-                                        <sf:input path="rent" id="rentField" type="number" placeholder="Месячная рента" class="form-control"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label class="col-sm-3 control-label" for="ownerField">Владелец</label>
                                     <div class="col-sm-9">
                                         <sf:select path="ownerId" class="form-control select2" style="width: 100%;" id="ownerField">
@@ -154,9 +136,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="qweField">qwe</label>
+                                    <label class="col-sm-3 control-label" for="locationField">Местоположение</label>
                                     <div class="col-sm-9">
-                                            <input name="qwe" id="qweField" placeholder="qwe" class="form-control"/>
+                                        <sf:input path="location" class="form-control select2" id="locationField"/>
                                     </div>
                                 </div>
                             </div>

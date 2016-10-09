@@ -120,8 +120,8 @@
         </div>
     </div>
 
-    <div class="jumbotron" style="padding: 5px;">
-        <div id="map"/>
+    <div class="jumbotron" style="padding: 5px; margin-bottom: 0px;">
+        <div id="map"></div>
     </div>
 </div> <!-- /container -->
 
