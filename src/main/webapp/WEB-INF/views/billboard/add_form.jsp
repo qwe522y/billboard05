@@ -42,6 +42,39 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script>
+        ymaps.ready(init);
+
+        function init () {
+            var myMap = new ymaps.Map("map", {
+                        center: [42.975182, 47.503995],
+                        zoom: 14
+                    }, {
+                        searchControlProvider: 'yandex#search'
+                    });
+
+            var mark = new ymaps.Placemark([42.975182, 47.503995], {}, {draggable: true})
+            myMap.geoObjects
+                    .add(mark);
+
+            myMap.events.add("click", function (e) {
+                $("#locationField").val(e.get("coords"));
+                mark.geometry.setCoordinates(e.get("coords"));
+            });
+
+            mark.events.add("dragend", function (e) {
+                $("#locationField").val(mark.geometry.getCoordinates());
+                mark.geometry.setCoordinates(e.get("coords"));
+            });
+
+        }
+    </script>
+    <style>
+        #map {
+            width: 100%; height: 500px; padding: 0; margin: 0;
+        }
+    </style>
 </head>
 <body class="skin-blue">
 <jsp:include page="/WEB-INF/views/parts/panels.jsp"/>
@@ -138,7 +171,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label" for="locationField">Местоположение</label>
                                     <div class="col-sm-9">
-                                        <sf:input path="location" class="form-control select2" id="locationField"/>
+                                        <sf:input path="location" class="form-control" id="locationField" placeholder="Укажите местоположение на карте"/>
                                     </div>
                                 </div>
                             </div>
@@ -155,6 +188,9 @@
                     <!-- /.box -->
                 </div>
                 <!--/.col (right) -->
+                <div class="col-lg-6">
+                    <div id="map"></div>
+                </div>
             </div>
             <!-- /.row -->
             <div style="padding: 10px 0px; text-align: center;">
