@@ -37,41 +37,33 @@
     <![endif]-->
     <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script>
+        var billboards = {
+            "type": "FeatureCollection",
+            "features": [
+                <c:forEach items="${billboards}" var="i">
+                    {"type": "Feature", "id": ${i.e.id}, "geometry": {"type": "Point", "coordinates": [${i.e.location}]}},
+                </c:forEach>
+            ]
+        };
         ymaps.ready(init);
-
+        var myMap;
         function init () {
-            var myMap = new ymaps.Map("map", {
+            myMap = new ymaps.Map("map", {
                         center: [42.975182, 47.503995],
                         zoom: 14
                     }, {
                         searchControlProvider: 'yandex#search'
-                    }),
-
-                    // Создаем геообъект с типом геометрии "Точка".
-                    myGeoObject = new ymaps.GeoObject({
-                        // Описание геометрии.
-                        geometry: {
-                            type: "Point",
-                            coordinates: [55.8, 37.8]
-                        },
-                        // Свойства.
-                        properties: {
-                            // Контент метки.
-                            iconContent: 'Я тащусь',
-                            hintContent: 'Ну давай уже тащи'
-                        }
-                    }, {
-                        // Опции.
-                        // Иконка метки будет растягиваться под размер ее содержимого.
-                        preset: 'islands#blackStretchyIcon',
-                        // Метку можно перемещать.
-                        draggable: true
                     });
 
-            myMap.geoObjects
-                    .add(new ymaps.Placemark([42.975182, 47.503995], {
-                        balloonContent: 'ЗЕЛЕНАЯ ТОЧКА'
-                    }));
+            objectManager = new ymaps.ObjectManager({
+                // Чтобы метки начали кластеризоваться, выставляем опцию.
+                clusterize: true,
+                // ObjectManager принимает те же опции, что и кластеризатор.
+                gridSize: 32
+            });
+
+            myMap.geoObjects.add(objectManager);
+            objectManager.add(billboards);
         }
     </script>
     <style>
@@ -106,15 +98,10 @@
     <div class="container">
         <div class="row" >
             <div class="form-group form-inline">
-                <select class="form-control select2">
-                    <option value="1">Махачкала</option>
-                    <option value="1">Каспийск</option>
-                    <option value="1">Дербент</option>
-                </select>
-                <select class="form-control select2">
-                    <option value="1">Октябрь 2016</option>
-                    <option value="1">Каспийск</option>
-                    <option value="1">Дербент</option>
+                <select class="form-control select2" id="citySelectField">
+                    <c:forEach items="${cities}" var="city">
+                        <option value="${city.location}">${city.name}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
@@ -154,7 +141,9 @@
 <script>
     $(function () {
         //Initialize Select2 Elements
-        $(".select2").select2();
+        $(".select2").select2({
+                minimumResultsForSearch: 10
+        });
 
         //Datemask dd/mm/yyyy
         $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
@@ -218,10 +207,17 @@
         });
     });
     $(function () {
+        /* мой костыль для управлением высотой карты */
         var h = $(window).height();
         if(h > 500) {
             $("#map").height(h-150);
         }
+
+        // cмена центра карты при смене города
+        $( "#citySelectField" ).change(function() {
+            center = $("#citySelectField").val().split(",");
+            myMap.setCenter(center);
+        });
     });
 </script>
 </body>

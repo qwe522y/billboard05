@@ -6,7 +6,9 @@ import com.sotas.billboard05.entity.Billboard;
 import com.sotas.billboard05.repository.BillboardFormatRepository;
 import com.sotas.billboard05.repository.BillboardTypeRepository;
 import com.sotas.billboard05.repository.CityRepository;
-import com.sotas.billboard05.service.*;
+import com.sotas.billboard05.service.AuthUserService;
+import com.sotas.billboard05.service.BillboardService;
+import com.sotas.billboard05.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,22 +20,18 @@ import java.util.List;
 @Controller
 @RequestMapping("/agent/")
 public class BillboardController {
-    private BillboardService billboardService;
-    private OwnerService ownerService;
-    private AuthUserService authUserService;
-    private BillboardTypeRepository billboardTypeRepository;
-    private CityRepository cityRepository;
-    private BillboardFormatRepository billboardFormatRepository;
-
     @Autowired
-    public BillboardController(BillboardService billboardService, OwnerService ownerService, AuthUserService authUserService, BillboardTypeRepository billboardTypeRepository, CityRepository cityRepository, BillboardFormatRepository billboardFormatRepository) {
-        this.billboardService = billboardService;
-        this.ownerService = ownerService;
-        this.authUserService = authUserService;
-        this.billboardTypeRepository = billboardTypeRepository;
-        this.cityRepository = cityRepository;
-        this.billboardFormatRepository = billboardFormatRepository;
-    }
+    private BillboardService billboardService;
+    @Autowired
+    private OwnerService ownerService;
+    @Autowired
+    private AuthUserService authUserService;
+    @Autowired
+    private BillboardTypeRepository billboardTypeRepository;
+    @Autowired
+    private CityRepository cityRepository;
+    @Autowired
+    private BillboardFormatRepository billboardFormatRepository;
 
     @RequestMapping(method = RequestMethod.GET)
     public String list(Model model) {
@@ -55,9 +53,8 @@ public class BillboardController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String addBillboard(Model model, Billboard billboard, String qwe_________________________________) {
+    public String addBillboard(Model model, Billboard billboard) {
         AuthUser authUser = authUserService.getAuthUser();
-        billboard.setLocation("test");
         billboard.setAgentId(authUser.getAgent().getId());
         billboardService.add(billboard);
         return "redirect:.";

@@ -168,12 +168,7 @@
                                         </sf:select>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="locationField">Местоположение</label>
-                                    <div class="col-sm-9">
-                                        <sf:input path="location" class="form-control" id="locationField" placeholder="Укажите местоположение на карте"/>
-                                    </div>
-                                </div>
+                                <sf:hidden path="location" id="locationField"/>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">

@@ -14,8 +14,8 @@
     <billboard_formats id="1" name="Формат1"/>
     <billboard_formats id="2" name="Формат2"/>
 
-    <billboards id="96" city_id="6"  agent_id="1" type_id="7" owner_id="4" format_id="2" light="true" side_num="3" surface_num_per_side="2" address="Пр. Шамиля 1"/>
-    <billboards id="97" city_id="5"  agent_id="1" type_id="8" owner_id="4" format_id="1" light="true" side_num="3" surface_num_per_side="2" address="Пр. Шамиля 2"/>
-    <billboards id="98" city_id="6"  agent_id="2" type_id="7" owner_id="3" format_id="2" light="true" side_num="3" surface_num_per_side="2" address="Пр. Шамиля 3"/>
-    <billboards id="99" city_id="5"  agent_id="2" type_id="8" owner_id="3" format_id="1" light="true" side_num="3" surface_num_per_side="2" address="Пр. Шамиля 4"/>
+    <billboards id="96" city_id="6"  agent_id="1" type_id="7" owner_id="4" format_id="2" light="true" address="Пр. Шамиля 1"/>
+    <billboards id="97" city_id="5"  agent_id="1" type_id="8" owner_id="4" format_id="1" light="true" address="Пр. Шамиля 2"/>
+    <billboards id="98" city_id="6"  agent_id="2" type_id="7" owner_id="3" format_id="2" light="true" address="Пр. Шамиля 3"/>
+    <billboards id="99" city_id="5"  agent_id="2" type_id="8" owner_id="3" format_id="1" light="true" address="Пр. Шамиля 4"/>
 </dataset>
