@@ -42,61 +42,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <script>
-        var cities = {
-            <c:forEach items="${cities}" var="city">
-                "${city.id}" : "${city.location}",
-            </c:forEach>
-        };
-        var mark;
-        var myMap;
-
-        ymaps.ready(init);
-
-        function init () {
-            myMap = new ymaps.Map("map", {
-                        center: [42.975182, 47.503995],
-                        zoom: 14
-                    }, {
-                        searchControlProvider: 'yandex#search'
-                    });
-
-            mark = new ymaps.Placemark([42.975182, 47.503995], {}, {draggable: true})
-
-            myMap.geoObjects
-                    .add(mark);
-
-            myMap.events.add("click", function (e) {
-                $("#locationField").val(e.get("coords"));
-                mark.geometry.setCoordinates(e.get("coords"));
-            });
-
-            mark.events.add("dragend", function (e) {
-                $("#locationField").val(mark.geometry.getCoordinates());
-                mark.geometry.setCoordinates(e.get("coords"));
-                console.log("change mark coordinates to " + center);
-            });
-
-            chageLocation();
-        }
-
-        // cмена центра карты при смене города
-        function chageLocation() {
-            center = cities[$("#cityField").val()].split(",");
-            myMap.setCenter(center);
-            mark.geometry.setCoordinates(center);
-            $("#locationField").val(center);
-            console.log("change center to " + center);
-        }
-    </script>
-    <style>
-        #map {
-            width: 100%; height: 500px; padding: 0; margin: 0;
-        }
-    </style>
 </head>
-<body class="skin-blue">
+<body class="hold-transition skin-blue sidebar-mini">
 <jsp:include page="/WEB-INF/views/parts/panels.jsp"/>
 <div class="wrapper">
     <!-- Content Wrapper. Contains page content -->
@@ -105,12 +52,12 @@
 
         <section class="content-header">
             <h1>
-                Добавление новой рекламной точки
+                Добавление новой стороны рекламной точки
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Forms</a></li>
-                <li class="active">General Elements</li>
+                <li><a href="${root}agent/"><i class="fa fa-dashboard"></i>Точки рекламы</a></li>
+                <li><a href="${root}agent/side/${billboard.id}/">Поверхности</a></li>
+                <li class="active">добавление поверхности</li>
             </ol>
         </section>
 
@@ -128,79 +75,24 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <sf:form method="post" modelAttribute="billboard" class="form-horizontal">
+                        <sf:form method="post" modelAttribute="entity" class="form-horizontal" action=".">
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="cityField">Город</label>
+                                    <label class="col-sm-3 control-label" for="nameField">Наименование</label>
                                     <div class="col-sm-9">
-                                        <sf:select path="cityId" class="form-control select2" style="width: 100%;" id="cityField">
-                                            <c:forEach items="${cities}" var="city">
-                                                <sf:option value="${city.id}">${city.name}</sf:option>
+                                        <sf:select path="name" class="form-control select2" id="nameField">
+                                            <c:forEach items="${names}" var="i">
+                                                <option value="${i}">${i}</option>
                                             </c:forEach>
                                         </sf:select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="addressField">Адрес</label>
-                                    <div class="col-sm-9">
-                                        <sf:input path="address" id="addressField" type="text" placeholder="Адрес" class="form-control" required="required"/>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="billboardTypeField">Тип</label>
-                                    <div class="col-sm-9">
-                                        <sf:select path="typeId" class="form-control select2" style="width: 100%;" id="billboardTypeField">
-                                            <c:forEach items="${billboardTypes}" var="type">
-                                                <sf:option value="${type.id}">${type.name}</sf:option>
-                                            </c:forEach>
-                                        </sf:select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="billboardFormatField">Тип</label>
-                                    <div class="col-sm-9">
-                                        <sf:select path="formatId" class="form-control select2" style="width: 100%;" id="billboardFormatField">
-                                            <c:forEach items="${billboardFormats}" var="format">
-                                                <sf:option value="${format.id}">${format.name}</sf:option>
-                                            </c:forEach>
-                                        </sf:select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-3 col-sm-9">
-                                        <div class="light">
-                                            <label>
-                                                <spring:bind path="light">
-                                                    <sf:checkbox path="light"/>
-                                                </spring:bind>
-                                                Освещение
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="ownerField">Владелец</label>
-                                    <div class="col-sm-9">
-                                        <sf:select path="ownerId" class="form-control select2" style="width: 100%;" id="ownerField">
-                                            <c:forEach items="${owners}" var="owner">
-                                                <sf:option  value="${owner.id}">${owner.name} ${owner.phone}</sf:option>
-                                            </c:forEach>
-                                        </sf:select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="surfaceField">Кол-во Поверхностей</label>
-                                    <div class="col-sm-9">
-                                        <input name="sideNum" id="surfaceField" type="number" placeholder="введите кол-во поверхностей" class="form-control" value="1" required/>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label" for="rentField">Цена</label>
                                     <div class="col-sm-9">
-                                        <input name="rent" id="rentField" type="number" placeholder="введите месячную стоимость" class="form-control" required/>
+                                        <sf:input path="rent" id="rentField" type="number" placeholder="введите месячную стоимость" class="form-control"/>
                                     </div>
                                 </div>
-                                <sf:hidden path="location" id="locationField"/>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
@@ -215,9 +107,6 @@
                     <!-- /.box -->
                 </div>
                 <!--/.col (right) -->
-                <div class="col-lg-6">
-                    <div id="map"></div>
-                </div>
             </div>
             <!-- /.row -->
             <div style="padding: 10px 0px; text-align: center;">
@@ -337,10 +226,6 @@
         $(".timepicker").timepicker({
             showInputs: false
         });
-    });
-
-    $(function () {
-        $("#cityField").change(chageLocation);
     });
 </script>
 </body>

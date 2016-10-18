@@ -12,12 +12,12 @@ public class TimetableRepositoryJpaImpl extends CrudRepositoryJpaImpl<Timetable,
     }
 
     @Override
-    public List<Timetable> getActualsByBillboard(int billboardId, int year, int month) {
+    public List<Timetable> getByBillboardSideAndBeginDate(int sideId, int year, int month) {
         return getEntityManager().createQuery(
-                "SELECT e FROM Timetable e WHERE e.billboardId=:billboardId AND" +
+                "SELECT e FROM Timetable e WHERE e.sideId=:sideId AND" +
                         " (e.year>:year OR (e.year=:year AND e.month>=:month))" +
                         " ORDER BY e.year, e.month", Timetable.class)
-                .setParameter("billboardId", billboardId)
+                .setParameter("sideId", sideId)
                 .setParameter("year", year)
                 .setParameter("month", month).getResultList();
     }

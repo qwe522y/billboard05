@@ -36,11 +36,10 @@
 		<xsd:attribute name="city_id" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="timetables__type">
-		<xsd:attribute name="billboard_id" use="optional" />
-		<xsd:attribute name="side" use="optional" />
 		<xsd:attribute name="surface" use="optional" />
 		<xsd:attribute name="month" use="optional" />
 		<xsd:attribute name="year" use="optional" />
+		<xsd:attribute name="side_id" use="optional" />
 		<xsd:attribute name="id" use="optional" />
 		<xsd:attribute name="rent" use="optional" />
 		<xsd:attribute name="create_date" use="optional" />

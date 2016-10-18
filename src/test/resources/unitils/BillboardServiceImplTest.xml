@@ -2,8 +2,8 @@
     <agents id="1" login="barak" name="Барак Обама"/>
     <agents id="2" login="bill" name="Билл Клинтон"/>
 
-    <owners id="3" name="Саб-зиро"/>
-    <owners id="4" name="Скорпион"/>
+    <owners id="3" name="Саб-зиро" agent_id="1"/>
+    <owners id="4" name="Скорпион" agent_id="2"/>
 
     <cities id="5" name="Москва"/>
     <cities id="6" name="Берлин"/>

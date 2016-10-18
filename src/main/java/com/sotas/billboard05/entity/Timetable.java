@@ -11,9 +11,8 @@ import java.util.Date;
 public class Timetable {
     @Id @GeneratedValue
     private int id;
-    @Column(name = "billboard_id")
-    private int billboardId;
-    private int side;
+    @Column(name = "side_id")
+    private int sideId;
     private int surface;
     private int month;
     private int year;
@@ -26,9 +25,8 @@ public class Timetable {
     public Timetable() {
     }
 
-    public Timetable(int billboardId, int side, int surface, int year, int month, BigDecimal rent) {
-        this.billboardId = billboardId;
-        this.side = side;
+    public Timetable(int sideId, int surface, int month, int year, BigDecimal rent) {
+        this.sideId = sideId;
         this.surface = surface;
         this.month = month;
         this.year = year;
@@ -43,8 +41,7 @@ public class Timetable {
         Timetable timetable = (Timetable) o;
 
         if (id != timetable.id) return false;
-        if (billboardId != timetable.billboardId) return false;
-        if (side != timetable.side) return false;
+        if (sideId != timetable.sideId) return false;
         if (surface != timetable.surface) return false;
         if (month != timetable.month) return false;
         if (year != timetable.year) return false;
@@ -56,8 +53,7 @@ public class Timetable {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + billboardId;
-        result = 31 * result + side;
+        result = 31 * result + sideId;
         result = 31 * result + surface;
         result = 31 * result + month;
         result = 31 * result + year;
@@ -70,8 +66,7 @@ public class Timetable {
     public String toString() {
         return "Timetable{" +
                 "id=" + id +
-                ", billboardId=" + billboardId +
-                ", side=" + side +
+                ", sideId=" + sideId +
                 ", surface=" + surface +
                 ", month=" + month +
                 ", year=" + year +
@@ -88,12 +83,12 @@ public class Timetable {
         this.id = id;
     }
 
-    public int getSide() {
-        return side;
+    public int getSideId() {
+        return sideId;
     }
 
-    public void setSide(int side) {
-        this.side = side;
+    public void setSideId(int sideId) {
+        this.sideId = sideId;
     }
 
     public int getSurface() {
@@ -112,28 +107,20 @@ public class Timetable {
         this.month = month;
     }
 
-    public BigDecimal getRent() {
-        return rent;
-    }
-
-    public void setRent(BigDecimal rent) {
-        this.rent = rent;
-    }
-
-    public int getBillboardId() {
-        return billboardId;
-    }
-
-    public void setBillboardId(int billboardId) {
-        this.billboardId = billboardId;
-    }
-
     public int getYear() {
         return year;
     }
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public BigDecimal getRent() {
+        return rent;
+    }
+
+    public void setRent(BigDecimal rent) {
+        this.rent = rent;
     }
 
     public Date getCreateDate() {

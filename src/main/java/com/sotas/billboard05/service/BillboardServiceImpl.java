@@ -76,7 +76,12 @@ public class BillboardServiceImpl implements BillboardService {
 
     @Override
     @Transactional
-    public void add(Billboard billboard) {
-        repository.add(billboard);
+    public Billboard add(Billboard billboard) {
+        return repository.add(billboard);
+    }
+
+    @Override
+    public Billboard get(int id) {
+        return repository.get(id);
     }
 }

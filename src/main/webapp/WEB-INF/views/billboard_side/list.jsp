@@ -43,40 +43,32 @@
                 Точки рекламы
                 <small>список рекламных точек</small>
             </h1>
+            <ol class="breadcrumb">
+                <li><a href="${root}agent/"><i class="fa fa-dashboard"></i>Точки рекламы</a></li>
+                <li class="active">Поверхности</li>
+            </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-md-6">
                     <div class="box">
                         <div class="box-header">
+                            ${billboard.address}<br>
                             <a href="add">Добавить</a>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Город</th>
-                                    <th>Адрес</th>
-                                    <th>Тип</th>
-                                    <th>Владелец</th>
-                                    <th>Телефон владельца</th>
-                                    <th>Дополонительно</th>
-                                </tr>
-                                </thead>
                                 <tbody>
-                                    <c:forEach items="${billboards}" var="i">
-                                        <tr>
-                                            <td>${i.city.name}</td>
-                                            <td>${i.e.address}</td>
-                                            <td>${i.type.name} - ${i.format.name}</td>
-                                            <td>${i.owner.name}</td>
-                                            <td>${i.owner.phone}</td>
-                                            <td><a href="side/${i.e.id}/">Поверхности</a> | <a href="timetable/${i.e.id}/">Расписание</a></td>
-                                        </tr>
-                                    </c:forEach>
+                                <c:forEach items="${list}" var="i">
+                                    <tr>
+                                        <td>${i.name}</td>
+                                        <td>${i.rent}</td>
+                                        <td><a href="${i.id}/edit">Изменить</a></td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>

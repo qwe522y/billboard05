@@ -11,5 +11,6 @@ public interface BillboardService {
 
     List<BillboardDto> getAll();
 
-    void add(Billboard billboard);
+    Billboard add(Billboard billboard);
+    Billboard get(int id);
 }

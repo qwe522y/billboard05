@@ -14,7 +14,7 @@ public class OwnerServiceTest extends AbstractServiceTest {
 
     @Test
     @ExpectedDataSet("unitils/OwnerRepositoryJpaImplTest.addWithGenerationIdAndCreateFields-result.xml")
-    void add() {
+    public void add() {
         Owner e = new Owner("new_name", "new_phone", 1);
         e = ownerServiceImpl.add(e);
         assertNotEquals(0, e.getId());
