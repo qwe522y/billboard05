@@ -45,11 +45,11 @@ public class BillboardSideController {
 
     @RequestMapping(value = "{billboardId}/{billboardSideId}/", method = RequestMethod.POST)
     public String editBillboardSide(@PathVariable int billboardId, @PathVariable int billboardSideId, BillboardSide billboardSide) {
-        checkAccess(billboardService.get(billboardId), authUserService.getAuthUser());
         billboardSide.setBillboardId(billboardId);
         billboardSide.setId(billboardSideId);
+        checkAccess(billboardService.get(billboardSide.getBillboardId()), authUserService.getAuthUser());
         billboardSideService.update(billboardSide);
-        return "redirect:/agent/side/" + billboardId + "/";
+        return "redirect:/agent/owner/";
     }
 
     @RequestMapping(value = "{billboardId}/add", method = RequestMethod.GET)

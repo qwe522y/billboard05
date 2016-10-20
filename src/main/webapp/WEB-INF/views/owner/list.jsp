@@ -40,14 +40,9 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Точки рекламы
-                <small>список рекламных точек</small>
+                Владельцы точек
+                <small>Владельцы рекламных точек</small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Tables</a></li>
-                <li class="active">Data tables</li>
-            </ol>
         </section>
 
         <!-- Main content -->
@@ -65,6 +60,7 @@
                                 <tr>
                                     <th>Ф.И.О.</th>
                                     <th>Телефон</th>
+                                    <th>Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -72,6 +68,7 @@
                                     <tr>
                                         <td>${i.name}</td>
                                         <td>${i.phone}</td>
+                                        <td><a href="${i.id}/">Изменить</a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface OwnerService {
     List<Owner> getByAgent(int id);
+    Owner get(int id);
     Owner add(Owner owner);
+    void update(Owner owner);
 }

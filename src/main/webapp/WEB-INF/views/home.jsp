@@ -41,7 +41,7 @@
             "type": "FeatureCollection",
             "features": [
                 <c:forEach items="${billboards}" var="i">
-                    {"type": "Feature", "id": ${i.e.id}, "geometry": {"type": "Point", "coordinates": [${i.e.location}]}},
+                    {"type": "Feature", "id": ${i.e.id}, "geometry": {"type": "Point", "coordinates": [${i.e.location}]}, "properties": {"bb_address": "${i.e.address}", "hintContent": "${i.e.address}"}},
                 </c:forEach>
             ]
         };
@@ -64,6 +64,22 @@
 
             myMap.geoObjects.add(objectManager);
             objectManager.add(billboards);
+            objectManager.events.add("click", function (e) {
+                var id = e.get("objectId");
+                var bb =  objectManager.objects.getById(id)
+                if(bb.properties.balloonContent == undefined) {
+                    bb.properties.balloonContent = [
+                        '<address>',
+                        '<strong>Цена: неизвестно</strong>',
+                        '<br/>',
+                        bb.properties.bb_address,
+                        '<br/>',
+                        '<a href="${root}/bb/' + id + '">Подробнее</a>',
+                        '</address>'
+                    ].join('');
+                }
+                objectManager.objects.balloon.open(id);
+            });
         }
     </script>
     <style>

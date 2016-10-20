@@ -92,7 +92,7 @@
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <button class="btn btn-info pull-right" type="submit">Добавить</button>
+                                <button class="btn btn-info pull-right" type="submit">Изменить</button>
                             </div>
                             <!-- /.box-footer -->
                         </sf:form>

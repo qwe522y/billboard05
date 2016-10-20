@@ -5,6 +5,7 @@ import com.sotas.billboard05.service.BillboardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,5 +31,11 @@ public class MainController {
     @RequestMapping(value = "loginfail")
     public String loginFail() {
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "bb/{bbId}")
+    public String billboardDetail(@PathVariable int bbId, Model model) {
+        model.addAttribute("billboard", billboardService.get(bbId));
+        return "bb_detail";
     }
 }

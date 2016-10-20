@@ -66,8 +66,14 @@
         <ul class="sidebar-menu">
             <li class="header">ГЛАВНОЕ МЕНЮ</li>
             <li class="treeview">
+                <a href="${root}">
+                    <i class="glyphicon glyphicon-home"></i> <span>Вернуться на главную</span>
+                    <span class="pull-right-container"></span>
+                </a>
+            </li>
+            <li class="treeview">
                 <a href="${root}agent/">
-                    <i class="fa fa-table"></i> <span>Точки рекламы</span>
+                    <i class="fa fa-table"></i> <span>Рекламные точки</span>
                     <span class="pull-right-container"></span>
                 </a>
             </li>

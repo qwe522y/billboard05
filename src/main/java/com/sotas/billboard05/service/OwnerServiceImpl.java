@@ -22,9 +22,20 @@ public class OwnerServiceImpl implements OwnerService {
         return repository.getByAgent(id);
     }
 
+    @Override
+    public Owner get(int id) {
+        return repository.get(id);
+    }
+
     @Transactional
     @Override
     public Owner add(Owner owner) {
         return repository.add(owner);
+    }
+
+    @Override
+    @Transactional
+    public void update(Owner owner) {
+        repository.update(owner);
     }
 }
