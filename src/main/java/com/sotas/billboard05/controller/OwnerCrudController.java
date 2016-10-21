@@ -59,7 +59,7 @@ public class OwnerCrudController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String add(Owner owner) {
+    public String addOwner(Owner owner) {
         AuthUser authUser = authUserService.getAuthUser();
         owner.setAgentId(authUser.getAgent().getId());
         ownerService.add(owner);

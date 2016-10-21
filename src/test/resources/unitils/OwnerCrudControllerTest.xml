@@ -1,0 +1,6 @@
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
+    <owners id="1" name="owner name 1" phone="+71110000001" agent_id="101"/>
+    <owners id="2" name="owner name 2" phone="+71110000002" agent_id="102"/>
+    <agents id="101" login="123@001" name="agent name 1" phone="+72220000001"/>
+    <agents id="102" login="123@002" name="agent name 2" phone="+72220000002"/>
+</dataset>
