@@ -49,7 +49,7 @@ public class BillboardSideController {
         billboardSide.setId(billboardSideId);
         checkAccess(billboardService.get(billboardSide.getBillboardId()), authUserService.getAuthUser());
         billboardSideService.update(billboardSide);
-        return "redirect:/agent/owner/";
+        return "redirect:/agent/side/" + billboardId + "/";
     }
 
     @RequestMapping(value = "{billboardId}/add", method = RequestMethod.GET)

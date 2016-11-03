@@ -61,11 +61,18 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                        <td>Имя</td>
+                                        <td>Цена</td>
+                                        <td>кол-во поверхностей</td>
+                                        <td>Доп-но</td>
+                                </thead>
                                 <tbody>
                                 <c:forEach items="${list}" var="i">
                                     <tr>
                                         <td>${i.name}</td>
                                         <td>${i.rent}</td>
+                                        <th>${i.surfaceCount}</th>
                                         <td><a href="${i.id}/edit">Изменить</a></td>
                                     </tr>
                                 </c:forEach>

@@ -6,6 +6,7 @@ import com.sotas.billboard05.entity.BillboardSide;
 import com.sotas.billboard05.service.BillboardSideService;
 import com.sotas.billboard05.service.TimetableService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+@Controller
 @RequestMapping("/agent/timetable/")
 public class TimetableController {
     @Autowired
@@ -43,6 +45,7 @@ public class TimetableController {
         List<Month> res = new ArrayList<>();
         for(int i=0; i<len; i++) {
             res.add(new Month(cal.get(Calendar.MONTH), cal.get(Calendar.YEAR)));
+            cal.add(Calendar.MONTH, 1);
         }
         return res;
     }

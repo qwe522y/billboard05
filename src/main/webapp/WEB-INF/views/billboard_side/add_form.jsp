@@ -93,6 +93,12 @@
                                         <sf:input path="rent" id="rentField" type="number" placeholder="введите месячную стоимость" class="form-control"/>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="surfaceCountField">Кол-во плакатов на поверхности</label>
+                                    <div class="col-sm-9">
+                                        <sf:input path="surfaceCount" id="surfaceCountField" type="number" placeholder="введите кол-во плакатов на поверхности" class="form-control"/>
+                                    </div>
+                                </div>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
