@@ -9,6 +9,11 @@ import java.util.Date;
 @Entity
 @Table(name = "timetables")
 public class Timetable {
+    public static class Status{
+        public static final int OPEN=0;
+        public static final int DEFAULT=100;
+        public static final int CLOSE=1000;
+    }
     @Id @GeneratedValue
     private int id;
     @Column(name = "side_id")
@@ -17,6 +22,7 @@ public class Timetable {
     private int month;
     private int year;
     private BigDecimal rent;
+    private int status;
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
@@ -25,18 +31,19 @@ public class Timetable {
     public Timetable() {
     }
 
-    public Timetable(int sideId, int surface, int month, int year, BigDecimal rent) {
+    public Timetable(int sideId, int surface, int month, int year, BigDecimal rent, int status) {
         this.sideId = sideId;
         this.surface = surface;
         this.month = month;
         this.year = year;
         this.rent = rent;
+        this.status = status;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Timetable)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Timetable timetable = (Timetable) o;
 
@@ -45,6 +52,7 @@ public class Timetable {
         if (surface != timetable.surface) return false;
         if (month != timetable.month) return false;
         if (year != timetable.year) return false;
+        if (status != timetable.status) return false;
         if (rent != null ? !rent.equals(timetable.rent) : timetable.rent != null) return false;
         return createDate != null ? createDate.equals(timetable.createDate) : timetable.createDate == null;
 
@@ -58,6 +66,7 @@ public class Timetable {
         result = 31 * result + month;
         result = 31 * result + year;
         result = 31 * result + (rent != null ? rent.hashCode() : 0);
+        result = 31 * result + status;
         result = 31 * result + (createDate != null ? createDate.hashCode() : 0);
         return result;
     }
@@ -71,6 +80,7 @@ public class Timetable {
                 ", month=" + month +
                 ", year=" + year +
                 ", rent=" + rent +
+                ", status=" + status +
                 ", createDate=" + createDate +
                 '}';
     }
@@ -129,5 +139,13 @@ public class Timetable {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

@@ -15,4 +15,5 @@ CREATE TABLE `billboard_sides` (
   `billboard_id` INT NOT NULL,
   `name` VARCHAR(255) CHARACTER SET 'utf8' NOT NULL,
   `rent` DECIMAL(10,2) NOT NULL,
+  `surface_count` INT NOT NULL,
   PRIMARY KEY (`id`));

@@ -1,0 +1,12 @@
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
+    <billboard_sides billboard_id="100" id="1" name="A" rent="100.00"/>
+
+    <timetables id="1001" year="2017" month="0" rent="110.00" side_id="1" surface="0" status="0"/>
+    <timetables id="1002" year="2017" month="1" rent="120.00" side_id="1" surface="0" status="1000"/>
+
+    <timetables id="1003" year="2017" month="0" rent="210.00" side_id="1" surface="1" status="0"/>
+    <timetables id="1004" year="2017" month="1" rent="220.00" side_id="1" surface="1" status="1000"/>
+
+    <timetables id="1005" year="2017" month="0" rent="310.00" side_id="1" surface="2" status="0"/>
+    <timetables id="1006" year="2017" month="1" rent="320.00" side_id="1" surface="2" status="1000"/>
+</dataset>

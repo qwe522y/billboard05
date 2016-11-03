@@ -14,6 +14,7 @@
 		<xsd:attribute name="name" use="optional" />
 		<xsd:attribute name="id" use="optional" />
 		<xsd:attribute name="rent" use="optional" />
+		<xsd:attribute name="surface_count" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="cities__type">
 		<xsd:attribute name="name" use="optional" />
@@ -43,6 +44,7 @@
 		<xsd:attribute name="id" use="optional" />
 		<xsd:attribute name="rent" use="optional" />
 		<xsd:attribute name="create_date" use="optional" />
+		<xsd:attribute name="status" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="dbmaintain_scripts__type">
 		<xsd:attribute name="file_name" use="optional" />

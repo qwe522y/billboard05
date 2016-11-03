@@ -19,7 +19,7 @@ public class BillboardSideRepositoryJpaImplTest extends AbstractRepositoryTest {
     @DataSet
     @ExpectedDataSet
     public void addWithGenerationId() {
-        BillboardSide e = new BillboardSide(100, "A", BigDecimal.TEN);
+        BillboardSide e = new BillboardSide(100, "A", BigDecimal.TEN, 1);
         BillboardSide e2 = txTemplate.execute(transactionStatus -> repository.add(e));
         assertNotEquals(0, e2.getId());
     }

@@ -67,7 +67,7 @@ public class BillboardController {
         billboard = billboardService.add(billboard);
         if(sideNum <= alphabet.length) {
             for (int i = 0; i < sideNum; i++) {
-                BillboardSide side = new BillboardSide(billboard.getId(), "" + alphabet[i], rent);
+                BillboardSide side = new BillboardSide(billboard.getId(), "" + alphabet[i], rent, 1);
                 billboardSideService.add(side);
             }
         } else {

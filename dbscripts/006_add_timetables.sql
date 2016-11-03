@@ -5,5 +5,6 @@ CREATE TABLE `timetables` (
   `year` int NOT NULL,
   `month` INT NOT NULL,
   `rent` DECIMAL(10,2) NOT NULL,
+  `status` INT NOT NULL,
   `create_date` DATETIME NOT NULL,
   PRIMARY KEY (`id`));
