@@ -1,6 +1,6 @@
 <dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
-    <billboard_sides id="96" name="A" billboard_id="1" rent="100.00"/>
-    <billboard_sides id="97" name="B" billboard_id="1" rent="100.00"/>
-    <billboard_sides id="98" name="A" billboard_id="2" rent="100.00"/>
-    <billboard_sides id="99" name="B" billboard_id="2" rent="100.00"/>
+    <billboard_sides id="96" name="A" billboard_id="1" rent="100.00" surface_count="1"/>
+    <billboard_sides id="97" name="B" billboard_id="1" rent="100.00" surface_count="1"/>
+    <billboard_sides id="98" name="A" billboard_id="2" rent="100.00" surface_count="1"/>
+    <billboard_sides id="99" name="B" billboard_id="2" rent="100.00" surface_count="1"/>
 </dataset>

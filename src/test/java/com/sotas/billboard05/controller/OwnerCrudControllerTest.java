@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.spring.annotation.SpringBeanByType;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class OwnerCrudControllerTest extends AbstractControllerTest {
@@ -46,10 +48,10 @@ public class OwnerCrudControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    @DataSet
-    public void Owner() {
-        controller.addOwner(new Owner("name", "+79999999999", 0));
-        Owner owner = repository.getAll().get(1);
+    public void addOwner() {
+        controller.addOwner(new Owner("name", "+79999999999", 101));
+        List<Owner> list = repository.getAll();
+        Owner owner = list.get(list.size()-1);
         assertEquals("name", owner.getName());
         assertEquals("+79999999999", owner.getPhone());
         assertEquals(101, owner.getAgentId());

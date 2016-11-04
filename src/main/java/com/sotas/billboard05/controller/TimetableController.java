@@ -1,11 +1,11 @@
 package com.sotas.billboard05.controller;
 
-import com.sotas.billboard05.dto.Month;
 import com.sotas.billboard05.dto.TimetableSideDto;
 import com.sotas.billboard05.entity.BillboardSide;
 import com.sotas.billboard05.entity.Timetable;
 import com.sotas.billboard05.service.BillboardSideService;
 import com.sotas.billboard05.service.TimetableService;
+import com.sotas.billboard05.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,7 +36,7 @@ public class TimetableController {
             sidesDto.add(timetableService.getByBillboardSide(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), side.getId()));
         }
         model.addAttribute("sides", sidesDto);
-        model.addAttribute("months", genMonth(new Date(), 3));
+        model.addAttribute("months", Utils.genMonth(new Date(), 3));
         return "timetable/list";
     }
 
@@ -45,17 +45,5 @@ public class TimetableController {
         Timetable t = new Timetable(sideId, surfaceId, month, year, rent, status);
         timetableService.update(t);
         return "redirect:.";
-    }
-
-    private List<Month> genMonth(Date date, int len) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.set(Calendar.DAY_OF_MONTH, 1);
-        List<Month> res = new ArrayList<>();
-        for(int i=0; i<len; i++) {
-            res.add(new Month(cal.get(Calendar.MONTH), cal.get(Calendar.YEAR)));
-            cal.add(Calendar.MONTH, 1);
-        }
-        return res;
     }
 }

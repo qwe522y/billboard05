@@ -1,26 +1,26 @@
 <dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
-    <billboard_sides id="98" rent="100.00"/>
+    <billboard_sides id="98" rent="100.00" surface_count="3"/>
 
-    <timetables side_id="98" surface="0" year="2017" month="0" rent="100.00"/>
-    <timetables side_id="98" surface="1" year="2017" month="0" rent="100.00"/>
-    <timetables side_id="98" surface="2" year="2017" month="0" rent="100.00"/>
-    <timetables side_id="98" surface="0" year="2017" month="0" rent="100.00"/>
-    <timetables side_id="98" surface="1" year="2017" month="0" rent="100.00"/>
-    <timetables side_id="98" surface="2" year="2017" month="0" rent="100.00"/>
+    <timetables side_id="98" surface="0" year="2017" month="0" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="1" year="2017" month="0" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="2" year="2017" month="0" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="0" year="2017" month="0" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="1" year="2017" month="0" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="2" year="2017" month="0" rent="100.00" status="0"/>
 
-    <timetables side_id="98" surface="0" year="2016" month="11" rent="100.00"/>
-    <timetables side_id="98" surface="1" year="2016" month="11" rent="100.00"/>
-    <timetables side_id="98" surface="2" year="2016" month="11" rent="100.00"/>
-    <timetables side_id="98" surface="0" year="2016" month="11" rent="100.00"/>
-    <timetables side_id="98" surface="1" year="2016" month="11" rent="100.00"/>
-    <timetables side_id="98" surface="2" year="2016" month="11" rent="100.00"/>
+    <timetables side_id="98" surface="0" year="2016" month="11" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="1" year="2016" month="11" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="2" year="2016" month="11" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="0" year="2016" month="11" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="1" year="2016" month="11" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="2" year="2016" month="11" rent="100.00" status="0"/>
 
-    <timetables side_id="98" surface="0" year="2016" month="10" rent="100.00"/>
-    <timetables side_id="98" surface="1" year="2016" month="10" rent="100.00"/>
-    <timetables side_id="98" surface="2" year="2016" month="10" rent="100.00"/>
-    <timetables side_id="98" surface="0" year="2016" month="10" rent="100.00"/>
-    <timetables side_id="98" surface="1" year="2016" month="10" rent="100.00"/>
-    <timetables side_id="98" surface="2" year="2016" month="10" rent="100.00"/>
+    <timetables side_id="98" surface="0" year="2016" month="10" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="1" year="2016" month="10" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="2" year="2016" month="10" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="0" year="2016" month="10" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="1" year="2016" month="10" rent="100.00" status="0"/>
+    <timetables side_id="98" surface="2" year="2016" month="10" rent="100.00" status="0"/>
 
     <!-- устаревшие -->
     <timetables side_id="98" surface="0" year="2016" month="7"/>

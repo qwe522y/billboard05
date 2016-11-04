@@ -93,7 +93,7 @@
                                                 <input type="hidden" name="rent" id="rent<%=rowId%>"/>
                                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                             </form>
-                                            <button onclick="timetable_update('<%=rowId%>')" class="btn btn-primary">Сохранить</button>
+                                            <button onclick="timetable_update('<%=rowId%>')" class="btn btn-primary">Заказать</button>
                                         </td>
                                     </tr>
                                 <% } %>
