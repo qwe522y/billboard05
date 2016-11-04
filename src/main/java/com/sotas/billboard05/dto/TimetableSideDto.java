@@ -20,7 +20,7 @@ public class TimetableSideDto {
     }
 
     public Timetable get(int surfaceId, int year, int month) {
-        Timetable defaultTimetable = new Timetable(bbSide.getId(), surfaceId, month, year, bbSide.getRent(), Timetable.Status.DEFAULT);
+        Timetable defaultTimetable = new Timetable(bbSide.getId(), surfaceId, month, year, bbSide.getRent(), Timetable.Status.OPEN);
         if(!map.containsKey(surfaceId) || !map.get(surfaceId).containsKey(year)) return defaultTimetable;
         return map.get(surfaceId).get(year).getOrDefault(month, defaultTimetable);
     }

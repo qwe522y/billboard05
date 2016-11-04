@@ -11,7 +11,6 @@ import java.util.Date;
 public class Timetable {
     public static class Status{
         public static final int OPEN=0;
-        public static final int DEFAULT=100;
         public static final int CLOSE=1000;
     }
     @Id @GeneratedValue

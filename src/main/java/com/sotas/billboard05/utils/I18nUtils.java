@@ -6,7 +6,6 @@ public class I18nUtils {
             case 1000:
                 return "Занято";
             case 0:
-            case 100:
                 return "Свободено";
         }
         throw new RuntimeException("status="+status);

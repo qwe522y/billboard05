@@ -3,6 +3,7 @@ package com.sotas.billboard05.controller;
 import com.sotas.billboard05.dto.Month;
 import com.sotas.billboard05.dto.TimetableSideDto;
 import com.sotas.billboard05.entity.BillboardSide;
+import com.sotas.billboard05.entity.Timetable;
 import com.sotas.billboard05.service.BillboardSideService;
 import com.sotas.billboard05.service.TimetableService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,6 +38,13 @@ public class TimetableController {
         model.addAttribute("sides", sidesDto);
         model.addAttribute("months", genMonth(new Date(), 3));
         return "timetable/list";
+    }
+
+    @RequestMapping(value = "{bbId}/", method = RequestMethod.POST)
+    public String updateTimetable(@PathVariable int bbId, int sideId, int surfaceId, int year, int month, BigDecimal rent, int status) {
+        Timetable t = new Timetable(sideId, surfaceId, month, year, rent, status);
+        timetableService.update(t);
+        return "redirect:.";
     }
 
     private List<Month> genMonth(Date date, int len) {

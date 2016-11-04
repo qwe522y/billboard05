@@ -14,6 +14,20 @@
 <head>
     <jsp:include page="/WEB-INF/views/parts/head.jsp"/>
     <title>${projectTitle} личный кабинет</title>
+    <script>
+        function timetable_update(rowId) {
+            status = $("#status_field_" + rowId).val();
+            rent = $("#rent_field_" + rowId).val();
+            $("#status" + rowId).val(status);
+            $("#rent" + rowId).val(rent);
+            $("#form_" + rowId).submit();
+        }
+    </script>
+    <style>
+        td .form-group {
+            margin-bottom: 0px;
+        }
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <jsp:include page="/WEB-INF/views/parts/panels.jsp"/>
@@ -56,22 +70,30 @@
                                         <td>
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control" value="<%=t.getRent() %>">
+                                                    <input type="number" class="form-control" value="<%=t.getRent() %>" id="rent_field_<%=rowId%>">
                                                     <div class="input-group-addon">Руб.</div>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td><%=I18nUtils.timetableStatus(t.getStatus()) %></td>
                                         <td>
-                                            <form action="." method="post">
+                                            <div class="col-sm-9">
+                                                <select class="form-control select2", id="status_field_<%=rowId%>">
+                                                    <option value="<%=Timetable.Status.OPEN %>" <%=t.getStatus() == Timetable.Status.OPEN ? "selected" : ""%>><%=I18nUtils.timetableStatus(Timetable.Status.OPEN) %></option>
+                                                    <option value="<%=Timetable.Status.CLOSE %>" <%=t.getStatus() == Timetable.Status.CLOSE ? "selected" : ""%>><%=I18nUtils.timetableStatus(Timetable.Status.CLOSE) %></option>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <form id="form_<%=rowId%>"action="." method="post">
+                                                <input type="hidden" name="sideId" value="<%=side.getBbSide().getId()%>"/>
                                                 <input type="hidden" name="surfaceId" value="<%=surfaceId%>"/>
                                                 <input type="hidden" name="year" value="<%=m.getYear()%>"/>
                                                 <input type="hidden" name="month" value="<%=m.getNum()%>"/>
                                                 <input type="hidden" name="status" id="status<%=rowId%>"/>
                                                 <input type="hidden" name="rent" id="rent<%=rowId%>"/>
                                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                                <button type="submit" class="btn btn-primary">Сохранить</button>
                                             </form>
+                                            <button onclick="timetable_update('<%=rowId%>')" class="btn btn-primary">Сохранить</button>
                                         </td>
                                     </tr>
                                 <% } %>
