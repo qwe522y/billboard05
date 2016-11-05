@@ -56,15 +56,15 @@
                     <div class="box">
                         <div class="box-header">
                             ${billboard.address}<br>
-                            <a href="add">Добавить</a>
+                                <a href="${root}agent/">Назад</a> | <a href="add">Добавить</a>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
-                                        <td>Имя</td>
+                                        <td>Сторона</td>
                                         <td>Цена</td>
-                                        <td>кол-во поверхностей</td>
+                                        <td>Кол-во баннеров</td>
                                         <td>Доп-но</td>
                                 </thead>
                                 <tbody>

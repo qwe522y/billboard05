@@ -82,7 +82,7 @@
                 <div class="col-md-6">
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Поверхность: <%=side.getBbSide().getName()+ surfaceId %></h3>
+                            <h3 class="box-title">Баннер: <%=side.getBbSide().getName()+ surfaceId %></h3>
                         </div>
                         <div class="box-body">
                             <table id="example1" class="table table-bordered table-striped">
@@ -93,7 +93,7 @@
                                 %>
                                 <tr>
                                     <% String rowId = ("" + side.getBbSide().getId()) + "_" + ("" + surfaceId) + "_" + ("" + m.getYear()) + "_" + ("" + m.getNum()); %>
-                                    <td><%=String.format("%02d-%d", m.getNum()+1, m.getYear()) %></td>
+                                    <td><%=String.format("%s %d", I18nUtils.month(m.getNum()), m.getYear()) %></td>
                                     <td>
                                         <%=t.getRent() %>
                                     </td>
