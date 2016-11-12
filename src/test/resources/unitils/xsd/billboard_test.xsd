@@ -7,6 +7,7 @@
 	<xsd:element name="timetables" type="timetables__type" />
 	<xsd:element name="dbmaintain_scripts" type="dbmaintain_scripts__type" />
 	<xsd:element name="owners" type="owners__type" />
+	<xsd:element name="contracts" type="contracts__type" />
 	<xsd:element name="billboard_formats" type="billboard_formats__type" />
 	<xsd:element name="agents" type="agents__type" />
 	<xsd:complexType name="billboard_sides__type">
@@ -60,6 +61,16 @@
 		<xsd:attribute name="name" use="optional" />
 		<xsd:attribute name="id" use="optional" />
 		<xsd:attribute name="create_date" use="optional" />
+	</xsd:complexType>
+	<xsd:complexType name="contracts__type">
+		<xsd:attribute name="client_comment" use="optional" />
+		<xsd:attribute name="client_phone" use="optional" />
+		<xsd:attribute name="agent_comment" use="optional" />
+		<xsd:attribute name="id" use="optional" />
+		<xsd:attribute name="timetable_id" use="optional" />
+		<xsd:attribute name="create_date" use="optional" />
+		<xsd:attribute name="update_date" use="optional" />
+		<xsd:attribute name="status" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="billboard_formats__type">
 		<xsd:attribute name="name" use="optional" />

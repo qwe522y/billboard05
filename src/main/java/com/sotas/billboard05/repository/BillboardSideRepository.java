@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface BillboardSideRepository extends CrudRepository<BillboardSide, Integer> {
     List<BillboardSide> getByBillboard(int billboardId);
+    List<BillboardSide> getByBillboard(List<Integer> billboardId);
 }

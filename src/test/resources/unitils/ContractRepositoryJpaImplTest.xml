@@ -1,0 +1,36 @@
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
+    <billboards id="1" agent_id="999" city_id="1" format_id="1" light="1" owner_id="1" type_id="1"/>
+    <billboards id="2" agent_id="999" city_id="1" format_id="1" light="1" owner_id="1" type_id="1"/>
+    <billboards id="3" agent_id="1000" city_id="1" format_id="1" light="1" owner_id="1" type_id="1"/>
+
+    <billboard_sides id="98" rent="100.00" surface_count="3" billboard_id="1"/>
+    <billboard_sides id="99" rent="100.00" surface_count="3" billboard_id="2"/>
+    <billboard_sides id="100" rent="100.00" surface_count="3" billboard_id="3"/>
+
+    <timetables side_id="98" surface="0" year="2017" month="0" rent="100.00" status="0" id="10" />
+    <timetables side_id="98" surface="1" year="2017" month="0" rent="100.00" status="0" id="20"/>
+    <timetables side_id="98" surface="2" year="2017" month="0" rent="100.00" status="0" id="30"/>
+    <timetables side_id="98" surface="0" year="2017" month="0" rent="100.00" status="0" id="40"/>
+    <timetables side_id="98" surface="1" year="2017" month="0" rent="100.00" status="0" id="50"/>
+    <timetables side_id="98" surface="2" year="2017" month="0" rent="100.00" status="0" id="60"/>
+
+    <timetables side_id="99" surface="0" year="2016" month="11" rent="100.00" status="0" id="70" />
+    <timetables side_id="99" surface="1" year="2016" month="11" rent="100.00" status="0" id="80"/>
+    <timetables side_id="99" surface="2" year="2016" month="11" rent="100.00" status="0" id="90"/>
+    <timetables side_id="99" surface="0" year="2016" month="11" rent="100.00" status="0" id="100"/>
+    <timetables side_id="99" surface="1" year="2016" month="11" rent="100.00" status="0" id="110"/>
+    <timetables side_id="99" surface="2" year="2016" month="11" rent="100.00" status="0" id="120"/>
+
+    <timetables side_id="100" surface="0" year="2016" month="11" rent="100.00" status="0" id="130" />
+    <timetables side_id="100" surface="1" year="2016" month="11" rent="100.00" status="0" id="140"/>
+    <timetables side_id="100" surface="2" year="2016" month="11" rent="100.00" status="0" id="150"/>
+    <timetables side_id="100" surface="0" year="2016" month="11" rent="100.00" status="0" id="160"/>
+    <timetables side_id="100" surface="1" year="2016" month="11" rent="100.00" status="0" id="170"/>
+    <timetables side_id="100" surface="2" year="2016" month="11" rent="100.00" status="0" id="180"/>
+
+    <contracts status="0" client_comment="Комментарии клиента1" timetable_id="10"/>
+    <contracts status="0" client_comment="Комментарии клиента2" timetable_id="60"/>
+    <contracts status="0" client_comment="Комментарии клиента3" timetable_id="70"/>
+    <contracts status="0" client_comment="Комментарии клиента4" timetable_id="120"/>
+    <contracts status="0" client_comment="Комментарии клиента5" timetable_id="130"/>
+</dataset>

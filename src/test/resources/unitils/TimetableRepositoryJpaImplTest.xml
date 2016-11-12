@@ -27,6 +27,6 @@
     <timetables side_id="98" surface="0" year="2015" month="7"/>
 
     <!-- от других билбордов -->
-    <timetables side_id="99" surface="0" year="2017" month="7"/>
+    <timetables side_id="99" surface="0" year="2017" month="7" status="0"/>
 
 </dataset>

@@ -15,4 +15,9 @@ public class BillboardSideRepositoryJpaImpl extends CrudRepositoryJpaImpl<Billbo
     public List<BillboardSide> getByBillboard(int billboardId) {
         return getEntityManager().createQuery("SELECT e FROM BillboardSide e WHERE e.billboardId=:id", BillboardSide.class).setParameter("id", billboardId).getResultList();
     }
+
+    @Override
+    public List<BillboardSide> getByBillboard(List<Integer> billboardIdList) {
+        return getEntityManager().createQuery("SELECT e FROM BillboardSide e WHERE e.billboardId IN :idList", BillboardSide.class).setParameter("idList", billboardIdList).getResultList();
+    }
 }

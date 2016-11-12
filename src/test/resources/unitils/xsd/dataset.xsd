@@ -11,6 +11,7 @@
 				<xsd:element name="timetables" type="dflt:timetables__type" />
 				<xsd:element name="dbmaintain_scripts" type="dflt:dbmaintain_scripts__type" />
 				<xsd:element name="owners" type="dflt:owners__type" />
+				<xsd:element name="contracts" type="dflt:contracts__type" />
 				<xsd:element name="billboard_formats" type="dflt:billboard_formats__type" />
 				<xsd:element name="agents" type="dflt:agents__type" />
 				<xsd:any namespace="billboard_test" />

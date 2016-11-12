@@ -21,4 +21,15 @@ public class TimetableRepositoryJpaImpl extends CrudRepositoryJpaImpl<Timetable,
                 .setParameter("year", year)
                 .setParameter("month", month).getResultList();
     }
+
+    @Override
+    public List<Timetable> getByBillboardSideAndBeginDate(List<Integer> sideIdList, int year, int month) {
+        return getEntityManager().createQuery(
+                "SELECT e FROM Timetable e WHERE e.sideId IN :sideIdList AND" +
+                        " (e.year>:year OR (e.year=:year AND e.month>=:month))" +
+                        " ORDER BY e.year, e.month", Timetable.class)
+                .setParameter("sideIdList", sideIdList)
+                .setParameter("year", year)
+                .setParameter("month", month).getResultList();
+    }
 }
