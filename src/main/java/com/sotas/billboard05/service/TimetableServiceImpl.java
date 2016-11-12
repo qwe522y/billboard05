@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.TreeMap;
 
 @Component
 public class TimetableServiceImpl implements TimetableService {
@@ -33,5 +32,20 @@ public class TimetableServiceImpl implements TimetableService {
     @Transactional
     public void update(Timetable timetable) {
         repository.update(timetable);
+    }
+
+    @Override
+    public Timetable getByUniq(int sideId, int surfaceId, int year, int month) {
+        List<Timetable> list = repository.getByBillboardSideAndBeginDate(sideId, year, month);
+        for(Timetable tt : list) {
+            if(tt.getSurface() == surfaceId && tt.getYear() == year && tt.getMonth() == month) return tt;
+        }
+        return null;
+    }
+
+    @Override
+    @Transactional
+    public Timetable add(Timetable tt) {
+        return repository.add(tt);
     }
 }

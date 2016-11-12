@@ -33,7 +33,8 @@
     <link rel="stylesheet" href="${res}plugins/timepicker/bootstrap-timepicker.min.css">
     <!-- Select2 -->
     <link rel="stylesheet" href="${res}plugins/select2/select2.min.css">
-
+    <!-- bootstrap dialog -->
+    <link href="${res}/bootstrap/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -41,11 +42,31 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
     <style>
         td .form-group {
             margin-bottom: 0px;
         }
     </style>
+    <script>
+        function show_dialog(rowId) {
+            BootstrapDialog.confirm({
+                title: 'Заказ',
+                message: $('<input id="phoneField" type="text" placeholder="Телефон" class="form-control"/>'),
+                callback: function(result) {
+                    if(result) {
+                        var phone = $("#phoneField").val();
+                        if(phone.length >= "10") {
+                            $("#phone_" + rowId).val(phone);
+                            $("#form_" + rowId).submit();
+                        } else {
+                            alert("Неверный номер телефона.")
+                        }
+                    }
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <div class="container">
@@ -101,14 +122,16 @@
                                         <%=I18nUtils.timetableStatus(t.getStatus()) %>
                                     </td>
                                     <td>
-                                        <form id="form_<%=rowId%>"action="." method="post">
+                                        <form id="form_<%=rowId%>"action="${root}contract" method="post">
                                             <input type="hidden" name="sideId" value="<%=side.getBbSide().getId()%>"/>
                                             <input type="hidden" name="surfaceId" value="<%=surfaceId%>"/>
                                             <input type="hidden" name="year" value="<%=m.getYear()%>"/>
                                             <input type="hidden" name="month" value="<%=m.getNum()%>"/>
+                                            <input type="hidden" name="phone" id="phone_<%=rowId%>"/>
+                                            <input type="hidden" name="comment" id="comment_<%=rowId%>"/>
                                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                         </form>
-                                        <button disabled onclick="timetable_update('<%=rowId%>')" class="btn btn-primary">Заказать</button>
+                                        <button <%=t.getStatus()==Timetable.Status.OPEN ? "" : "disabled"%> onclick="show_dialog('<%=rowId%>')" class="btn btn-primary">Заказать</button>
                                     </td>
                                 </tr>
                                 <% } %>
@@ -152,6 +175,9 @@
 <script src="${res}plugins/iCheck/icheck.min.js"></script>
 <!-- FastClick -->
 <script src="${res}plugins/fastclick/fastclick.js"></script>
+<!-- bootstrap dialog -->
+<script src="${res}/bootstrap/js/bootstrap-dialog.min.js"></script>
+
 <!-- Page script -->
 <script>
     $(function () {

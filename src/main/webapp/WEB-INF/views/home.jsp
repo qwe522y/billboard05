@@ -28,7 +28,8 @@
     <link rel="stylesheet" href="${res}plugins/timepicker/bootstrap-timepicker.min.css">
     <!-- Select2 -->
     <link rel="stylesheet" href="${res}plugins/select2/select2.min.css">
-
+    <!-- bootstrap dialog -->
+    <link href="${res}/bootstrap/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -74,7 +75,7 @@
                         '<br/>',
                         bb.properties.bb_address,
                         '<br/>',
-                        '<a href="${root}/bb/' + id + '">Подробнее</a>',
+                        '<a href="${root}bb/' + id + '">Подробнее</a>',
                         '</address>'
                     ].join('');
                 }
@@ -153,6 +154,8 @@
 <script src="${res}plugins/iCheck/icheck.min.js"></script>
 <!-- FastClick -->
 <script src="${res}plugins/fastclick/fastclick.js"></script>
+<!-- bootstrap dialog -->
+<script src="${res}/bootstrap/js/bootstrap-dialog.min.js"></script>
 <!-- Page script -->
 <script>
     $(function () {
@@ -233,6 +236,22 @@
         $( "#citySelectField" ).change(function() {
             center = $("#citySelectField").val().split(",");
             myMap.setCenter(center);
+        });
+
+        // сообщения
+        $(function() {
+            var title = "Информация"
+            var type =  BootstrapDialog.SUCCESS;
+            var msg = "${msg.msg}"
+            <% session.removeAttribute("msg"); %>
+            if(msg.length > 0) {
+                BootstrapDialog.alert({
+                    title: title,
+                    message: msg,
+                    type: type, // <-- Default value is BootstrapDialog.TYPE_PRIMARY
+                    buttonLabel: 'Ok'
+                });
+            }
         });
     });
 </script>

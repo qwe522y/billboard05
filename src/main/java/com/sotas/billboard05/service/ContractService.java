@@ -8,4 +8,5 @@ import java.util.List;
 public interface ContractService {
     void update(Contract contract);
     List<ContractDto> getByAgentId(int agentId, int beginYear, int beginMonth);
+    void add(Contract contract);
 }

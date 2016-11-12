@@ -3,9 +3,9 @@ package com.sotas.billboard05.service;
 import com.sotas.billboard05.dto.TimetableSideDto;
 import com.sotas.billboard05.entity.Timetable;
 
-import java.util.List;
-
 public interface TimetableService {
-    public TimetableSideDto getByBillboardSide(int beginYear, int beginMonth, int sideId);
-    public void update(Timetable timetable);
+    TimetableSideDto getByBillboardSide(int beginYear, int beginMonth, int sideId);
+    void update(Timetable timetable);
+    Timetable getByUniq(int sideId, int surfaceId, int year, int month);
+    Timetable add(Timetable tt);
 }

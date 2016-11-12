@@ -58,4 +58,10 @@ public class ContractServiceImpl implements ContractService {
         }
         return res;
     }
+
+    @Override
+    @Transactional
+    public void add(Contract contract) {
+        repository.add(contract);
+    }
 }

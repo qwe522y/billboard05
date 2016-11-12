@@ -10,9 +10,9 @@ import java.util.Date;
 @Table(name = "contracts")
 public class Contract {
     public static class Status{
-        public final int NEW = 1;
-        public final int ACCEPTED = 2;
-        public final int REJECTED = 3;
+        public final static int NEW = 1;
+        public final static int ACCEPTED = 2;
+        public final static int REJECTED = 3;
     }
     @Id @GeneratedValue
     private int id;
@@ -24,7 +24,7 @@ public class Contract {
     private String agentComment;
     @Column(name = "client_comment")
     private String clientComment;
-    private int status;
+    private int status = Status.NEW;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
@@ -33,6 +33,12 @@ public class Contract {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_date")
     private Date updateDate;
+
+    public Contract(int timetableId, String clientPhone, String clientComment) {
+        this.timetableId = timetableId;
+        this.clientPhone = clientPhone;
+        this.clientComment = clientComment;
+    }
 
     public Contract() {
     }
