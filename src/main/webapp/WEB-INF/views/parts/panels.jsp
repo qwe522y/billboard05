@@ -83,6 +83,12 @@
                     <span class="pull-right-container"></span>
                 </a>
             </li>
+            <li class="treeview">
+                <a href="${root}agent/contract/">
+                    <i class="glyphicon glyphicon-list-alt"></i> <span>Заявки</span>
+                    <span class="pull-right-container"></span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

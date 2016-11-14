@@ -23,7 +23,7 @@ public class ContractController {
     @Autowired
     private AuthUserService authUserService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value= "/", method = RequestMethod.GET)
     public String list(Model model) {
         AuthUser authUser = authUserService.getAuthUser();
         Calendar cal = Calendar.getInstance();
