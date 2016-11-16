@@ -1,3 +1,5 @@
+<%@ page import="com.sotas.billboard05.utils.I18nUtils" %>
+<%@ page import="com.sotas.billboard05.dto.ContractDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -33,6 +35,7 @@
                                 <thead>
                                 <tr>
                                     <th>Номер точки</th>
+                                    <th>Дата</th>
                                     <th>Адрес</th>
                                     <th>Поверхность</th>
                                     <th>Телефон</th>
@@ -43,6 +46,12 @@
                                 <c:forEach items="${contracts}" var="i">
                                     <tr>
                                         <td>${i.billboard.id}</td>
+                                        <td><%
+                                            ContractDto contractDto = (ContractDto)pageContext.getAttribute("i");
+                                            int month = contractDto.getTimetable().getMonth();
+                                            int year = contractDto.getTimetable().getYear();
+                                            out.print(String.format("%s %d", I18nUtils.month(month), year));
+                                        %></td>
                                         <td>${i.billboard.address}</td>
                                         <td>${i.billboardSide.name}${i.timetable.surface}</td>
                                         <td>${i.e.clientPhone}</td>

@@ -68,13 +68,13 @@ public class MainController {
     }
 
     @RequestMapping(value = "contract", method = RequestMethod.POST)
-    public String contract(int sideId, int surfaceId, int year, int month, String phone) {
+    public String contract(int sideId, int surfaceId, int year, int month, String phone, String comment) {
         Timetable tt = timetableService.getByUniq(sideId, surfaceId, year, month);
         if(tt == null) {
             tt = new Timetable(sideId, surfaceId, month, year, billboardSideService.get(sideId).getRent(), Timetable.Status.OPEN);
             tt = timetableService.add(tt);
         }
-        Contract contract = new Contract(tt.getId(), phone, null);
+        Contract contract = new Contract(tt.getId(), phone, comment);
         contractService.add(contract);
         sessionMsgProvider.push("Заявка принята, ожидайте пока с вами свяжутся", SessionMsg.Status.SUCCESS);
         return "redirect:/";

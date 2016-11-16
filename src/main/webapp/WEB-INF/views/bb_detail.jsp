@@ -52,11 +52,15 @@
         function show_dialog(rowId) {
             BootstrapDialog.confirm({
                 title: 'Заказ',
-                message: $('<input id="phoneField" type="text" placeholder="Телефон" class="form-control"/>'),
+                message: $('<input id="phoneField" type="text" placeholder="Телефон" class="form-control" value="+7"/><br><input id="clientCommentField" type="text" placeholder="Примечание" class="form-control"/>'),
                 callback: function(result) {
                     if(result) {
                         var phone = $("#phoneField").val();
-                        if(phone.length >= "10") {
+                        var clientComment = $("#clientCommentField").val();
+                        if(phone.length >= 10) {
+                            if(clientComment.length > 0) {
+                                $("#comment_" + rowId).val(clientComment);
+                            }
                             $("#phone_" + rowId).val(phone);
                             $("#form_" + rowId).submit();
                         } else {
