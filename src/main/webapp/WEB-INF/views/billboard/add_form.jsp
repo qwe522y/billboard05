@@ -42,52 +42,21 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true&amp;key=AIzaSyAgk4LbwN0qnW-MzWT8rD1DGgStymdb1nQ"></script>
     <script>
         var cities = {
             <c:forEach items="${cities}" var="city">
                 "${city.id}" : "${city.location}",
             </c:forEach>
         };
-        var mark;
-        var myMap;
-
-        ymaps.ready(init);
-
-        function init () {
-            myMap = new ymaps.Map("map", {
-                        center: [42.975182, 47.503995],
-                        zoom: 14
-                    }, {
-                        searchControlProvider: 'yandex#search'
-                    });
-
-            mark = new ymaps.Placemark([42.975182, 47.503995], {}, {draggable: true})
-
-            myMap.geoObjects
-                    .add(mark);
-
-            myMap.events.add("click", function (e) {
-                $("#locationField").val(e.get("coords"));
-                mark.geometry.setCoordinates(e.get("coords"));
-            });
-
-            mark.events.add("dragend", function (e) {
-                $("#locationField").val(mark.geometry.getCoordinates());
-                mark.geometry.setCoordinates(e.get("coords"));
-                console.log("change mark coordinates to " + center);
-            });
-
-            chageLocation();
-        }
 
         // cмена центра карты при смене города
         function chageLocation() {
             center = cities[$("#cityField").val()].split(",");
-            myMap.setCenter(center);
-            mark.geometry.setCoordinates(center);
+            var pos = new google.maps.LatLng(center[0], center[1]);
+            window.map.setCenter(pos);
+            moveMark(pos)
             $("#locationField").val(center);
-            console.log("change center to " + center);
         }
     </script>
     <style>
@@ -340,8 +309,34 @@
     });
 
     $(function () {
+        window.map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 14
+        });
         $("#cityField").change(chageLocation);
+        google.maps.event.addListener(map, 'click', function(event) {
+            moveMark(event.latLng)
+        });
+        window.mark = new google.maps.Marker({
+            position: new google.maps.LatLng(0, 0),
+            map: window.map,
+            icon: '${res}/meforest/img/marker.png',
+            draggable:true
+        });
+        mark.addListener("dragend", function (event) {
+            moveMarkAffect(this.getPosition())
+        });
+        chageLocation();
     });
+    function moveMark(pos) {
+        window.mark.setPosition(pos);
+        moveMarkAffect(pos)
+    }
+    function moveMarkAffect(pos) {
+        var p = pos.lat() + "," + pos.lng();
+        $("#locationField").val(p);
+        console.log("change center to " + p);
+    }
 </script>
 </body>
 </html>

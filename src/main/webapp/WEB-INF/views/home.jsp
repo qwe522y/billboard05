@@ -22,6 +22,15 @@
     <link rel="stylesheet" href="#" type="text/css" id="color-variant">
 
     <title>Realia | HTML Template</title>
+    <script>
+window.myrespath = "${res}";
+
+window.billboards = [
+<c:forEach items="${billboards}" var="i">
+    {"id": ${i.e.id}, "position": [${i.e.location}], "address": "${i.e.address}"},
+</c:forEach>
+];
+    </script>
 </head>
 <body>
 <div id="wrapper-outer" >
@@ -180,12 +189,13 @@
                                         <form method="get" action="?">
                                             <div class="location control-group">
                                                 <label class="control-label" for="inputLocation">
-                                                    Location
+                                                    Место
                                                 </label>
                                                 <div class="controls">
                                                     <select id="inputLocation">
-                                                        <option id="malibu">Malibu, CA</option>
-                                                        <option id="palo-alto">Palo Alto, CA</option>
+                                                        <c:forEach items="${cities}" var="city">
+                                                            <option value="${city.location}">${city.name}</option>
+                                                        </c:forEach>
                                                     </select>
                                                 </div><!-- /.controls -->
                                             </div><!-- /.control-group -->
@@ -1023,71 +1033,7 @@
     </div><!-- /#wrapper -->
 </div><!-- /#wrapper-outer -->
 
-<div class="palette">
-    <div class="toggle">
-        <a href="#">Toggle</a>
-    </div><!-- /.toggle -->
-
-    <div class="inner">
-        <div class="headers">
-            <h2>Header styles</h2>
-            <ul>
-                <li><a class="header-light">Light</a></li>
-                <li><a class="header-normal">Normal</a></li>
-                <li><a class="header-dark">Dark</a></li>
-            </ul>
-        </div><!-- /.headers -->
-
-        <div class="patterns">
-            <h2>Background patterns</h2>
-            <ul>
-                <li><a class="pattern-cloth-alike">cloth-alike</a></li>
-                <li><a class="pattern-corrugation">corrugation</a></li>
-                <li><a class="pattern-diagonal-noise">diagonal-noise</a></li>
-                <li><a class="pattern-dust">dust</a></li>
-                <li><a class="pattern-fabric-plaid">fabric-plaid</a></li>
-                <li><a class="pattern-farmer">farmer</a></li>
-                <li><a class="pattern-grid-noise">grid-noise</a></li>
-                <li><a class="pattern-lghtmesh">lghtmesh</a></li>
-                <li><a class="pattern-pw-maze-white">pw-maze-white</a></li>
-                <li><a class="pattern-none">none</a></li>
-            </ul>
-        </div>
-
-        <div class="colors">
-            <h2>Color variants</h2>
-            <ul>
-                <li><a href="${res}meforest/css/realia-red.css" class="red">Red</a></li>
-                <li><a href="${res}meforest/css/realia-magenta.css" class="magenta">Magenta</a></li>
-                <li><a href="${res}meforest/css/realia-brown.css" class="brown">Brown</a></li>
-                <li><a href="${res}meforest/css/realia-orange.css" class="orange">Orange</a></li>
-                <li><a href="${res}meforest/css/realia-brown-dark.css" class="brown-dark">Brown dark</a></li>
-
-                <li><a href="${res}meforest/css/realia-gray-red.css" class="gray-red">Gray Red</a></li>
-                <li><a href="${res}meforest/css/realia-gray-magenta.css" class="gray-magenta">Gray Magenta</a></li>
-                <li><a href="${res}meforest/css/realia-gray-brown.css" class="gray-brown">Gray Brown</a></li>
-                <li><a href="${res}meforest/css/realia-gray-orange.css" class="gray-orange">Gray Orange</a></li>
-                <li><a href="${res}meforest/css/realia-gray-brown-dark.css" class="gray-brown-dark">Gray Brown dark</a></li>
-
-                <li><a href="${res}meforest/css/realia-green-light.css" class="green-light">Green light</a></li>
-                <li><a href="${res}meforest/css/realia-green.css" class="green">Green</a></li>
-                <li><a href="${res}meforest/css/realia-turquiose.css" class="turquiose">Turquiose</a></li>
-                <li><a href="${res}meforest/css/realia-blue.css" class="blue">Blue</a></li>
-                <li><a href="${res}meforest/css/realia-violet.css" class="violet">Violet</a></li>
-
-                <li><a href="${res}meforest/css/realia-gray-green-light.css" class="gray-green-light">Gray Green light</a></li>
-                <li><a href="${res}meforest/css/realia-gray-green.css" class="gray-green">Gray Green</a></li>
-                <li><a href="${res}meforest/css/realia-gray-turquiose.css" class="gray-turquiose">Gray Turquiose</a></li>
-                <li><a href="${res}meforest/css/realia-gray-blue.css" class="gray-blue">Gray Blue</a></li>
-                <li><a href="${res}meforest/css/realia-gray-violet.css" class="gray-violet">Gray Violet</a></li>
-            </ul>
-        </div><!-- /.colors -->
-
-        <a href="#" class="btn btn-primary reset">Reset default</a>
-    </div><!-- /.inner -->
-</div><!-- /.palette -->
-
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true&amp;key=AIzaSyAgk4LbwN0qnW-MzWT8rD1DGgStymdb1nQ"></script>
 <script type="text/javascript" src="${res}meforest/js/jquery.js"></script>
 <script type="text/javascript" src="${res}meforest/js/jquery.ezmark.js"></script>
 <script type="text/javascript" src="${res}meforest/js/jquery.currency.js"></script>
@@ -1102,6 +1048,17 @@
 <script type="text/javascript" src="${res}meforest/libraries/iosslider/_src/jquery.iosslider.min.js"></script>
 <script type="text/javascript" src="${res}meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.js"></script>
 <script type="text/javascript" src="${res}meforest/js/realia.js"></script>
+
+<script>
+    $(function () {
+        // cмена центра карты при смене города
+        $("#inputLocation").change(function () {
+            center = $("#inputLocation").val().split(",");
+            window.map.setCenter(new google.maps.LatLng(center[0], center[1]))
+        });
+    });
+</script>
+
 </body>
 </html>
 <%--

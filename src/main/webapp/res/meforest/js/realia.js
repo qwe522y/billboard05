@@ -328,30 +328,27 @@ function LoadMapProperty() {
 }
 
 function LoadMap() {
-	var locations = new Array(
-        [34.01843,-118.491046], [34.006673,-118.486562], [34.009714,-118.480296], [34.010408,-118.473215], [34.01521,-118.474889], [34.022502,-118.480124],
-        [34.024423,-118.459868], [34.024885,-118.44871], [34.002368,-118.482828], [34.003791,-118.473001], [34.015922,-118.457422], [34.022147,-118.457894],
-        [34.028904,-118.46725], [34.030114,-118.481326], [34.03143,-118.494029], [34.031643,-118.504758], [34.029616,-118.515058], [34.001834,-118.451414]
-	);
-	var markers = new Array();
 	var mapOptions = {
-		center: new google.maps.LatLng(34.019000, -118.455458),
+		center: new google.maps.LatLng(42.975182, 47.503995),
 		zoom: 14,
 		mapTypeId: google.maps.MapTypeId.ROADMAP,
 		scrollwheel: false
     };
-
+    var markers = [];
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    window.map = map;
 
-    $.each(locations, function(index, location) {
+    $.each(window.billboards, function(index, bb) {
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(location[0], location[1]),
+            position: new google.maps.LatLng(bb.position[0], bb.position[1]),
             map: map,
-            icon: 'http://html.realia.byaviators.com/assets/img/marker-transparent.png'
+            icon: window.myrespath+'/meforest/img/marker-transparent.png',
+            index: index,
+            draggable:false
         });
 
 	    var myOptions = {
-	        content: '<div class="infobox"><div class="image"><img src="http://html.realia.byaviators.com/assets/img/tmp/property-tiny-1.png" alt=""></div><div class="title"><a href="detail.html">1041 Fife Ave</a></div><div class="area"><span class="key">Area:</span><span class="value">200m<sup>2</sup></span></div><div class="price">€450 000.00</div><div class="link"><a href="detail.html">View more</a></div></div>',
+	        content: '<div class="infobox"><div class="image"><img src="http://preview.byaviators.com/template/realia/assets/img/tmp/property-tiny-1.png" alt=""></div><div class="title"><a href="detail.html">1041 Fife Ave</a></div><div class="area"><span class="key">Area:</span><span class="value">200m<sup>2</sup></span></div><div class="price">€450 000.00</div><div class="link"><a href="detail.html">Подробнее...</a></div></div>',
 	        disableAutoPan: false,
 	        maxWidth: 0,
 	        pixelOffset: new google.maps.Size(-146, -190),
@@ -383,7 +380,6 @@ function LoadMap() {
 
         google.maps.event.addListener(marker, "click", function (e) {
             var curMarker = this;
-
             $.each(markers, function (index, marker) {
                 // if marker is not the clicked marker, close the marker
                 if (marker !== curMarker) {
@@ -408,5 +404,5 @@ function LoadMap() {
 
 function InitMap() {
 	google.maps.event.addDomListener(window, 'load', LoadMap);
-    google.maps.event.addDomListener(window, 'load', LoadMapProperty);
+    //google.maps.event.addDomListener(window, 'load', LoadMapProperty);
 }
