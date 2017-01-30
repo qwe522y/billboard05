@@ -61,7 +61,7 @@
     </script>
     <style>
         #map {
-            width: 100%; height: 500px; padding: 0; margin: 0;
+            width: 100%; height: 510px; padding: 0; margin: 0;
         }
     </style>
 </head>
