@@ -176,10 +176,10 @@ function InitAccordion() {
 
 function InitPriceSlider() {
     jQuery('.price-value .from').text(100);
-    jQuery('.price-value .from').currency({ region: 'EUR', thousands: ' ', decimal: ',', decimals: 0 });
+    jQuery('.price-value .from').currency({ region: 'RUB', thousands: ' ', decimal: ',', decimals: 0 });
 
     jQuery('.price-value .to').text(1000000);
-    jQuery('.price-value .to').currency({ region: 'EUR', thousands: ' ', decimal: ',', decimals: 0 });
+    jQuery('.price-value .to').currency({ region: 'RUB', thousands: ' ', decimal: ',', decimals: 0 });
 
     $('.property-filter .price-slider').slider({
         range: true,
@@ -191,10 +191,10 @@ function InitPriceSlider() {
             jQuery('.property-filter .price-to input').attr('value', ui.values[1]);
 
             jQuery('.price-value .from').text(ui.values[0]);
-            jQuery('.price-value .from').currency({ region: 'EUR', thousands: ' ', decimal: ',', decimals: 0 });
+            jQuery('.price-value .from').currency({ region: 'RUB', thousands: ' ', decimal: ',', decimals: 0 });
 
             jQuery('.price-value .to').text(ui.values[1]);
-            jQuery('.price-value .to').currency({ region: 'EUR', thousands: ' ', decimal: ',', decimals: 0 });
+            jQuery('.price-value .to').currency({ region: 'RUB', thousands: ' ', decimal: ',', decimals: 0 });
         }
     });
 }
@@ -348,7 +348,8 @@ function LoadMap() {
         });
 
 	    var myOptions = {
-	        content: '<div class="infobox"><div class="image"><img src="http://preview.byaviators.com/template/realia/assets/img/tmp/property-tiny-1.png" alt=""></div><div class="title"><a href="detail.html">1041 Fife Ave</a></div><div class="area"><span class="key">Area:</span><span class="value">200m<sup>2</sup></span></div><div class="price">€450 000.00</div><div class="link"><a href="detail.html">Подробнее...</a></div></div>',
+	        content: '<div class="infobox"><div class="image"><img src="http://preview.byaviators.com/template/realia/assets/img/tmp/property-tiny-1.png" alt=""></div><div class="title"><a href="detail.html">' +
+            bb.address + '</a></div><div class="area"><span class="key">Area:</span><span class="value">200m<sup>2</sup></span></div><div class="price">€450 000.00</div><div class="link"><a href="bb/' + bb.id +'">Подробнее...</a></div></div>',
 	        disableAutoPan: false,
 	        maxWidth: 0,
 	        pixelOffset: new google.maps.Size(-146, -190),

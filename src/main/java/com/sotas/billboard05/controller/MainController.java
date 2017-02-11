@@ -5,6 +5,8 @@ import com.sotas.billboard05.dto.TimetableSideDto;
 import com.sotas.billboard05.entity.BillboardSide;
 import com.sotas.billboard05.entity.Contract;
 import com.sotas.billboard05.entity.Timetable;
+import com.sotas.billboard05.repository.BillboardFormatRepository;
+import com.sotas.billboard05.repository.BillboardTypeRepository;
 import com.sotas.billboard05.repository.CityRepository;
 import com.sotas.billboard05.service.*;
 import com.sotas.billboard05.utils.Utils;
@@ -34,12 +36,18 @@ public class MainController {
     @Autowired
     private ContractService contractService;
     @Autowired
+    private BillboardTypeRepository billboardTypeRepository;
+    @Autowired
+    private BillboardFormatRepository billboardFormatRepository;
+    @Autowired
     private SessionMsgProvider sessionMsgProvider;
 
     @RequestMapping(method = RequestMethod.GET)
     public String home(Model model) {
         model.addAttribute("billboards", billboardService.getAll());
         model.addAttribute("cities", cityRepository.getAll());
+        model.addAttribute("billboardTypes", billboardTypeRepository.getAll());
+        model.addAttribute("billboardFormats", billboardFormatRepository.getAll());
         return "home";
     }
 
@@ -62,7 +70,7 @@ public class MainController {
             sidesDto.add(timetableService.getByBillboardSide(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), side.getId()));
         }
         model.addAttribute("sides", sidesDto);
-        model.addAttribute("months", Utils.genMonth(new Date(), 3));
+        model.addAttribute("months", Utils.genMonth(new Date(), 6));
         model.addAttribute("billboard", billboardService.get(bbId));
         return "bb_detail";
     }

@@ -9,50 +9,35 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <jsp:include page="parts/init.jsp"/>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>${projectTitle} личный кабинет</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="${res}bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- daterange picker -->
-    <link rel="stylesheet" href="${res}plugins/daterangepicker/daterangepicker.css">
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="${res}plugins/datepicker/datepicker3.css">
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="${res}plugins/iCheck/all.css">
-    <!-- Bootstrap time Picker -->
-    <link rel="stylesheet" href="${res}plugins/timepicker/bootstrap-timepicker.min.css">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="${res}plugins/select2/select2.min.css">
-    <!-- bootstrap dialog -->
-    <link href="${res}/bootstrap/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="//api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 
-    <style>
-        td .form-group {
-            margin-bottom: 0px;
-        }
-    </style>
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aviators - byaviators.com">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="${res}meforest/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="${res}meforest/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="${res}meforest/css/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="${res}meforest/libraries/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="${res}meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="${res}meforest/libraries/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="${res}meforest/css/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
+    <link href="${res}/bootstrap/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
+    <title>Realia | HTML Template</title>
     <script>
+        window.myrespath = "${res}";
+
+        window.billboards = [
+            {"id": ${billboard.id}, "position": [${billboard.location}], "address": "${billboard.address}"},
+        ];
         function show_dialog(rowId) {
             BootstrapDialog.confirm({
                 title: 'Заказ',
-                message: $('<input id="phoneField" type="text" placeholder="Телефон" class="form-control" value="+7"/><br><input id="clientCommentField" type="text" placeholder="Примечание" class="form-control"/>'),
+                message: $('<div class="input-append"><input id="phoneField" type="text" placeholder="Телефон" value="+7"/></div><div><textarea id="clientCommentField" type="text" placeholder="Примечание"/></div>'),
                 callback: function(result) {
                     if(result) {
                         var phone = $("#phoneField").val();
@@ -73,197 +58,530 @@
     </script>
 </head>
 <body>
-<div class="container">
+<div id="wrapper-outer" >
+    <div id="wrapper">
+        <div id="wrapper-inner">
+            <!-- BREADCRUMB -->
+            <div class="breadcrumb-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <ul class="breadcrumb pull-left">
+                                <li><a href="index.html">Home</a></li>
+                            </ul><!-- /.breadcrumb -->
 
-    <!-- Static navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="${root}">${projectTitle}</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="${root}agent/">Вход</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-    </nav>
+                            <div class="account pull-right">
+                                <ul class="nav nav-pills">
+                                    <li><a href="agent/">Login</a></li>
+                                </ul>
+                            </div>
+                        </div><!-- /.span12 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </div><!-- /.breadcrumb-wrapper -->
 
-    <div class="container">
-        <section class="content">
-            <div class="row">
-                <h1>${billboard.address}</h1>
-            </div>
-            <%
-                for(TimetableSideDto side : (List<TimetableSideDto>)request.getAttribute("sides")) {
-                    for(int surfaceId=0; surfaceId<side.getBbSide().getSurfaceCount(); surfaceId++) { %>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Баннер: <%=side.getBbSide().getName()+ surfaceId %></h3>
-                        </div>
-                        <div class="box-body">
-                            <table id="example1" class="table table-bordered table-striped">
-                                <tbody>
+            <!-- HEADER -->
+            <div id="header-wrapper">
+                <div id="header">
+                    <div id="header-inner">
+                        <div class="container">
+                            <div class="navbar">
+                                <div class="navbar-inner">
+                                    <div class="row">
+                                        <div class="logo-wrapper span4">
+                                            <a href="#nav" class="hidden-desktop" id="btn-nav">Toggle navigation</a>
+
+                                            <div class="logo">
+                                                <a href="index.html" title="Home">
+                                                    <img src="${res}meforest/img/logo.png" alt="Home">
+                                                </a>
+                                            </div><!-- /.logo -->
+
+                                            <div class="site-name">
+                                                <a href="/" title="Home" class="brand">Realia</a>
+                                            </div><!-- /.site-name -->
+
+                                            <div class="site-slogan">
+                                                <span>Real estate &amp; Rental<br>made easy</span>
+                                            </div><!-- /.site-slogan -->
+                                        </div><!-- /.logo-wrapper -->
+
+                                        <div class="info">
+                                            <div class="site-email">
+                                                <a href="mailto:info@byaviators.com">info@byaviators.com</a>
+                                            </div><!-- /.site-email -->
+
+                                            <div class="site-phone">
+                                                <span>333-666-777</span>
+                                            </div><!-- /.site-phone -->
+                                        </div><!-- /.info -->
+
+                                        <a class="btn btn-primary btn-large list-your-property arrow-right" href="list-your-property.html">List your property</a>
+                                    </div><!-- /.row -->
+                                </div><!-- /.navbar-inner -->
+                            </div><!-- /.navbar -->
+                        </div><!-- /.container -->
+                    </div><!-- /#header-inner -->
+                </div><!-- /#header -->
+            </div><!-- /#header-wrapper -->
+
+            <!-- NAVIGATION -->
+            <div id="navigation">
+                <div class="container">
+                    <div class="navigation-wrapper">
+                        <div class="navigation clearfix-normal">
+
+                            <ul class="nav">
+                                <li class="menuparent">
+                                    <span class="menuparent nolink">Homepage</span>
+                                    <ul>
+                                        <li><a href="index-slider.html">Homepage with slider</a></li>
+                                        <li><a href="index.html">Homepage with map</a></li>
+                                        <li><a href="index-simple.html">Simple homepage</a></li>
+                                        <li><a href="index-carousel.html">Homepage with carousel</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menuparent">
+                                    <span class="menuparent nolink">Listing</span>
+                                    <ul>
+                                        <li><a href="listing-grid.html">Listing grid</a></li>
+                                        <li><a href="listing-grid-filter.html">Listing grid with filter</a></li>
+                                        <li><a href="listing-rows.html">Listing rows</a></li>
+                                        <li><a href="listing-rows-filter.html" >Listing rows with filter</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menuparent">
+                                    <span class="menuparent nolink">Pages</span>
+                                    <ul>
+                                        <li><a href="about-us.html">About us</a></li>
+                                        <li><a href="our-agents.html">Our agents</a></li>
+                                        <li><a href="faq.html">FAQ</a></li>
+                                        <li><a href="shortcodes.html">Shortcodes</a></li>
+                                        <li class="menuparent">
+                                            <span class="menuparent nolink">Another level</span>
+                                            <ul>
+                                                <li><a href="contact-us.html">Contact us</a></li>
+                                                <li><a href="grid-system.html">Grid system</a></li>
+                                                <li><a href="typography.html">Typography</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="404.html">404 page</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menuparent">
+                                    <span class="menuparent nolink">Pricing</span>
+                                    <ul>
+                                        <li><a href="pricing-boxed.html">Boxed pricing</a></li>
+                                        <li><a href="pricing-multiple.html">Multiple pricing</a></li>
+                                        <li><a href="pricing-simple.html">Simple Pricing</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact-us.html">Contact Us</a></li>
+                            </ul><!-- /.nav -->
+
+                            <div class="language-switcher">
+                                <div class="current en"><a href="/" lang="en">English</a></div><!-- /.current -->
+                                <div class="options">
+                                    <ul>
+                                        <li class="fr"><a href="#">Français</a></li>
+                                        <li class="de"><a href="#">Deutsch</a></li>
+                                    </ul>
+                                </div><!-- /.options -->
+                            </div><!-- /.language-switcher -->
+
+                            <form method="get" class="site-search" action="?">
+                                <div class="input-append">
+                                    <input title="Enter the terms you wish to search for." class="search-query span2 form-text" placeholder="Search" type="text" name="">
+                                    <button type="submit" class="btn"><i class="icon-search"></i></button>
+                                </div><!-- /.input-append -->
+                            </form><!-- /.site-search -->
+                        </div><!-- /.navigation -->
+                    </div><!-- /.navigation-wrapper -->
+                </div><!-- /.container -->
+            </div><!-- /.navigation -->
+
+            <!-- CONTENT -->
+            <div id="content"><div class="container">
+                <div id="main">
+                    <div class="row">
+                        <div class="span9">
+                            <h1 class="page-header">${billboard.address}</h1>
+
+                            <div class="carousel property">
+                                <div class="preview">
+                                    <img src="${res}meforest/img/tmp/property-large-1.jpg" alt="">
+                                </div><!-- /.preview -->
+
+                                <div class="content">
+
+                                    <a class="carousel-prev" href="#">Previous</a>
+                                    <a class="carousel-next" href="#">Next</a>
+                                    <ul>
+                                        <li class="active">
+                                            <img src="${res}meforest/img/tmp/property-large-1.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-2.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-3.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-4.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-1.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-2.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-3.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-4.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-1.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-2.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-3.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-4.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-1.jpg" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${res}meforest/img/tmp/property-large-2.jpg" alt="">
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- /.content -->
+                            </div>
+                            <!-- /.carousel -->
+
+                            <div class="property-detail">
                                 <%
-                                    for(Month m : (List<Month>)request.getAttribute("months")) {
-                                        Timetable t = side.get(surfaceId, m.getYear(), m.getNum());
-                                %>
-                                <tr>
-                                    <% String rowId = ("" + side.getBbSide().getId()) + "_" + ("" + surfaceId) + "_" + ("" + m.getYear()) + "_" + ("" + m.getNum()); %>
-                                    <td><%=String.format("%s %d", I18nUtils.month(m.getNum()), m.getYear()) %></td>
-                                    <td>
-                                        <%=t.getRent() %>
-                                    </td>
-                                    <td>
-                                        <%=I18nUtils.timetableStatus(t.getStatus()) %>
-                                    </td>
-                                    <td>
-                                        <form id="form_<%=rowId%>"action="${root}contract" method="post">
-                                            <input type="hidden" name="sideId" value="<%=side.getBbSide().getId()%>"/>
-                                            <input type="hidden" name="surfaceId" value="<%=surfaceId%>"/>
-                                            <input type="hidden" name="year" value="<%=m.getYear()%>"/>
-                                            <input type="hidden" name="month" value="<%=m.getNum()%>"/>
-                                            <input type="hidden" name="phone" id="phone_<%=rowId%>"/>
-                                            <input type="hidden" name="comment" id="comment_<%=rowId%>"/>
-                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                        </form>
-                                        <button <%=t.getStatus()==Timetable.Status.OPEN ? "" : "disabled"%> onclick="show_dialog('<%=rowId%>')" class="btn btn-primary">Заказать</button>
-                                    </td>
-                                </tr>
-                                <% } %>
-                                </tbody>
-                            </table>
+                                    for(TimetableSideDto side : (List<TimetableSideDto>)request.getAttribute("sides")) {
+                                        for(int surfaceId=0; surfaceId<side.getBbSide().getSurfaceCount(); surfaceId++) { %>
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Баннер: <%=side.getBbSide().getName()+ surfaceId %></h3>
+                                            </div>
+                                                <table id="example1" class="table table-bordered table-striped">
+                                                    <tbody>
+                                                        <tr>
+                                                            <% for(Month m : (List<Month>)request.getAttribute("months")) { %>
+                                                                <td><%=String.format("%s %d", I18nUtils.month(m.getNum()), m.getYear()) %></td>
+                                                            <% } %>
+                                                        </tr>
+                                                        <tr>
+                                                            <% for(Month m : (List<Month>)request.getAttribute("months")) { %>
+                                                            <td>
+                                                                <%=side.get(surfaceId, m.getYear(), m.getNum()).getRent() %> руб.
+                                                            </td>
+                                                            <% } %>
+                                                        </tr>
+                                                        <tr>
+                                                            <% for(Month m : (List<Month>)request.getAttribute("months")) { %>
+                                                            <td>
+                                                                <%
+                                                                Timetable t = side.get(surfaceId, m.getYear(), m.getNum());
+                                                                String rowId = ("" + side.getBbSide().getId()) + "_" + ("" + surfaceId) + "_" + ("" + m.getYear()) + "_" + ("" + m.getNum());
+                                                                %>
+                                                            <form id="form_<%=rowId%>"action="${root}contract" method="post" hidden>
+                                                                <input type="hidden" name="sideId" value="<%=side.getBbSide().getId()%>"/>
+                                                                <input type="hidden" name="surfaceId" value="<%=surfaceId%>"/>
+                                                                <input type="hidden" name="year" value="<%=m.getYear()%>"/>
+                                                                <input type="hidden" name="month" value="<%=m.getNum()%>"/>
+                                                                <input type="hidden" name="phone" id="phone_<%=rowId%>"/>
+                                                                <input type="hidden" name="comment" id="comment_<%=rowId%>"/>
+                                                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                                            </form>
+                                                            <button <%=t.getStatus()==Timetable.Status.OPEN ? "" : "disabled"%> onclick="show_dialog('<%=rowId%>')" class="btn btn-primary"><%=t.getStatus()==Timetable.Status.OPEN ? "Бронировать" : "Занято"%></button>
+                                                            </td>
+                                                            <% } %>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                <% }} %>
+                                <h2>Карта</h2>
+                                <div id="map"></div><!-- /#property-map -->
+                            </div>
+
                         </div>
-                        <!-- /.box-body -->
+                        <div class="sidebar span3">
+                            <div class="widget our-agents">
+                                <div class="title">
+                                    <h2>Стоимость</h2>
+                                </div><!-- /.title -->
+
+                                <div class="content">
+                                    <div class="agent">
+                                        <div class="image">
+                                            <img src="${res}meforest/img/photos/emma-small.png" alt="">
+                                        </div><!-- /.image -->
+                                        <div class="name">Victoria Summer</div><!-- /.name -->
+                                        <div class="phone">333-666-777</div><!-- /.phone -->
+                                        <div class="email"><a href="mailto:victoria@example.com">victoria@example.com</a></div><!-- /.email -->
+                                    </div><!-- /.agent -->
+                                </div><!-- /.content -->
+                            </div><!-- /.our-agents -->
+                            <div class="widget contact">
+                                <div class="title">
+                                    <h2 class="block-title">Параметры</h2>
+                                </div><!-- /.title -->
+
+                                <div class="content">
+                                    <form method="post">
+                                        <div class="control-group">
+                                            <label class="control-label" for="inputName">
+                                                Name
+                                                <span class="form-required" title="This field is required.">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                <input type="text" id="inputName">
+                                            </div><!-- /.controls -->
+                                        </div><!-- /.control-group -->
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="inputEmail">
+                                                Email
+                                                <span class="form-required" title="This field is required.">*</span>
+                                            </label>
+                                            <div class="controls">
+                                                <input type="text" id="inputEmail">
+                                            </div><!-- /.controls -->
+                                        </div><!-- /.control-group -->
+
+                                        <div class="control-group">
+                                            <label class="control-label" for="inputMessage">
+                                                Message
+                                                <span class="form-required" title="This field is required.">*</span>
+                                            </label>
+
+                                            <div class="controls">
+                                                <textarea id="inputMessage"></textarea>
+                                            </div><!-- /.controls -->
+                                        </div><!-- /.control-group -->
+
+                                        <div class="form-actions">
+                                            <input type="submit" class="btn btn-primary arrow-right" value="Send">
+                                        </div><!-- /.form-actions -->
+                                    </form>
+                                </div><!-- /.content -->
+                            </div><!-- /.widget -->
+                        </div>
                     </div>
-                    <!-- /.box -->
                 </div>
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
-            <% }} %>
-        </section>
-    </div>
-</div> <!-- /container -->
+            </div><!-- /#content -->
+        </div><!-- /#wrapper-inner -->
 
-<!-- jQuery 2.2.3 -->
-<script src="${res}plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="${res}bootstrap/js/bootstrap.min.js"></script>
-<!-- Select2 -->
-<script src="${res}plugins/select2/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="${res}plugins/input-mask/jquery.inputmask.js"></script>
-<script src="${res}plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="${res}plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="${res}plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="${res}plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="${res}plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="${res}plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- SlimScroll 1.3.0 -->
-<script src="${res}plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="${res}plugins/iCheck/icheck.min.js"></script>
-<!-- FastClick -->
-<script src="${res}plugins/fastclick/fastclick.js"></script>
-<!-- bootstrap dialog -->
-<script src="${res}/bootstrap/js/bootstrap-dialog.min.js"></script>
+        <div id="footer-wrapper">
+            <div id="footer-top">
+                <div id="footer-top-inner" class="container">
+                    <div class="row">
+                        <div class="widget properties span3">
+                            <div class="title">
+                                <h2>Most Recent</h2>
+                            </div><!-- /.title -->
 
-<!-- Page script -->
-<script>
-    $(function () {
-        //Initialize Select2 Elements
-        $(".select2").select2({
-            minimumResultsForSearch: 10
-        });
+                            <div class="content">
+                                <div class="property">
+                                    <div class="image">
+                                        <a href="detail.html"></a>
+                                        <img src="${res}meforest/img/tmp/property-small-1.png" alt="">
+                                    </div><!-- /.image -->
+                                    <div class="wrapper">
+                                        <div class="title">
+                                            <h3>
+                                                <a href="detail.html">27523 Pacific Coast</a>
+                                            </h3>
+                                        </div><!-- /.title -->
+                                        <div class="location">Palo Alto CA</div><!-- /.location -->
+                                        <div class="price">€2 300 000</div><!-- /.price -->
+                                    </div><!-- /.wrapper -->
+                                </div><!-- /.property -->
 
-        //Datemask dd/mm/yyyy
-        $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
-        //Datemask2 mm/dd/yyyy
-        $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
-        //Money Euro
-        $("[data-mask]").inputmask();
+                                <div class="property">
+                                    <div class="image">
+                                        <a href="detail.html"></a>
+                                        <img src="${res}meforest/img/tmp/property-small-2.png" alt="">
+                                    </div><!-- /.image -->
+                                    <div class="wrapper">
+                                        <div class="title">
+                                            <h3>
+                                                <a href="detail.html">27523 Pacific Coast</a>
+                                            </h3>
+                                        </div><!-- /.title -->
+                                        <div class="location">Palo Alto CA</div><!-- /.location -->
+                                        <div class="price">€2 300 000</div><!-- /.price -->
+                                    </div><!-- /.wrapper -->
+                                </div><!-- /.property -->
 
-        //Date range picker
-        $('#reservation').daterangepicker();
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
-        //Date range as a button
-        $('#daterange-btn').daterangepicker(
-                {
-                    ranges: {
-                        'Today': [moment(), moment()],
-                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                        'This Month': [moment().startOf('month'), moment().endOf('month')],
-                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                    },
-                    startDate: moment().subtract(29, 'days'),
-                    endDate: moment()
-                },
-                function (start, end) {
-                    $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                }
-        );
+                                <div class="property">
+                                    <div class="image">
+                                        <a href="detail.html"></a>
+                                        <img src="${res}meforest/img/tmp/property-small-3.png" alt="">
+                                    </div><!-- /.image -->
+                                    <div class="wrapper">
+                                        <div class="title">
+                                            <h3>
+                                                <a href="detail.html">27523 Pacific Coast</a>
+                                            </h3>
+                                        </div><!-- /.title -->
+                                        <div class="location">Palo Alto CA</div><!-- /.location -->
+                                        <div class="price">€2 300 000</div><!-- /.price -->
+                                    </div><!-- /.wrapper -->
+                                </div><!-- /.property -->
+                            </div><!-- /.content -->
+                        </div><!-- /.properties-small -->
 
-        //Date picker
-        $('#datepicker').datepicker({
-            autoclose: true
-        });
+                        <div class="widget span3">
+                            <div class="title">
+                                <h2>Contact us</h2>
+                            </div><!-- /.title -->
 
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-            checkboxClass: 'icheckbox_minimal-blue',
-            radioClass: 'iradio_minimal-blue'
-        });
-        //Red color scheme for iCheck
-        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-            checkboxClass: 'icheckbox_minimal-red',
-            radioClass: 'iradio_minimal-red'
-        });
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-            checkboxClass: 'icheckbox_flat-green',
-            radioClass: 'iradio_flat-green'
-        });
+                            <div class="content">
+                                <table class="contact">
+                                    <tbody>
+                                    <tr>
+                                        <th class="address">Address:</th>
+                                        <td>1900 Pico Blvd<br>Santa Monica, CA 90405<br>United States<br></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="phone">Phone:</th>
+                                        <td>+48 123 456 789</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="email">E-mail:</th>
+                                        <td><a href="mailto:info@yourcompany.com">info@example.com</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="skype">Skype:</th>
+                                        <td>your.company</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="gps">GPS:</th>
+                                        <td>34.016811<br>-118.469009</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div><!-- /.content -->
+                        </div><!-- /.widget -->
 
-        //Colorpicker
-        $(".my-colorpicker1").colorpicker();
-        //color picker with addon
-        $(".my-colorpicker2").colorpicker();
+                        <div class="widget span3">
+                            <div class="title">
+                                <h2 class="block-title">Useful links</h2>
+                            </div><!-- /.title -->
 
-        //Timepicker
-        $(".timepicker").timepicker({
-            showInputs: false
-        });
-    });
-    $(function () {
-        /* мой костыль для управлением высотой карты */
-        var h = $(window).height();
-        if(h > 500) {
-            $("#map").height(h-150);
-        }
+                            <div class="content">
+                                <ul class="menu nav">
+                                    <li class="first leaf"><a href="404.html">404 page</a></li>
+                                    <li class="leaf"><a href="about-us.html">About us</a></li>
+                                    <li class="leaf"><a href="contact-us.html">Contact us</a></li>
+                                    <li class="leaf"><a href="faq.html">FAQ</a></li>
+                                    <li class="leaf"><a href="grid-system.html">Grid system</a></li>
+                                    <li class="leaf"><a href="our-agents.html">Our agents</a></li>
+                                    <li class="last leaf"><a href="typography.html">Typography</a></li>
+                                </ul>
+                            </div><!-- /.content -->
+                        </div><!-- /.widget -->
 
-        // cмена центра карты при смене города
-        $( "#citySelectField" ).change(function() {
-            center = $("#citySelectField").val().split(",");
-            myMap.setCenter(center);
-        });
-    });
-</script>
+                        <div class="widget span3">
+                            <div class="title">
+                                <h2 class="block-title">Say hello!</h2>
+                            </div><!-- /.title -->
+
+                            <div class="content">
+                                <form method="post">
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputName">
+                                            Name
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            <input type="text" id="inputName">
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputEmail">
+                                            Email
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+                                        <div class="controls">
+                                            <input type="text" id="inputEmail">
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputMessage">
+                                            Message
+                                            <span class="form-required" title="This field is required.">*</span>
+                                        </label>
+
+                                        <div class="controls">
+                                            <textarea id="inputMessage"></textarea>
+                                        </div><!-- /.controls -->
+                                    </div><!-- /.control-group -->
+
+                                    <div class="form-actions">
+                                        <input type="submit" class="btn btn-primary arrow-right" value="Send">
+                                    </div><!-- /.form-actions -->
+                                </form>
+                            </div><!-- /.content -->
+                        </div><!-- /.widget -->
+                    </div><!-- /.row -->
+                </div><!-- /#footer-top-inner -->
+            </div><!-- /#footer-top -->
+
+            <div id="footer" class="footer container">
+                <div id="footer-inner">
+                    <div class="row">
+                        <div class="span6 copyright">
+                            <p>© Copyright 2013 by <a href="http://themes.byaviators.com">Aviators</a>. All rights reserved.</p>
+                        </div><!-- /.copyright -->
+
+                        <div class="span6 share">
+                            <div class="content">
+                                <ul class="menu nav">
+                                    <li class="first leaf"><a href="http://www.facebook.com" class="facebook">Facebook</a></li>
+                                    <li class="leaf"><a href="http://flickr.net" class="flickr">Flickr</a></li>
+                                    <li class="leaf"><a href="http://plus.google.com" class="google">Google+</a></li>
+                                    <li class="leaf"><a href="http://www.linkedin.com" class="linkedin">LinkedIn</a></li>
+                                    <li class="leaf"><a href="http://www.twitter.com" class="twitter">Twitter</a></li>
+                                    <li class="last leaf"><a href="http://www.vimeo.com" class="vimeo">Vimeo</a></li>
+                                </ul>
+                            </div><!-- /.content -->
+                        </div><!-- /.span6 -->
+                    </div><!-- /.row -->
+                </div><!-- /#footer-inner -->
+            </div><!-- /#footer -->
+        </div><!-- /#footer-wrapper -->
+    </div><!-- /#wrapper -->
+</div><!-- /#wrapper-outer -->
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true&amp;key=AIzaSyAgk4LbwN0qnW-MzWT8rD1DGgStymdb1nQ"></script>
+<script type="text/javascript" src="${res}meforest/js/jquery.js"></script>
+<script type="text/javascript" src="${res}meforest/js/jquery.ezmark.js"></script>
+<script type="text/javascript" src="${res}meforest/js/jquery.currency.js"></script>
+<script type="text/javascript" src="${res}meforest/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="${res}meforest/js/retina.js"></script>
+<script type="text/javascript" src="${res}meforest/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${res}meforest/js/carousel.js"></script>
+<script type="text/javascript" src="${res}meforest/js/gmap3.min.js"></script>
+<script type="text/javascript" src="${res}meforest/js/gmap3.infobox.min.js"></script>
+<script type="text/javascript" src="${res}meforest/libraries/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="${res}meforest/libraries/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="${res}meforest/libraries/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="${res}meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="${res}meforest/js/realia.js"></script>
+<script type="text/javascript" src="${res}/bootstrap/js/bootstrap-dialog.min.js"></script>
 </body>
 </html>

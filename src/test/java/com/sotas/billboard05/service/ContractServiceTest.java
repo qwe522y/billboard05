@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class ConractServiceTest extends AbstractServiceTest {
+public class ContractServiceTest extends AbstractServiceTest {
     @SpringBeanByType
     private ContractService contractService;
     @Test

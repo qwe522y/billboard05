@@ -48,4 +48,9 @@ public class TimetableServiceImpl implements TimetableService {
     public Timetable add(Timetable tt) {
         return repository.add(tt);
     }
+
+    @Override
+    public Timetable get(int id) {
+        return repository.get(id);
+    }
 }

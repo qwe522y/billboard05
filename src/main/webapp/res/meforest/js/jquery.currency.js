@@ -149,6 +149,7 @@
                 if(bc == 'UYU') currency_before = '$U';
                 if(bc == 'VEF') currency_before = 'Bs';
                 if(bc == 'ZWD') currency_before = 'Z$';
+                if(bc == 'RUB') currency_before = ' ';
                 
                 if( currency_before == '' && currency_after == '' ) currency_before = '$';
                 

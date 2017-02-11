@@ -18,18 +18,35 @@ import java.util.stream.Collectors;
 
 @Service
 public class ContractServiceImpl implements ContractService {
-    @Autowired
     private ContractRepository repository;
-    @Autowired
     private TimetableRepository timetableRepository;
-    @Autowired
     private BillboardSideRepository billboardSideRepository;
-    @Autowired
     private BillboardRepository billboardRepository;
+    private TimetableService timetableService;
+
+    @Autowired
+    public ContractServiceImpl(ContractRepository repository, TimetableRepository timetableRepository, BillboardSideRepository billboardSideRepository, BillboardRepository billboardRepository, TimetableService timetableService) {
+        this.repository = repository;
+        this.timetableRepository = timetableRepository;
+        this.billboardSideRepository = billboardSideRepository;
+        this.billboardRepository = billboardRepository;
+        this.timetableService = timetableService;
+    }
 
     @Override
     @Transactional
-    public void update(Contract contract) {
+    public void accept(Contract contract) {
+        contract.setStatus(Contract.Status.ACCEPTED);
+        repository.update(contract);
+        Timetable timetable = timetableService.get(contract.getTimetableId());
+        timetable.setStatus(Timetable.Status.CLOSE);
+        timetableService.update(timetable);
+    }
+
+    @Override
+    @Transactional
+    public void reject(Contract contract) {
+        contract.setStatus(Contract.Status.REJECTED);
         repository.update(contract);
     }
 
@@ -63,5 +80,16 @@ public class ContractServiceImpl implements ContractService {
     @Transactional
     public void add(Contract contract) {
         repository.add(contract);
+    }
+
+    @Override
+    public Contract get(int id) {
+        return repository.get(id);
+    }
+
+    @Override
+    @Transactional
+    public void remove(int id) {
+        repository.remove(id);
     }
 }

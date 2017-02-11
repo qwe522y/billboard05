@@ -8,4 +8,5 @@ public interface TimetableService {
     void update(Timetable timetable);
     Timetable getByUniq(int sideId, int surfaceId, int year, int month);
     Timetable add(Timetable tt);
+    Timetable get(int id);
 }

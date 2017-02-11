@@ -40,6 +40,7 @@
                                     <th>Поверхность</th>
                                     <th>Телефон</th>
                                     <th>Доп. информация</th>
+                                    <th>Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -56,6 +57,7 @@
                                         <td>${i.billboardSide.name}${i.timetable.surface}</td>
                                         <td>${i.e.clientPhone}</td>
                                         <td>${i.e.clientComment}</td>
+                                        <td><a href="${i.e.id}/accept">бронировать</a> | <a href="${i.e.id}/reject">отлонить</a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

@@ -1,11 +1,10 @@
 package com.sotas.billboard05.controller;
 
-import com.sotas.billboard05.AuthUser;
-import com.sotas.billboard05.entity.Billboard;
 import com.sotas.billboard05.entity.BillboardSide;
 import com.sotas.billboard05.service.AuthUserService;
 import com.sotas.billboard05.service.BillboardService;
 import com.sotas.billboard05.service.BillboardSideService;
+import com.sotas.billboard05.utils.Utils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +36,7 @@ public class BillboardSideController {
 
     @RequestMapping(value = "{billboardId}/", method = RequestMethod.POST)
     public String addBillboardSide(@PathVariable int billboardId, BillboardSide billboardSide) {
-        checkAccess(billboardService.get(billboardId), authUserService.getAuthUser());
+        Utils.checkAccess(billboardService.get(billboardId), authUserService.getAuthUser());
         billboardSide.setBillboardId(billboardId);
         billboardSideService.add(billboardSide);
         return "redirect:/agent/side/" + billboardId + "/";
@@ -47,14 +46,14 @@ public class BillboardSideController {
     public String editBillboardSide(@PathVariable int billboardId, @PathVariable int billboardSideId, BillboardSide billboardSide) {
         billboardSide.setBillboardId(billboardId);
         billboardSide.setId(billboardSideId);
-        checkAccess(billboardService.get(billboardSide.getBillboardId()), authUserService.getAuthUser());
+        Utils.checkAccess(billboardService.get(billboardSide.getBillboardId()), authUserService.getAuthUser());
         billboardSideService.update(billboardSide);
         return "redirect:/agent/side/" + billboardId + "/";
     }
 
     @RequestMapping(value = "{billboardId}/add", method = RequestMethod.GET)
     public String showAddForm(@PathVariable int billboardId, Model model) {
-        checkAccess(billboardService.get(billboardId), authUserService.getAuthUser());
+        Utils.checkAccess(billboardService.get(billboardId), authUserService.getAuthUser());
 
         List<BillboardSide> sides = billboardSideService.getByBillboard(billboardId);
         List<String> names = new ArrayList<>();
@@ -76,7 +75,7 @@ public class BillboardSideController {
 
     @RequestMapping(value = "{bbId}/{bbSideId}/edit", method = RequestMethod.GET)
     public String showEditForm(@PathVariable("bbId") int billboardId, @PathVariable("bbSideId") int billboardSideId, Model model) {
-        checkAccess(billboardService.get(billboardId), authUserService.getAuthUser());
+        Utils.checkAccess(billboardService.get(billboardId), authUserService.getAuthUser());
         BillboardSide currentSide = billboardSideService.get(billboardSideId);
         List<BillboardSide> sides = billboardSideService.getByBillboard(billboardId);
         List<String> names = new ArrayList<>();
@@ -95,13 +94,5 @@ public class BillboardSideController {
         model.addAttribute("entity", currentSide);
         model.addAttribute("billboard", billboardService.get(billboardId));
         return "billboard_side/edit_form";
-    }
-
-    private void checkAccess(Billboard billboard, AuthUser authUser) {
-        if(billboard.getAgentId() != authUser.getAgent().getId()) {
-            String msg = "billboard.agentId=" + billboard.getAgentId() + " authUser.agent.id=" + authUser.getAgent().getId();
-            log.fatal(msg);
-            throw new RuntimeException(msg);
-        }
     }
 }

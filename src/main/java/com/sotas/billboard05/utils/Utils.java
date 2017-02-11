@@ -1,6 +1,9 @@
 package com.sotas.billboard05.utils;
 
+import com.sotas.billboard05.AccessError;
+import com.sotas.billboard05.AuthUser;
 import com.sotas.billboard05.dto.Month;
+import com.sotas.billboard05.entity.Billboard;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -30,5 +33,13 @@ public class Utils {
             cal.add(Calendar.MONTH, 1);
         }
         return res;
+    }
+
+    public static void checkAccess(Billboard billboard, AuthUser authUser) {
+        if(billboard.getAgentId() != authUser.getAgent().getId()) {
+            String msg = "billboard.agentId=" + billboard.getAgentId() + " authUser.agent.id=" + authUser.getAgent().getId();
+            log.fatal(msg);
+            throw new AccessError(msg);
+        }
     }
 }

@@ -1,0 +1,7 @@
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
+    <agents id="999" login="testAgent"/>
+    <billboards id="1" agent_id="999" city_id="1" format_id="1" light="1" owner_id="1" type_id="1"/>
+    <billboard_sides id="98" rent="100.00" surface_count="3" billboard_id="1"/>
+    <timetables side_id="98" surface="0" year="2017" month="0" rent="100.00" status="0" id="10" />
+    <contracts id="1" status="3" client_comment="Комментарии клиента1" timetable_id="10"/>
+</dataset>

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="${res}meforest/libraries/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
     <link rel="stylesheet" href="${res}meforest/css/realia-blue.css" type="text/css" id="color-variant-default">
     <link rel="stylesheet" href="#" type="text/css" id="color-variant">
-
+    <link href="${res}/bootstrap/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
     <title>Realia | HTML Template</title>
     <script>
 window.myrespath = "${res}";
@@ -47,8 +47,7 @@ window.billboards = [
 
                             <div class="account pull-right">
                                 <ul class="nav nav-pills">
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="registration.html">Registration</a></li>
+                                    <li><a href="agent/">Login</a></li>
                                 </ul>
                             </div>
                         </div><!-- /.span12 -->
@@ -202,54 +201,29 @@ window.billboards = [
 
                                             <div class="type control-group">
                                                 <label class="control-label" for="inputType">
-                                                    Type
+                                                    Тип
                                                 </label>
                                                 <div class="controls">
                                                     <select id="inputType">
-                                                        <option id="apartment">Apartment</option>
-                                                        <option id="condo">Condo</option>
+                                                        <option value="0">Все</option>
+                                                        <c:forEach items="${billboardTypes}" var="type">
+                                                            <option value="${type.id}">${type.name}</option>
+                                                        </c:forEach>
                                                     </select>
                                                 </div><!-- /.controls -->
                                             </div><!-- /.control-group -->
 
-                                            <div class="beds control-group">
-                                                <label class="control-label" for="inputBeds">
-                                                    Beds
+                                            <div class="type control-group">
+                                                <label class="control-label" for="inputType">
+                                                    Формат
                                                 </label>
                                                 <div class="controls">
-                                                    <select id="inputBeds">
-                                                        <option id="11">1</option>
-                                                        <option id="21">2</option>
+                                                    <select id="formatType">
+                                                        <option value="0">Все</option>
+                                                        <c:forEach items="${billboardFormats}" var="format">
+                                                            <option value="${format.id}">${format.name}</option>
+                                                        </c:forEach>
                                                     </select>
-                                                </div><!-- /.controls -->
-                                            </div><!-- /.control-group -->
-
-                                            <div class="baths control-group">
-                                                <label class="control-label" for="inputBaths">
-                                                    Baths
-                                                </label>
-                                                <div class="controls">
-                                                    <select id="inputBaths">
-                                                        <option id="1">1</option>
-                                                        <option id="2">2</option>
-                                                    </select>
-                                                </div><!-- /.controls -->
-                                            </div><!-- /.control-group -->
-
-
-                                            <div class="rent control-group">
-                                                <div class="controls">
-                                                    <label class="checkbox" for="inputRent">
-                                                        <input type="checkbox" id="inputRent"> Rent
-                                                    </label>
-                                                </div><!-- /.controls -->
-                                            </div><!-- /.control-group -->
-
-                                            <div class="sale control-group">
-                                                <div class="controls">
-                                                    <label class="checkbox" for="inputSale">
-                                                        <input type="checkbox" id="inputSale"> Sale
-                                                    </label>
                                                 </div><!-- /.controls -->
                                             </div><!-- /.control-group -->
 
@@ -281,7 +255,7 @@ window.billboards = [
                                             </div><!-- /.price-slider -->
 
                                             <div class="form-actions">
-                                                <input type="submit" value="Filter now!" class="btn btn-primary btn-large">
+                                                <input type="button" value="Поиск" class="btn btn-primary btn-large">
                                             </div><!-- /.form-actions -->
                                         </form>
                                     </div><!-- /.content -->
@@ -777,6 +751,7 @@ window.billboards = [
 <script type="text/javascript" src="${res}meforest/libraries/iosslider/_src/jquery.iosslider.min.js"></script>
 <script type="text/javascript" src="${res}meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.js"></script>
 <script type="text/javascript" src="${res}meforest/js/realia.js"></script>
+<script type="text/javascript" src="${res}/bootstrap/js/bootstrap-dialog.min.js"></script>
 
 <script>
     $(function () {
@@ -785,6 +760,20 @@ window.billboards = [
             center = $("#inputLocation").val().split(",");
             window.map.setCenter(new google.maps.LatLng(center[0], center[1]))
         });
+
+        // сообщения
+        var title = "Информация"
+        var type =  BootstrapDialog.SUCCESS;
+        var msg = "${msg.msg}"
+        <% session.removeAttribute("msg"); %>
+        if(msg.length > 0) {
+            BootstrapDialog.alert({
+                title: title,
+                message: msg,
+                type: type, // <-- Default value is BootstrapDialog.TYPE_PRIMARY
+                buttonLabel: 'Ok'
+            });
+        }
     });
 </script>
 
