@@ -219,7 +219,7 @@ window.billboards = [
                                             <div class="image">
                                                 <div class="content">
                                                     <a href="detail.html" id="details_<%=i%>"></a>
-                                                    <img src="${res}meforest/img/tmp/property-small-1.png" alt="">
+                                                    <img src="${res}meforest/img/tmp/property-small-1.png" alt="" id="photo_<%=i%>">
                                                 </div><!-- /.content -->
 
                                                 <div class="price" id="price_<%=i%>"></div><!-- /.price -->
@@ -250,7 +250,7 @@ window.billboards = [
                                             <div class="property">
                                                 <div class="image">
                                                     <a href="" id="side_details_<%=i%>"></a>
-                                                    <img src="${res}meforest/img/tmp/property-small-4.png" alt="">
+                                                    <img src="${res}meforest/img/tmp/property-small-4.png" alt="" id="side_photo_<%=i%>">
                                                 </div><!-- /.image -->
 
                                                 <div class="wrapper">
@@ -519,6 +519,7 @@ window.billboards = [
             $("#city_" + i).html(bb.city);
             $("#type_" + i).html(bb.type);
             $("#details_" + i).attr("href", "bb/" + bb.id + "/");
+            $("#photo_" + i).attr("src", "${res}photo/" + bb.id + "/0.jpg" )
             nameEl = $("#name_" + i);
             nameEl.html(bb.address);
             nameEl.attr("href", "bb/" + bb.id + "/");
@@ -526,6 +527,7 @@ window.billboards = [
             $("#side_price_" + i).html(bb.price + " p.");
             $("#side_city_" + i).html(bb.city);
             $("#side_details_" + i).attr("href", "bb/" + bb.id + "/");
+            $("#side_photo_" + i).attr("src", "${res}photo/" + bb.id + "/0.jpg" )
             nameEl = $("#side_name_" + i);
             nameEl.html(bb.address);
             nameEl.attr("href", "bb/" + bb.id + "/")

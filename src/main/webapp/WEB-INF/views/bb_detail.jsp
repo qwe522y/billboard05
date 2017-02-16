@@ -234,7 +234,7 @@
                                                                 Timetable t = side.get(surfaceId, m.getYear(), m.getNum());
                                                                 String rowId = ("" + side.getBbSide().getId()) + "_" + ("" + surfaceId) + "_" + ("" + m.getYear()) + "_" + ("" + m.getNum());
                                                                 %>
-                                                            <form id="form_<%=rowId%>"action="${root}contract" method="post" hidden>
+                                                            <form id="form_<%=rowId%>" action="${root}contract" method="post" hidden>
                                                                 <input type="hidden" name="sideId" value="<%=side.getBbSide().getId()%>"/>
                                                                 <input type="hidden" name="surfaceId" value="<%=surfaceId%>"/>
                                                                 <input type="hidden" name="year" value="<%=m.getYear()%>"/>

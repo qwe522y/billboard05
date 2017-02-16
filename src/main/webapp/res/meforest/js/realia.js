@@ -348,7 +348,7 @@ function LoadMap() {
         });
 
 	    var myOptions = {
-	        content: '<div class="infobox"><div class="image"><img src="http://preview.byaviators.com/template/realia/assets/img/tmp/property-tiny-1.png" alt=""></div><div class="title"><a href="detail.html">' +
+	        content: '<div class="infobox"><div class="image"><img src="' + window.myrespath + '/photo/' + bb.id + '/0.jpg" alt="" height="100" width="74"></div><div class="title"><a href="detail.html">' + //100 74
             bb.address + '</a></div>' +
             '<div class="area"><span class="key">Тип:</span><span class="value">' + bb.type + '</span></div>' +
             '<div class="area"><span class="key">Формат:</span><span class="value">' + bb.format + '</span></div>' + '' +
