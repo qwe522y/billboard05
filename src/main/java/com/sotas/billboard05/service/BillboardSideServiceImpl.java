@@ -23,6 +23,11 @@ public class BillboardSideServiceImpl implements BillboardSideService {
         return repository.getByBillboard(billboardId);
     }
 
+    @Override
+    public List<BillboardSide> getAll() {
+        return repository.getAll();
+    }
+
     @Transactional
     @Override
     public void add(BillboardSide e) {

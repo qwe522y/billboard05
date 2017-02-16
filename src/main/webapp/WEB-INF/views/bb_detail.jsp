@@ -67,12 +67,12 @@
                     <div class="row">
                         <div class="span12">
                             <ul class="breadcrumb pull-left">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="${root}">Главная</a></li>
                             </ul><!-- /.breadcrumb -->
 
                             <div class="account pull-right">
                                 <ul class="nav nav-pills">
-                                    <li><a href="agent/">Login</a></li>
+                                    <li><a href="${root}/agent/">Вход</a></li>
                                 </ul>
                             </div>
                         </div><!-- /.span12 -->
@@ -115,8 +115,6 @@
                                                 <span>333-666-777</span>
                                             </div><!-- /.site-phone -->
                                         </div><!-- /.info -->
-
-                                        <a class="btn btn-primary btn-large list-your-property arrow-right" href="list-your-property.html">List your property</a>
                                     </div><!-- /.row -->
                                 </div><!-- /.navbar-inner -->
                             </div><!-- /.navbar -->
@@ -132,69 +130,12 @@
                         <div class="navigation clearfix-normal">
 
                             <ul class="nav">
-                                <li class="menuparent">
-                                    <span class="menuparent nolink">Homepage</span>
-                                    <ul>
-                                        <li><a href="index-slider.html">Homepage with slider</a></li>
-                                        <li><a href="index.html">Homepage with map</a></li>
-                                        <li><a href="index-simple.html">Simple homepage</a></li>
-                                        <li><a href="index-carousel.html">Homepage with carousel</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menuparent">
-                                    <span class="menuparent nolink">Listing</span>
-                                    <ul>
-                                        <li><a href="listing-grid.html">Listing grid</a></li>
-                                        <li><a href="listing-grid-filter.html">Listing grid with filter</a></li>
-                                        <li><a href="listing-rows.html">Listing rows</a></li>
-                                        <li><a href="listing-rows-filter.html" >Listing rows with filter</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menuparent">
-                                    <span class="menuparent nolink">Pages</span>
-                                    <ul>
-                                        <li><a href="about-us.html">About us</a></li>
-                                        <li><a href="our-agents.html">Our agents</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
-                                        <li><a href="shortcodes.html">Shortcodes</a></li>
-                                        <li class="menuparent">
-                                            <span class="menuparent nolink">Another level</span>
-                                            <ul>
-                                                <li><a href="contact-us.html">Contact us</a></li>
-                                                <li><a href="grid-system.html">Grid system</a></li>
-                                                <li><a href="typography.html">Typography</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="404.html">404 page</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menuparent">
-                                    <span class="menuparent nolink">Pricing</span>
-                                    <ul>
-                                        <li><a href="pricing-boxed.html">Boxed pricing</a></li>
-                                        <li><a href="pricing-multiple.html">Multiple pricing</a></li>
-                                        <li><a href="pricing-simple.html">Simple Pricing</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact-us.html">Contact Us</a></li>
+                                <li><a href="contact-us.html">Главная</a></li>
+                                <li><a href="contact-us.html">Список</a></li>
+                                <li><a href="contact-us.html">Как это работает</a></li>
+                                <li><a href="contact-us.html">Стать партнером</a></li>
+                                <li><a href="contact-us.html">Контакты</a></li>
                             </ul><!-- /.nav -->
-
-                            <div class="language-switcher">
-                                <div class="current en"><a href="/" lang="en">English</a></div><!-- /.current -->
-                                <div class="options">
-                                    <ul>
-                                        <li class="fr"><a href="#">Français</a></li>
-                                        <li class="de"><a href="#">Deutsch</a></li>
-                                    </ul>
-                                </div><!-- /.options -->
-                            </div><!-- /.language-switcher -->
-
-                            <form method="get" class="site-search" action="?">
-                                <div class="input-append">
-                                    <input title="Enter the terms you wish to search for." class="search-query span2 form-text" placeholder="Search" type="text" name="">
-                                    <button type="submit" class="btn"><i class="icon-search"></i></button>
-                                </div><!-- /.input-append -->
-                            </form><!-- /.site-search -->
                         </div><!-- /.navigation -->
                     </div><!-- /.navigation-wrapper -->
                 </div><!-- /.container -->
@@ -302,7 +243,7 @@
                                                                 <input type="hidden" name="comment" id="comment_<%=rowId%>"/>
                                                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                                             </form>
-                                                            <button <%=t.getStatus()==Timetable.Status.OPEN ? "" : "disabled"%> onclick="show_dialog('<%=rowId%>')" class="btn btn-primary"><%=t.getStatus()==Timetable.Status.OPEN ? "Бронировать" : "Занято"%></button>
+                                                            <button <%=t.getStatus()==Timetable.Status.OPEN ? "" : "disabled style='background-color: red'"%> onclick="show_dialog('<%=rowId%>')" class="btn btn-primary"><%=t.getStatus()==Timetable.Status.OPEN ? "Бронировать" : "Занято"%></button>
                                                             </td>
                                                             <% } %>
                                                         </tr>
@@ -323,58 +264,55 @@
                                 <div class="content">
                                     <div class="agent">
                                         <div class="image">
-                                            <img src="${res}meforest/img/photos/emma-small.png" alt="">
+                                            <img src="${res}png/rub_icon.png" alt="">
                                         </div><!-- /.image -->
-                                        <div class="name">Victoria Summer</div><!-- /.name -->
-                                        <div class="phone">333-666-777</div><!-- /.phone -->
-                                        <div class="email"><a href="mailto:victoria@example.com">victoria@example.com</a></div><!-- /.email -->
+                                        <div class="name">${minRent} руб.</div><!-- /.name -->
+                                        <div class="email">* стоимость одной поверхности</div><!-- /.email -->
                                     </div><!-- /.agent -->
                                 </div><!-- /.content -->
                             </div><!-- /.our-agents -->
-                            <div class="widget contact">
+                            <div class="widget our-agents">
                                 <div class="title">
-                                    <h2 class="block-title">Параметры</h2>
+                                    <h2>Параметры</h2>
                                 </div><!-- /.title -->
 
                                 <div class="content">
-                                    <form method="post">
-                                        <div class="control-group">
-                                            <label class="control-label" for="inputName">
-                                                Name
-                                                <span class="form-required" title="This field is required.">*</span>
-                                            </label>
-                                            <div class="controls">
-                                                <input type="text" id="inputName">
-                                            </div><!-- /.controls -->
-                                        </div><!-- /.control-group -->
-
-                                        <div class="control-group">
-                                            <label class="control-label" for="inputEmail">
-                                                Email
-                                                <span class="form-required" title="This field is required.">*</span>
-                                            </label>
-                                            <div class="controls">
-                                                <input type="text" id="inputEmail">
-                                            </div><!-- /.controls -->
-                                        </div><!-- /.control-group -->
-
-                                        <div class="control-group">
-                                            <label class="control-label" for="inputMessage">
-                                                Message
-                                                <span class="form-required" title="This field is required.">*</span>
-                                            </label>
-
-                                            <div class="controls">
-                                                <textarea id="inputMessage"></textarea>
-                                            </div><!-- /.controls -->
-                                        </div><!-- /.control-group -->
-
-                                        <div class="form-actions">
-                                            <input type="submit" class="btn btn-primary arrow-right" value="Send">
-                                        </div><!-- /.form-actions -->
-                                    </form>
+                                    <div class="agent">
+                                        <div class="image">
+                                            <img src="${res}png/width.png" alt="">
+                                        </div><!-- /.image -->
+                                        <div class="name">${minRent} руб.</div><!-- /.name -->
+                                        <div class="email">* стоимость одной поверхности</div><!-- /.email -->
+                                    </div><!-- /.agent -->
                                 </div><!-- /.content -->
-                            </div><!-- /.widget -->
+                                <div class="content">
+                                    <div class="agent">
+                                        <div class="image">
+                                            <img src="${res}png/height.png" alt="">
+                                        </div><!-- /.image -->
+                                        <div class="name">${minRent} руб.</div><!-- /.name -->
+                                        <div class="email">* стоимость одной поверхности</div><!-- /.email -->
+                                    </div><!-- /.agent -->
+                                </div><!-- /.content -->
+                                <div class="content">
+                                    <div class="agent">
+                                        <div class="image">
+                                            <img src="${res}png/light.png" alt="">
+                                        </div><!-- /.image -->
+                                        <div class="name">${minRent} руб.</div><!-- /.name -->
+                                        <div class="email">* стоимость одной поверхности</div><!-- /.email -->
+                                    </div><!-- /.agent -->
+                                </div><!-- /.content -->
+                                <div class="content">
+                                    <div class="agent">
+                                        <div class="image">
+                                            <img src="${res}png/format.png" alt="">
+                                        </div><!-- /.image -->
+                                        <div class="name">${minRent} руб.</div><!-- /.name -->
+                                        <div class="email">* стоимость одной поверхности</div><!-- /.email -->
+                                    </div><!-- /.agent -->
+                                </div><!-- /.content -->
+                            </div><!-- /.our-agents -->
                         </div>
                     </div>
                 </div>

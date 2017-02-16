@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.*;
 
 @Controller
 @RequestMapping("/")
@@ -44,6 +42,14 @@ public class MainController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String home(Model model) {
+        List<BillboardSide> sideList = billboardSideService.getAll();
+        Map<Integer, BigDecimal> minRent = new HashMap<>();
+        sideList.forEach(x -> {
+            if(!minRent.containsKey(x.getBillboardId()) || minRent.get(x.getBillboardId()).compareTo(x.getRent()) > 0) {
+                minRent.put(x.getBillboardId(), x.getRent());
+            }
+        });
+        model.addAttribute("minRentMap", minRent);
         model.addAttribute("billboards", billboardService.getAll());
         model.addAttribute("cities", cityRepository.getAll());
         model.addAttribute("billboardTypes", billboardTypeRepository.getAll());
@@ -69,6 +75,12 @@ public class MainController {
         for(BillboardSide side : sides) {
             sidesDto.add(timetableService.getByBillboardSide(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), side.getId()));
         }
+        BigDecimal minRent = sidesDto.get(0).getBbSide().getRent();
+        for(TimetableSideDto e : sidesDto) {
+            BigDecimal rent = e.getBbSide().getRent();
+            if(rent.compareTo(minRent) < 0) minRent = rent;
+        };
+        model.addAttribute("minRent", minRent);
         model.addAttribute("sides", sidesDto);
         model.addAttribute("months", Utils.genMonth(new Date(), 6));
         model.addAttribute("billboard", billboardService.get(bbId));

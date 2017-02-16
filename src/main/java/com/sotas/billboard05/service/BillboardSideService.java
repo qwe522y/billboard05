@@ -7,6 +7,7 @@ import java.util.List;
 public interface BillboardSideService {
     BillboardSide get(int id);
     List<BillboardSide> getByBillboard(int billboardId);
+    List<BillboardSide> getAll();
     void add(BillboardSide e);
     void update(BillboardSide e);
 }

@@ -249,7 +249,7 @@ function InitCarousel() {
 		}
 	});
 }
-
+/*
 function LoadMapProperty() {
     var locations = new Array(
         [34.01312,-118.496808]
@@ -326,7 +326,7 @@ function LoadMapProperty() {
         });
     });
 }
-
+*/
 function LoadMap() {
 	var mapOptions = {
 		center: new google.maps.LatLng(42.975182, 47.503995),
@@ -349,7 +349,11 @@ function LoadMap() {
 
 	    var myOptions = {
 	        content: '<div class="infobox"><div class="image"><img src="http://preview.byaviators.com/template/realia/assets/img/tmp/property-tiny-1.png" alt=""></div><div class="title"><a href="detail.html">' +
-            bb.address + '</a></div><div class="area"><span class="key">Area:</span><span class="value">200m<sup>2</sup></span></div><div class="price">€450 000.00</div><div class="link"><a href="bb/' + bb.id +'">Подробнее...</a></div></div>',
+            bb.address + '</a></div>' +
+            '<div class="area"><span class="key">Тип:</span><span class="value">' + bb.type + '</span></div>' +
+            '<div class="area"><span class="key">Формат:</span><span class="value">' + bb.format + '</span></div>' + '' +
+            '<div class="price">' + bb.price +' руб.</div><div class="link"><a href="bb/' + bb.id +'">Подробнее...</a></div></div>',
+
 	        disableAutoPan: false,
 	        maxWidth: 0,
 	        pixelOffset: new google.maps.Size(-146, -190),

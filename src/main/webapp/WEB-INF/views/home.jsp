@@ -27,7 +27,7 @@ window.myrespath = "${res}";
 
 window.billboards = [
 <c:forEach items="${billboards}" var="i">
-    {"id": ${i.e.id}, "position": [${i.e.location}], "address": "${i.e.address}"},
+    {"id": ${i.e.id}, "position": [${i.e.location}], "address": "${i.e.address}", "price": "${minRentMap[i.e.id]}", "type": "${i.type.name}", "format": "${i.format.name}", "city": "${i.city.name}"},
 </c:forEach>
 ];
     </script>
@@ -42,12 +42,12 @@ window.billboards = [
                     <div class="row">
                         <div class="span12">
                             <ul class="breadcrumb pull-left">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="${root}">Главная</a></li>
                             </ul><!-- /.breadcrumb -->
 
                             <div class="account pull-right">
                                 <ul class="nav nav-pills">
-                                    <li><a href="agent/">Login</a></li>
+                                    <li><a href="agent/">Вход</a></li>
                                 </ul>
                             </div>
                         </div><!-- /.span12 -->
@@ -90,8 +90,6 @@ window.billboards = [
                                                 <span>333-666-777</span>
                                             </div><!-- /.site-phone -->
                                         </div><!-- /.info -->
-
-                                        <a class="btn btn-primary btn-large list-your-property arrow-right" href="list-your-property.html">List your property</a>
                                     </div><!-- /.row -->
                                 </div><!-- /.navbar-inner -->
                             </div><!-- /.navbar -->
@@ -107,164 +105,108 @@ window.billboards = [
                         <div class="navigation clearfix-normal">
 
                             <ul class="nav">
-                                <li class="menuparent">
-                                    <span class="menuparent nolink">Homepage</span>
-                                    <ul>
-                                        <li><a href="index-slider.html">Homepage with slider</a></li>
-                                        <li><a href="index.html">Homepage with map</a></li>
-                                        <li><a href="index-simple.html">Simple homepage</a></li>
-                                        <li><a href="index-carousel.html">Homepage with carousel</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menuparent">
-                                    <span class="menuparent nolink">Listing</span>
-                                    <ul>
-                                        <li><a href="listing-grid.html">Listing grid</a></li>
-                                        <li><a href="listing-grid-filter.html">Listing grid with filter</a></li>
-                                        <li><a href="listing-rows.html">Listing rows</a></li>
-                                        <li><a href="listing-rows-filter.html" >Listing rows with filter</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menuparent">
-                                    <span class="menuparent nolink">Pages</span>
-                                    <ul>
-                                        <li><a href="about-us.html">About us</a></li>
-                                        <li><a href="our-agents.html">Our agents</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
-                                        <li><a href="shortcodes.html">Shortcodes</a></li>
-                                        <li class="menuparent">
-                                            <span class="menuparent nolink">Another level</span>
-                                            <ul>
-                                                <li><a href="contact-us.html">Contact us</a></li>
-                                                <li><a href="grid-system.html">Grid system</a></li>
-                                                <li><a href="typography.html">Typography</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="404.html">404 page</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menuparent">
-                                    <span class="menuparent nolink">Pricing</span>
-                                    <ul>
-                                        <li><a href="pricing-boxed.html">Boxed pricing</a></li>
-                                        <li><a href="pricing-multiple.html">Multiple pricing</a></li>
-                                        <li><a href="pricing-simple.html">Simple Pricing</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact-us.html">Contact Us</a></li>
+                                <li><a href="contact-us.html">Главная</a></li>
+                                <li><a href="contact-us.html">Список</a></li>
+                                <li><a href="contact-us.html">Как это работает</a></li>
+                                <li><a href="contact-us.html">Стать партнером</a></li>
+                                <li><a href="contact-us.html">Контакты</a></li>
                             </ul><!-- /.nav -->
-
-                            <div class="language-switcher">
-                                <div class="current en"><a href="/" lang="en">English</a></div><!-- /.current -->
-                                <div class="options">
-                                    <ul>
-                                        <li class="fr"><a href="#">Français</a></li>
-                                        <li class="de"><a href="#">Deutsch</a></li>
-                                    </ul>
-                                </div><!-- /.options -->
-                            </div><!-- /.language-switcher -->
-
-                            <form method="get" class="site-search" action="?">
-                                <div class="input-append">
-                                    <input title="Enter the terms you wish to search for." class="search-query span2 form-text" placeholder="Search" type="text" name="">
-                                    <button type="submit" class="btn"><i class="icon-search"></i></button>
-                                </div><!-- /.input-append -->
-                            </form><!-- /.site-search -->
                         </div><!-- /.navigation -->
                     </div><!-- /.navigation-wrapper -->
                 </div><!-- /.container -->
             </div><!-- /.navigation -->
 
             <!-- CONTENT -->
-            <div id="content"><div class="map-wrapper">
-                <div class="map">
-                    <div id="map" class="map-inner"></div><!-- /.map-inner -->
+            <div id="content">
+                <div class="map-wrapper">
+                    <div class="map">
+                        <div id="map" class="map-inner"></div><!-- /.map-inner -->
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="span3">
-                                <div class="property-filter pull-right">
-                                    <div class="content">
-                                        <form method="get" action="?">
-                                            <div class="location control-group">
-                                                <label class="control-label" for="inputLocation">
-                                                    Место
-                                                </label>
-                                                <div class="controls">
-                                                    <select id="inputLocation">
-                                                        <c:forEach items="${cities}" var="city">
-                                                            <option value="${city.location}">${city.name}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div><!-- /.controls -->
-                                            </div><!-- /.control-group -->
+                        <div class="container">
+                            <div class="row">
+                                <div class="span3">
+                                    <div class="property-filter pull-right">
+                                        <div class="content">
+                                            <form method="get" action="?">
+                                                <div class="location control-group">
+                                                    <label class="control-label" for="inputLocation">
+                                                        Место
+                                                    </label>
+                                                    <div class="controls">
+                                                        <select id="inputLocation">
+                                                            <c:forEach items="${cities}" var="city">
+                                                                <option value="${city.location}">${city.name}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div><!-- /.controls -->
+                                                </div><!-- /.control-group -->
 
-                                            <div class="type control-group">
-                                                <label class="control-label" for="inputType">
-                                                    Тип
-                                                </label>
-                                                <div class="controls">
-                                                    <select id="inputType">
-                                                        <option value="0">Все</option>
-                                                        <c:forEach items="${billboardTypes}" var="type">
-                                                            <option value="${type.id}">${type.name}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div><!-- /.controls -->
-                                            </div><!-- /.control-group -->
+                                                <div class="type control-group">
+                                                    <label class="control-label" for="inputType">
+                                                        Тип
+                                                    </label>
+                                                    <div class="controls">
+                                                        <select id="inputType">
+                                                            <option value="0">Все</option>
+                                                            <c:forEach items="${billboardTypes}" var="type">
+                                                                <option value="${type.id}">${type.name}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div><!-- /.controls -->
+                                                </div><!-- /.control-group -->
 
-                                            <div class="type control-group">
-                                                <label class="control-label" for="inputType">
-                                                    Формат
-                                                </label>
-                                                <div class="controls">
-                                                    <select id="formatType">
-                                                        <option value="0">Все</option>
-                                                        <c:forEach items="${billboardFormats}" var="format">
-                                                            <option value="${format.id}">${format.name}</option>
-                                                        </c:forEach>
-                                                    </select>
-                                                </div><!-- /.controls -->
-                                            </div><!-- /.control-group -->
+                                                <div class="type control-group">
+                                                    <label class="control-label" for="inputFormat">
+                                                        Формат
+                                                    </label>
+                                                    <div class="controls">
+                                                        <select id="inputFormat">
+                                                            <option value="0">Все</option>
+                                                            <c:forEach items="${billboardFormats}" var="format">
+                                                                <option value="${format.id}">${format.name}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div><!-- /.controls -->
+                                                </div><!-- /.control-group -->
 
-                                            <div class="price-from control-group">
-                                                <label class="control-label" for="inputPriceFrom">
-                                                    Price from
-                                                </label>
-                                                <div class="controls">
-                                                    <input type="text" id="inputPriceFrom" name="inputPriceFrom">
-                                                </div><!-- /.controls -->
-                                            </div><!-- /.control-group -->
+                                                <div class="price-from control-group">
+                                                    <label class="control-label" for="inputPriceFrom">
+                                                        Price from
+                                                    </label>
+                                                    <div class="controls">
+                                                        <input type="text" id="inputPriceFrom" name="inputPriceFrom">
+                                                    </div><!-- /.controls -->
+                                                </div><!-- /.control-group -->
 
-                                            <div class="price-to control-group">
-                                                <label class="control-label" for="inputPriceTo">
-                                                    Price to
-                                                </label>
-                                                <div class="controls">
-                                                    <input type="text" id="inputPriceTo" name="inputPriceTo">
-                                                </div><!-- /.controls -->
-                                            </div><!-- /.control-group -->
+                                                <div class="price-to control-group">
+                                                    <label class="control-label" for="inputPriceTo">
+                                                        Price to
+                                                    </label>
+                                                    <div class="controls">
+                                                        <input type="text" id="inputPriceTo" name="inputPriceTo">
+                                                    </div><!-- /.controls -->
+                                                </div><!-- /.control-group -->
 
-                                            <div class="price-value">
-                                                <span class="from"></span><!-- /.from -->
-                                                -
-                                                <span class="to"></span><!-- /.to -->
-                                            </div><!-- /.price-value -->
+                                                <div class="price-value">
+                                                    <span class="from"></span><!-- /.from -->
+                                                    -
+                                                    <span class="to"></span><!-- /.to -->
+                                                </div><!-- /.price-value -->
 
-                                            <div class="price-slider">
-                                            </div><!-- /.price-slider -->
+                                                <div class="price-slider">
+                                                </div><!-- /.price-slider -->
 
-                                            <div class="form-actions">
-                                                <input type="button" value="Поиск" class="btn btn-primary btn-large">
-                                            </div><!-- /.form-actions -->
-                                        </form>
-                                    </div><!-- /.content -->
-                                </div><!-- /.property-filter -->
-                            </div><!-- /.span3 -->
-                        </div><!-- /.row -->
-                    </div><!-- /.container -->
-                </div><!-- /.map -->
-            </div><!-- /.map-wrapper -->
+                                                <div class="form-actions">
+                                                    <input type="button" value="Поиск" class="btn btn-primary btn-large">
+                                                </div><!-- /.form-actions -->
+                                            </form>
+                                        </div><!-- /.content -->
+                                    </div><!-- /.property-filter -->
+                                </div><!-- /.span3 -->
+                            </div><!-- /.row -->
+                        </div><!-- /.container -->
+                    </div><!-- /.map -->
+                </div><!-- /.map-wrapper -->
                 <div class="container">
                     <div id="main">
                         <div class="row">
@@ -272,176 +214,31 @@ window.billboards = [
                                 <h1 class="page-header">Горячее предложение</h1>
                                 <div class="properties-grid">
                                     <div class="row">
+                                        <% for(int i=0; i<6; i++) { %>
                                         <div class="property span3">
                                             <div class="image">
                                                 <div class="content">
-                                                    <a href="detail.html"></a>
+                                                    <a href="detail.html" id="details_<%=i%>"></a>
                                                     <img src="${res}meforest/img/tmp/property-small-1.png" alt="">
                                                 </div><!-- /.content -->
 
-                                                <div class="price">1 250 000€</div><!-- /.price -->
-                                                <div class="reduced">Reduced </div><!-- /.reduced -->
+                                                <div class="price" id="price_<%=i%>"></div><!-- /.price -->
+                                                <div class="reduced" id="type_<%=i%>"></div><!-- /.reduced -->
                                             </div><!-- /.image -->
 
                                             <div class="title">
-                                                <h2><a href="detail.html">27523 Pacific Coast</a></h2>
+                                                <h2><a href="detail.html" id="name_<%=i%>"></a></h2>
                                             </div><!-- /.title -->
 
-                                            <div class="location">Palo Alto CA</div><!-- /.location -->
-                                            <div class="area">
-                                                <span class="key">Area:</span><!-- /.key -->
-                                                <span class="value">120</span><!-- /.value -->
-                                            </div><!-- /.area -->
+                                            <div class="location" id="city_<%=i%>"></div><!-- /.location -->
                                             <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
                                             <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->
                                         </div><!-- /.property -->
-
-                                        <div class="property span3">
-                                            <div class="image">
-                                                <div class="content">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}meforest/img/tmp/property-small-2.png" alt="">
-                                                </div><!-- /.content -->
-                                                <div class="price">1 250 000€</div><!-- /.price -->
-                                                <div class="reduced">Reduced </div><!-- /.reduced -->
-                                            </div><!-- /.image -->
-
-                                            <div class="title">
-                                                <h2><a href="detail.html">27523 Pacific Coast</a></h2>
-                                            </div><!-- /.title -->
-
-                                            <div class="location">Palo Alto CA</div><!-- /.location -->
-                                            <div class="area">
-                                                <span class="key">Area:</span><!-- /.key -->
-                                                <span class="value">120</span><!-- /.value -->
-                                            </div><!-- /.area -->
-                                            <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
-                                            <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->
-                                        </div><!-- /.property -->
-
-                                        <div class="property span3">
-                                            <div class="image">
-                                                <div class="content">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}meforest/img/tmp/property-small-3.png" alt="">
-                                                </div><!-- /.content -->
-
-                                                <div class="price">1 250 000€</div><!-- /.price -->
-                                                <div class="reduced">Reduced </div><!-- /.reduced -->
-                                            </div><!-- /.image -->
-
-                                            <div class="title">
-                                                <h2><a href="detail.html">27523 Pacific Coast</a></h2>
-                                            </div><!-- /.title -->
-
-                                            <div class="location">Palo Alto CA</div><!-- /.location -->
-                                            <div class="area">
-                                                <span class="key">Area:</span><!-- /.key -->
-                                                <span class="value">120</span><!-- /.value -->
-                                            </div><!-- /.area -->
-                                            <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
-                                            <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->
-                                        </div><!-- /.property -->
-
-                                        <div class="property span3">
-                                            <div class="image">
-                                                <div class="content">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}meforest/img/tmp/property-small-4.png" alt="">
-                                                </div><!-- /.content -->
-                                                <div class="price">1 250 000€</div><!-- /.price -->
-                                                <div class="reduced">Reduced </div><!-- /.reduced -->
-                                            </div><!-- /.image -->
-
-                                            <div class="title">
-                                                <h2><a href="detail.html">27523 Pacific Coast</a></h2>
-                                            </div><!-- /.title -->
-
-                                            <div class="location">Palo Alto CA</div><!-- /.location -->
-                                            <div class="area">
-                                                <span class="key">Area:</span><!-- /.key -->
-                                                <span class="value">120</span><!-- /.value -->
-                                            </div><!-- /.area -->
-                                            <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
-                                            <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->
-                                        </div><!-- /.property -->
-
-                                        <div class="property span3">
-                                            <div class="image">
-                                                <div class="content">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}meforest/img/tmp/property-small-5.png" alt="">
-                                                </div><!-- /.content -->
-
-                                                <div class="price">1 250 000€</div><!-- /.price -->
-                                                <div class="reduced">Reduced </div><!-- /.reduced -->
-                                            </div><!-- /.image -->
-
-                                            <div class="title">
-                                                <h2><a href="detail.html">27523 Pacific Coast</a></h2>
-                                            </div><!-- /.title -->
-
-                                            <div class="location">Palo Alto CA</div><!-- /.location -->
-                                            <div class="area">
-                                                <span class="key">Area:</span><!-- /.key -->
-                                                <span class="value">120</span><!-- /.value -->
-                                            </div><!-- /.area -->
-                                            <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
-                                            <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->
-                                        </div><!-- /.property -->
-
-                                        <div class="property span3">
-                                            <div class="image">
-                                                <div class="content">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}meforest/img/tmp/property-small-6.png" alt="">
-                                                </div><!-- /.content -->
-
-                                                <div class="price">1 250 000€</div><!-- /.price -->
-                                                <div class="reduced">Reduced </div><!-- /.reduced -->
-                                            </div><!-- /.image -->
-
-                                            <div class="title">
-                                                <h2><a href="detail.html">27523 Pacific Coast</a></h2>
-                                            </div><!-- /.title -->
-
-                                            <div class="location">Palo Alto CA</div><!-- /.location -->
-                                            <div class="area">
-                                                <span class="key">Area:</span><!-- /.key -->
-                                                <span class="value">120</span><!-- /.value -->
-                                            </div><!-- /.area -->
-                                            <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
-                                            <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->
-                                        </div><!-- /.property -->
+                                        <% } %>
                                     </div><!-- /.row -->
                                 </div><!-- /.properties-grid -->
                             </div>
                             <div class="sidebar span3">
-                                <div class="widget our-agents">
-                                    <div class="title">
-                                        <h2>Контакты</h2>
-                                    </div><!-- /.title -->
-
-                                    <div class="content">
-                                        <div class="agent">
-                                            <div class="image">
-                                                <img src="${res}meforest/img/photos/emma-small.png" alt="">
-                                            </div><!-- /.image -->
-                                            <div class="name">Victoria Summer</div><!-- /.name -->
-                                            <div class="phone">333-666-777</div><!-- /.phone -->
-                                            <div class="email"><a href="mailto:victoria@example.com">victoria@example.com</a></div><!-- /.email -->
-                                        </div><!-- /.agent -->
-
-                                        <div class="agent">
-                                            <div class="image">
-                                                <img src="${res}meforest/img/photos/john-small.png" alt="">
-                                            </div><!-- /.image -->
-                                            <div class="name">John Doe</div><!-- /.name -->
-                                            <div class="phone">111-222-333</div><!-- /.phone -->
-                                            <div class="email"><a href="mailto:john.doe@example.com">victoria@example.com</a></div><!-- /.email -->
-                                        </div><!-- /.agent -->
-                                    </div><!-- /.content -->
-                                </div><!-- /.our-agents -->
                                 <div class="hidden-tablet">
                                     <div class="widget properties last">
                                         <div class="title">
@@ -449,73 +246,24 @@ window.billboards = [
                                         </div><!-- /.title -->
 
                                         <div class="content">
+                                            <% for(int i=0; i<4; i++) { %>
                                             <div class="property">
                                                 <div class="image">
-                                                    <a href="detail.html"></a>
+                                                    <a href="" id="side_details_<%=i%>"></a>
                                                     <img src="${res}meforest/img/tmp/property-small-4.png" alt="">
                                                 </div><!-- /.image -->
 
                                                 <div class="wrapper">
                                                     <div class="title">
                                                         <h3>
-                                                            <a href="detail.html">27523 Pacific Coast</a>
+                                                            <a href="detail.html" id="side_name_<%=i%>">27523 Pacific Coast</a>
                                                         </h3>
                                                     </div><!-- /.title -->
-                                                    <div class="location">Palo Alto CA</div><!-- /.location -->
-                                                    <div class="price">€2 300 000</div><!-- /.price -->
+                                                    <div class="location" id="side_city_<%=i%>">Palo Alto CA</div><!-- /.location -->
+                                                    <div class="price" id="side_price_<%=i%>">€2 300 000</div><!-- /.price -->
                                                 </div><!-- /.wrapper -->
                                             </div><!-- /.property -->
-
-                                            <div class="property">
-                                                <div class="image">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}meforest/img/tmp/property-small-5.png" alt="">
-                                                </div><!-- /.image -->
-
-                                                <div class="wrapper">
-                                                    <div class="title">
-                                                        <h3>
-                                                            <a href="detail.html">27523 Pacific Coast</a>
-                                                        </h3>
-                                                    </div><!-- /.title -->
-                                                    <div class="location">Palo Alto CA</div><!-- /.location -->
-                                                    <div class="price">€2 300 000</div><!-- /.price -->
-                                                </div><!-- /.wrapper -->
-                                            </div><!-- /.property -->
-
-                                            <div class="property">
-                                                <div class="image">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}meforest/img/tmp/property-small-6.png" alt="">
-                                                </div><!-- /.image -->
-
-                                                <div class="wrapper">
-                                                    <div class="title">
-                                                        <h3>
-                                                            <a href="detail.html">27523 Pacific Coast</a>
-                                                        </h3>
-                                                    </div><!-- /.title -->
-                                                    <div class="location">Palo Alto CA</div><!-- /.location -->
-                                                    <div class="price">€2 300 000</div><!-- /.price -->
-                                                </div><!-- /.wrapper -->
-                                            </div><!-- /.property -->
-
-                                            <div class="property">
-                                                <div class="image">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}meforest/img/tmp/property-small-2.png" alt="">
-                                                </div><!-- /.image -->
-
-                                                <div class="wrapper">
-                                                    <div class="title">
-                                                        <h3>
-                                                            <a href="detail.html">27523 Pacific Coast</a>
-                                                        </h3>
-                                                    </div><!-- /.title -->
-                                                    <div class="location">Palo Alto CA</div><!-- /.location -->
-                                                    <div class="price">€2 300 000</div><!-- /.price -->
-                                                </div><!-- /.wrapper -->
-                                            </div><!-- /.property -->
+                                            <% } %>
                                         </div><!-- /.content -->
                                     </div><!-- /.properties -->
                                 </div>
@@ -588,7 +336,7 @@ window.billboards = [
                                                 <a href="detail.html">27523 Pacific Coast</a>
                                             </h3>
                                         </div><!-- /.title -->
-                                        <div class="location">Palo Alto CA</div><!-- /.location -->
+                                        <div class="location"></div><!-- /.location -->
                                         <div class="price">€2 300 000</div><!-- /.price -->
                                     </div><!-- /.wrapper -->
                                 </div><!-- /.property -->
@@ -754,13 +502,55 @@ window.billboards = [
 <script type="text/javascript" src="${res}/bootstrap/js/bootstrap-dialog.min.js"></script>
 
 <script>
+    function change_location() {
+        // cмена центра карты при смене города
+        center = $("#inputLocation").val().split(",");
+        window.map.setCenter(new google.maps.LatLng(center[0], center[1]))
+        init_main_elements();
+    }
+    function init_main_elements() {
+        // Горячие предложения
+        filtered_bb_list = filter_bb()
+        for(i=0; i<6; i++) {
+            if(filtered_bb_list.length == 0) break;
+
+            bb = filtered_bb_list[i % filtered_bb_list.length];
+            $("#price_" + i).html(bb.price + " p.");
+            $("#city_" + i).html(bb.city);
+            $("#type_" + i).html(bb.type);
+            $("#details_" + i).attr("href", "bb/" + bb.id + "/");
+            nameEl = $("#name_" + i);
+            nameEl.html(bb.address);
+            nameEl.attr("href", "bb/" + bb.id + "/");
+
+            $("#side_price_" + i).html(bb.price + " p.");
+            $("#side_city_" + i).html(bb.city);
+            $("#side_details_" + i).attr("href", "bb/" + bb.id + "/");
+            nameEl = $("#side_name_" + i);
+            nameEl.html(bb.address);
+            nameEl.attr("href", "bb/" + bb.id + "/")
+        }
+    }
+    function filter_bb() {
+        return billboards.filter(function(bb) {
+            allWord = "Все";
+            if(bb.city !=  $("#inputLocation").find("option:selected").text()) return false;
+
+            type = $("#inputType").find("option:selected").text();
+            if(type != allWord && type != bb.type) return false;
+
+            format = $("#inputFormat").find("option:selected").text();
+            if(format != allWord && format != bb.format) return false;
+
+            return true;
+        });
+    }
     $(function () {
         // cмена центра карты при смене города
-        $("#inputLocation").change(function () {
-            center = $("#inputLocation").val().split(",");
-            window.map.setCenter(new google.maps.LatLng(center[0], center[1]))
-        });
-
+        $("#inputLocation").change(change_location);
+        $("#inputType").change(change_location);
+        $("#inputFormat").change(change_location);
+        init_main_elements();
         // сообщения
         var title = "Информация"
         var type =  BootstrapDialog.SUCCESS;
