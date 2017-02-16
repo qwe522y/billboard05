@@ -296,7 +296,7 @@ window.billboards = [
                             </div><!-- /.item -->
                         </div><!-- /.bottom-inner -->
                     </div><!-- /.bottom -->
-                </div><!-- /.bottom-wrapper -->    </div><!-- /#content -->
+                </div><!-- /.bottom-wrapper -->
         </div><!-- /#wrapper-inner -->
 
         <div id="footer-wrapper">
