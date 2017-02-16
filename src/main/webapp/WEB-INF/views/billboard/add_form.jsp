@@ -170,7 +170,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label" for="rentField">ширина</label>
+                                    <label class="col-sm-3 control-label" for="rentField">Ширина</label>
                                     <div class="col-sm-9">
                                         <input name="width" id="widthField" type="number" placeholder="введите ширину поверхности" class="form-control" required/>
                                     </div>
@@ -178,7 +178,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label" for="heightField">Высота</label>
                                     <div class="col-sm-9">
-                                        <input name="rent" id="heightField" type="number" placeholder="введите высоту поверхности" class="form-control" required/>
+                                        <input name="height" id="heightField" type="number" placeholder="введите высоту поверхности" class="form-control" required/>
                                     </div>
                                 </div>
                                 <sf:hidden path="location" id="locationField"/>

@@ -2,6 +2,7 @@ package com.sotas.billboard05.controller;
 
 import com.sotas.billboard05.SessionMsg;
 import com.sotas.billboard05.dto.TimetableSideDto;
+import com.sotas.billboard05.entity.Billboard;
 import com.sotas.billboard05.entity.BillboardSide;
 import com.sotas.billboard05.entity.Contract;
 import com.sotas.billboard05.entity.Timetable;
@@ -80,10 +81,13 @@ public class MainController {
             BigDecimal rent = e.getBbSide().getRent();
             if(rent.compareTo(minRent) < 0) minRent = rent;
         };
+        Billboard bb = billboardService.get(bbId);
         model.addAttribute("minRent", minRent);
         model.addAttribute("sides", sidesDto);
         model.addAttribute("months", Utils.genMonth(new Date(), 6));
-        model.addAttribute("billboard", billboardService.get(bbId));
+        model.addAttribute("billboard", bb);
+        model.addAttribute("bbFormat", billboardFormatRepository.get(bb.getFormatId()).getName().toLowerCase());
+        model.addAttribute("light", bb.isLight() ? "есть" : "нет");
         return "bb_detail";
     }
 

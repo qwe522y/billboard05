@@ -92,7 +92,7 @@
                                             <a href="#nav" class="hidden-desktop" id="btn-nav">Toggle navigation</a>
 
                                             <div class="logo">
-                                                <a href="index.html" title="Home">
+                                                <a href="${root}" title="Home">
                                                     <img src="${res}meforest/img/logo.png" alt="Home">
                                                 </a>
                                             </div><!-- /.logo -->
@@ -150,7 +150,7 @@
 
                             <div class="carousel property">
                                 <div class="preview">
-                                    <img src="${res}meforest/img/tmp/property-large-1.jpg" alt="">
+                                    <img src="${res}photo/${billboard.id}/0.jpg" alt="">
                                 </div><!-- /.preview -->
 
                                 <div class="content">
@@ -159,46 +159,28 @@
                                     <a class="carousel-next" href="#">Next</a>
                                     <ul>
                                         <li class="active">
-                                            <img src="${res}meforest/img/tmp/property-large-1.jpg" alt="">
+                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
                                         </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-2.jpg" alt="">
+                                        <li class="active">
+                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
                                         </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-3.jpg" alt="">
+                                        <li class="active">
+                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
                                         </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-4.jpg" alt="">
+                                        <li class="active">
+                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
                                         </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-1.jpg" alt="">
+                                        <li class="active">
+                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
                                         </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-2.jpg" alt="">
+                                        <li class="active">
+                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
                                         </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-3.jpg" alt="">
+                                        <li class="active">
+                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
                                         </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-4.jpg" alt="">
-                                        </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-1.jpg" alt="">
-                                        </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-2.jpg" alt="">
-                                        </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-3.jpg" alt="">
-                                        </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-4.jpg" alt="">
-                                        </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-1.jpg" alt="">
-                                        </li>
-                                        <li>
-                                            <img src="${res}meforest/img/tmp/property-large-2.jpg" alt="">
+                                        <li class="active">
+                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
                                         </li>
                                     </ul>
                                 </div>
@@ -264,7 +246,7 @@
                                 <div class="content">
                                     <div class="agent">
                                         <div class="image">
-                                            <img src="${res}png/rub_icon.png" alt="">
+                                            <img src="${res}png/rub_icon.png" alt="" width="64px" height="64px">
                                         </div><!-- /.image -->
                                         <div class="name">${minRent} руб.</div><!-- /.name -->
                                         <div class="email">* стоимость одной поверхности</div><!-- /.email -->
@@ -281,8 +263,9 @@
                                         <div class="image">
                                             <img src="${res}png/width.png" alt="">
                                         </div><!-- /.image -->
-                                        <div class="name">${minRent} руб.</div><!-- /.name -->
-                                        <div class="email">* стоимость одной поверхности</div><!-- /.email -->
+                                        <div class="email">&nbsp;</div><!-- /.email -->
+                                        <div class="name">Ширина: ${billboard.width} м</div><!-- /.name -->
+                                        <div class="email">&nbsp;</div><!-- /.email -->
                                     </div><!-- /.agent -->
                                 </div><!-- /.content -->
                                 <div class="content">
@@ -290,8 +273,9 @@
                                         <div class="image">
                                             <img src="${res}png/height.png" alt="">
                                         </div><!-- /.image -->
-                                        <div class="name">${minRent} руб.</div><!-- /.name -->
-                                        <div class="email">* стоимость одной поверхности</div><!-- /.email -->
+                                        <div class="email">&nbsp;</div><!-- /.email -->
+                                        <div class="name">Высота: ${billboard.height} м</div><!-- /.name -->
+                                        <div class="email">&nbsp;</div><!-- /.email -->
                                     </div><!-- /.agent -->
                                 </div><!-- /.content -->
                                 <div class="content">
@@ -299,8 +283,9 @@
                                         <div class="image">
                                             <img src="${res}png/light.png" alt="">
                                         </div><!-- /.image -->
-                                        <div class="name">${minRent} руб.</div><!-- /.name -->
-                                        <div class="email">* стоимость одной поверхности</div><!-- /.email -->
+                                        <div class="email">&nbsp;</div><!-- /.email -->
+                                        <div class="name">Освещение: ${light}</div><!-- /.name -->
+                                        <div class="email">&nbsp;</div><!-- /.email -->
                                     </div><!-- /.agent -->
                                 </div><!-- /.content -->
                                 <div class="content">
@@ -308,8 +293,9 @@
                                         <div class="image">
                                             <img src="${res}png/format.png" alt="">
                                         </div><!-- /.image -->
-                                        <div class="name">${minRent} руб.</div><!-- /.name -->
-                                        <div class="email">* стоимость одной поверхности</div><!-- /.email -->
+                                        <div class="email">&nbsp;</div><!-- /.email -->
+                                        <div class="name">Формат: ${bbFormat}</div><!-- /.name -->
+                                        <div class="email">&nbsp;</div><!-- /.email -->
                                     </div><!-- /.agent -->
                                 </div><!-- /.content -->
                             </div><!-- /.our-agents -->
