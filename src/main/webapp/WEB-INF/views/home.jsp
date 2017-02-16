@@ -256,11 +256,11 @@ window.billboards = [
                                                 <div class="wrapper">
                                                     <div class="title">
                                                         <h3>
-                                                            <a href="detail.html" id="side_name_<%=i%>">27523 Pacific Coast</a>
+                                                            <a href="detail.html" id="side_name_<%=i%>"></a>
                                                         </h3>
                                                     </div><!-- /.title -->
-                                                    <div class="location" id="side_city_<%=i%>">Palo Alto CA</div><!-- /.location -->
-                                                    <div class="price" id="side_price_<%=i%>">€2 300 000</div><!-- /.price -->
+                                                    <div class="location" id="side_city_<%=i%>"></div><!-- /.location -->
+                                                    <div class="price" id="side_price_<%=i%>"></div><!-- /.price -->
                                                 </div><!-- /.wrapper -->
                                             </div><!-- /.property -->
                                             <% } %>

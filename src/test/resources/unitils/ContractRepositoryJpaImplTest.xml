@@ -1,7 +1,7 @@
 <dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
-    <billboards id="1" agent_id="999" city_id="1" format_id="1" light="1" owner_id="1" type_id="1"/>
-    <billboards id="2" agent_id="999" city_id="1" format_id="1" light="1" owner_id="1" type_id="1"/>
-    <billboards id="3" agent_id="1000" city_id="1" format_id="1" light="1" owner_id="1" type_id="1"/>
+    <billboards id="1" agent_id="999" city_id="1" format_id="1" light="1" owner_id="1" type_id="1"  width="0" height="0"/>
+    <billboards id="2" agent_id="999" city_id="1" format_id="1" light="1" owner_id="1" type_id="1"  width="0" height="0"/>
+    <billboards id="3" agent_id="1000" city_id="1" format_id="1" light="1" owner_id="1" type_id="1"  width="0" height="0"/>
 
     <billboard_sides id="98" rent="100.00" surface_count="3" billboard_id="1"/>
     <billboard_sides id="99" rent="100.00" surface_count="3" billboard_id="2"/>

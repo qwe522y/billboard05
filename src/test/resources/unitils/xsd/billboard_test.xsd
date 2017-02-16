@@ -32,10 +32,12 @@
 		<xsd:attribute name="light" use="optional" />
 		<xsd:attribute name="type_id" use="optional" />
 		<xsd:attribute name="owner_id" use="optional" />
+		<xsd:attribute name="width" use="optional" />
 		<xsd:attribute name="format_id" use="optional" />
 		<xsd:attribute name="location" use="optional" />
 		<xsd:attribute name="id" use="optional" />
 		<xsd:attribute name="city_id" use="optional" />
+		<xsd:attribute name="height" use="optional" />
 	</xsd:complexType>
 	<xsd:complexType name="timetables__type">
 		<xsd:attribute name="surface" use="optional" />

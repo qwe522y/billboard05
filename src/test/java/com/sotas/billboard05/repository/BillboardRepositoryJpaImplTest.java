@@ -6,7 +6,6 @@ import org.unitils.dbunit.annotation.DataSet;
 import org.unitils.dbunit.annotation.ExpectedDataSet;
 import org.unitils.spring.annotation.SpringBeanByType;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -19,7 +18,7 @@ public class BillboardRepositoryJpaImplTest extends AbstractRepositoryTest {
     @DataSet
     @ExpectedDataSet
     public void addWithGenerationId() {
-        Billboard e = new Billboard(1, "Новый адрес", 1, 2, true, null, 5, 6);
+        Billboard e = new Billboard(1, "Новый адрес", 1, 2, true, null, 5, 6, 0, 0);
         Billboard e2 = txTemplate.execute(transactionStatus -> repository.add(e));
         assertNotEquals(0, e2.getId());
     }

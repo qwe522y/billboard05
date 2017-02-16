@@ -20,11 +20,13 @@ public class Billboard {
     private int ownerId;
     @Column(name = "agent_id")
     private int agentId;
+    private int width;
+    private int height;
 
     public Billboard() {
     }
 
-    public Billboard(int cityId, String address, int typeId, int formatId, boolean light, String location, int ownerId, int agentId) {
+    public Billboard(int cityId, String address, int typeId, int formatId, boolean light, String location, int ownerId, int agentId, int width, int height) {
         this.cityId = cityId;
         this.address = address;
         this.typeId = typeId;
@@ -33,6 +35,8 @@ public class Billboard {
         this.location = location;
         this.ownerId = ownerId;
         this.agentId = agentId;
+        this.width = width;
+        this.height = height;
     }
 
     @Override
@@ -47,13 +51,15 @@ public class Billboard {
                 ", location='" + location + '\'' +
                 ", ownerId=" + ownerId +
                 ", agentId=" + agentId +
+                ", width=" + width +
+                ", height=" + height +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Billboard)) return false;
 
         Billboard billboard = (Billboard) o;
 
@@ -64,6 +70,8 @@ public class Billboard {
         if (light != billboard.light) return false;
         if (ownerId != billboard.ownerId) return false;
         if (agentId != billboard.agentId) return false;
+        if (width != billboard.width) return false;
+        if (height != billboard.height) return false;
         if (address != null ? !address.equals(billboard.address) : billboard.address != null) return false;
         return location != null ? location.equals(billboard.location) : billboard.location == null;
 
@@ -80,6 +88,8 @@ public class Billboard {
         result = 31 * result + (location != null ? location.hashCode() : 0);
         result = 31 * result + ownerId;
         result = 31 * result + agentId;
+        result = 31 * result + width;
+        result = 31 * result + height;
         return result;
     }
 
@@ -153,5 +163,21 @@ public class Billboard {
 
     public void setAgentId(int agentId) {
         this.agentId = agentId;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 }

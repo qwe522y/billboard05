@@ -75,7 +75,7 @@ public class MainController {
         for(BillboardSide side : sides) {
             sidesDto.add(timetableService.getByBillboardSide(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), side.getId()));
         }
-        BigDecimal minRent = sidesDto.get(0).getBbSide().getRent();
+        BigDecimal minRent = sidesDto.size() == 0 ? BigDecimal.ZERO : sidesDto.get(0).getBbSide().getRent();
         for(TimetableSideDto e : sidesDto) {
             BigDecimal rent = e.getBbSide().getRent();
             if(rent.compareTo(minRent) < 0) minRent = rent;

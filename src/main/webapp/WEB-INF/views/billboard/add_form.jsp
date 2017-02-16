@@ -169,6 +169,18 @@
                                         <input name="rent" id="rentField" type="number" placeholder="введите месячную стоимость" class="form-control" required/>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="rentField">ширина</label>
+                                    <div class="col-sm-9">
+                                        <input name="width" id="widthField" type="number" placeholder="введите ширину поверхности" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="heightField">Высота</label>
+                                    <div class="col-sm-9">
+                                        <input name="rent" id="heightField" type="number" placeholder="введите высоту поверхности" class="form-control" required/>
+                                    </div>
+                                </div>
                                 <sf:hidden path="location" id="locationField"/>
                             </div>
                             <!-- /.box-body -->
