@@ -130,11 +130,11 @@
                         <div class="navigation clearfix-normal">
 
                             <ul class="nav">
-                                <li><a href="contact-us.html">Главная</a></li>
-                                <li><a href="contact-us.html">Список</a></li>
-                                <li><a href="contact-us.html">Как это работает</a></li>
-                                <li><a href="contact-us.html">Стать партнером</a></li>
-                                <li><a href="contact-us.html">Контакты</a></li>
+                                <li><a href="${root}">Главная</a></li>
+                                <li><a href="${root}">Список</a></li>
+                                <li><a href="${root}">Как это работает</a></li>
+                                <li><a href="${root}">Стать партнером</a></li>
+                                <li><a href="${root}">Контакты</a></li>
                             </ul><!-- /.nav -->
                         </div><!-- /.navigation -->
                     </div><!-- /.navigation-wrapper -->
@@ -505,6 +505,7 @@
 <script type="text/javascript" src="${res}meforest/libraries/chosen/chosen.jquery.min.js"></script>
 <script type="text/javascript" src="${res}meforest/libraries/iosslider/_src/jquery.iosslider.min.js"></script>
 <script type="text/javascript" src="${res}meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="${res}/js/bb_detail.js"></script>
 <script type="text/javascript" src="${res}meforest/js/realia.js"></script>
 <script type="text/javascript" src="${res}/bootstrap/js/bootstrap-dialog.min.js"></script>
 </body>

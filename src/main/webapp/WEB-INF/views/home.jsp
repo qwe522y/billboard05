@@ -19,15 +19,16 @@
     <link rel="stylesheet" href="${res}meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
     <link rel="stylesheet" href="${res}meforest/libraries/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
     <link rel="stylesheet" href="${res}meforest/css/realia-blue.css" type="text/css" id="color-variant-default">
-    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
     <link href="${res}/bootstrap/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
     <title>Realia | HTML Template</title>
-    <script>
+    <script type="text/javascript">
 window.myrespath = "${res}";
 
 window.billboards = [
 <c:forEach items="${billboards}" var="i">
-    {"id": ${i.e.id}, "position": [${i.e.location}], "address": "${i.e.address}", "price": "${minRentMap[i.e.id]}", "type": "${i.type.name}", "format": "${i.format.name}", "city": "${i.city.name}"},
+    {"id": ${i.e.id}, "position": [${i.e.location}], "address": "${i.e.address}", "price": "${minRentMap[i.e.id]}",
+        "type": "${i.type.name}", "format": "${i.format.name}", "city": "${i.city.name}",
+        "width": ${i.e.width}, "height": ${i.e.height}},
 </c:forEach>
 ];
     </script>
@@ -105,11 +106,11 @@ window.billboards = [
                         <div class="navigation clearfix-normal">
 
                             <ul class="nav">
-                                <li><a href="contact-us.html">Главная</a></li>
-                                <li><a href="contact-us.html">Список</a></li>
-                                <li><a href="contact-us.html">Как это работает</a></li>
-                                <li><a href="contact-us.html">Стать партнером</a></li>
-                                <li><a href="contact-us.html">Контакты</a></li>
+                                <li><a href="${root}">Главная</a></li>
+                                <li><a href="${root}">Список</a></li>
+                                <li><a href="${root}">Как это работает</a></li>
+                                <li><a href="${root}">Стать партнером</a></li>
+                                <li><a href="${root}">Контакты</a></li>
                             </ul><!-- /.nav -->
                         </div><!-- /.navigation -->
                     </div><!-- /.navigation-wrapper -->
@@ -231,8 +232,8 @@ window.billboards = [
                                             </div><!-- /.title -->
 
                                             <div class="location" id="city_<%=i%>"></div><!-- /.location -->
-                                            <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
-                                            <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->
+                                            <div class="bedrooms"><div class="content" style="background-image: url(${res}png/width.png)" id="width_<%=i%>"></div></div><!-- /.bedrooms -->
+                                            <div class="bathrooms"><div class="content" style="background-image: url(${res}png/height.png)" id="height_<%=i%>"></div></div><!-- /.bathrooms -->
                                         </div><!-- /.property -->
                                         <% } %>
                                     </div><!-- /.row -->
@@ -498,61 +499,12 @@ window.billboards = [
 <script type="text/javascript" src="${res}meforest/libraries/chosen/chosen.jquery.min.js"></script>
 <script type="text/javascript" src="${res}meforest/libraries/iosslider/_src/jquery.iosslider.min.js"></script>
 <script type="text/javascript" src="${res}meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="${res}js/home.js"></script>
 <script type="text/javascript" src="${res}meforest/js/realia.js"></script>
 <script type="text/javascript" src="${res}/bootstrap/js/bootstrap-dialog.min.js"></script>
 
-<script>
-    function change_location() {
-        // cмена центра карты при смене города
-        center = $("#inputLocation").val().split(",");
-        window.map.setCenter(new google.maps.LatLng(center[0], center[1]))
-        init_main_elements();
-    }
-    function init_main_elements() {
-        // Горячие предложения
-        filtered_bb_list = filter_bb()
-        for(i=0; i<6; i++) {
-            if(filtered_bb_list.length == 0) break;
-
-            bb = filtered_bb_list[i % filtered_bb_list.length];
-            $("#price_" + i).html(bb.price + " p.");
-            $("#city_" + i).html(bb.city);
-            $("#type_" + i).html(bb.type);
-            $("#details_" + i).attr("href", "bb/" + bb.id + "/");
-            $("#photo_" + i).attr("src", "${res}photo/" + bb.id + "/0.jpg" )
-            nameEl = $("#name_" + i);
-            nameEl.html(bb.address);
-            nameEl.attr("href", "bb/" + bb.id + "/");
-
-            $("#side_price_" + i).html(bb.price + " p.");
-            $("#side_city_" + i).html(bb.city);
-            $("#side_details_" + i).attr("href", "bb/" + bb.id + "/");
-            $("#side_photo_" + i).attr("src", "${res}photo/" + bb.id + "/0.jpg" )
-            nameEl = $("#side_name_" + i);
-            nameEl.html(bb.address);
-            nameEl.attr("href", "bb/" + bb.id + "/")
-        }
-    }
-    function filter_bb() {
-        return billboards.filter(function(bb) {
-            allWord = "Все";
-            if(bb.city !=  $("#inputLocation").find("option:selected").text()) return false;
-
-            type = $("#inputType").find("option:selected").text();
-            if(type != allWord && type != bb.type) return false;
-
-            format = $("#inputFormat").find("option:selected").text();
-            if(format != allWord && format != bb.format) return false;
-
-            return true;
-        });
-    }
+<script type="text/javascript">
     $(function () {
-        // cмена центра карты при смене города
-        $("#inputLocation").change(change_location);
-        $("#inputType").change(change_location);
-        $("#inputFormat").change(change_location);
-        init_main_elements();
         // сообщения
         var title = "Информация"
         var type =  BootstrapDialog.SUCCESS;
@@ -568,6 +520,5 @@ window.billboards = [
         }
     });
 </script>
-
 </body>
 </html>

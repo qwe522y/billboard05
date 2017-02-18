@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	InitCarousel();
+	//InitCarousel();
     InitPropertyCarousel();
 	InitOffCanvasNavigation();
 	InitMap();
@@ -392,8 +392,6 @@ function LoadMap() {
                     marker.infobox.isOpen = false;
                 }
             });
-
-
             if(curMarker.infobox.isOpen === false) {
                 curMarker.infobox.open(map, this);
                 curMarker.infobox.isOpen = true;
@@ -402,9 +400,12 @@ function LoadMap() {
                 curMarker.infobox.close();
                 curMarker.infobox.isOpen = false;
             }
-
         });
+        bb.marker = marker;
     });
+    if(window.afterInitMap) {
+        window.afterInitMap();
+    }
 }
 
 function InitMap() {
