@@ -23,6 +23,10 @@
     <title>Realia | HTML Template</title>
     <script type="text/javascript">
 window.myrespath = "${res}";
+window.absoluteMinRent = ${absoluteMinRent};
+window.absoluteMaxRent = ${absoluteMaxRent};
+window.inputPriceFrom_val = "${absoluteMinRent}";
+window.inputPriceTo_val = "${absoluteMaxRent}";
 
 window.billboards = [
 <c:forEach items="${billboards}" var="i">
@@ -506,9 +510,9 @@ window.billboards = [
 <script type="text/javascript">
     $(function () {
         // сообщения
-        var title = "Информация"
+        var title = "Информация";
         var type =  BootstrapDialog.SUCCESS;
-        var msg = "${msg.msg}"
+        var msg = "${msg.msg}";
         <% session.removeAttribute("msg"); %>
         if(msg.length > 0) {
             BootstrapDialog.alert({

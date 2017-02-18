@@ -54,6 +54,13 @@ function filter_bb() {
             bb.marker.setVisible(false);
             return false;
         }
+        console.log(bb.price , Number(window.inputPriceFrom_val) , bb.price , Number(window.inputPriceTo_val));
+        if(bb.price < Number(window.inputPriceFrom_val) || bb.price > Number(window.inputPriceTo_val)) {
+            bb.marker.marker.close();
+            bb.marker.setVisible(false);
+            return false;
+        }
+
         bb.marker.setVisible(true);
         bb.marker.marker.open(window.map, bb.marker);
         return true;
@@ -64,4 +71,16 @@ window.afterInitMap = function () {
     $("#inputType").change(refilter);
     $("#inputFormat").change(refilter);
     refilter();
+    window.setInterval(function () {
+        from = $("#inputPriceFrom").val();
+        to = $("#inputPriceTo").val();
+        if(window.inputPriceFrom_val != from || window.inputPriceTo_val != to) {
+            window.inputPriceFrom_val = from;
+            window.inputPriceTo_val = to;
+            console.log(from);
+            console.log(to);
+            console.log("--------------------");
+            refilter();
+        }
+    }, 700);
 };

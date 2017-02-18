@@ -44,13 +44,31 @@ public class MainController {
     @RequestMapping(method = RequestMethod.GET)
     public String home(Model model) {
         List<BillboardSide> sideList = billboardSideService.getAll();
-        Map<Integer, BigDecimal> minRent = new HashMap<>();
+        Map<Integer, BigDecimal> minRentMap = new HashMap<>();
+        BigDecimal absoluteMinRent = null;
         sideList.forEach(x -> {
-            if(!minRent.containsKey(x.getBillboardId()) || minRent.get(x.getBillboardId()).compareTo(x.getRent()) > 0) {
-                minRent.put(x.getBillboardId(), x.getRent());
+            if(!minRentMap.containsKey(x.getBillboardId()) || minRentMap.get(x.getBillboardId()).compareTo(x.getRent()) == 1) {
+                minRentMap.put(x.getBillboardId(), x.getRent());
             }
         });
-        model.addAttribute("minRentMap", minRent);
+        for(BigDecimal v : minRentMap.values()) {
+            if(absoluteMinRent == null || v.compareTo(absoluteMinRent) == -1) absoluteMinRent = v;
+        };
+
+        Map<Integer, BigDecimal> maxRentMap = new HashMap<>();
+        BigDecimal absoluteMaxRent = null;
+        sideList.forEach(x -> {
+            if(!maxRentMap.containsKey(x.getBillboardId()) || maxRentMap.get(x.getBillboardId()).compareTo(x.getRent()) == -1) {
+                maxRentMap.put(x.getBillboardId(), x.getRent());
+            }
+        });
+        for(BigDecimal v : maxRentMap.values()) {
+            if(absoluteMaxRent == null || v.compareTo(absoluteMaxRent) == 1) absoluteMaxRent = v;
+        };
+
+        model.addAttribute("absoluteMinRent", absoluteMinRent.setScale(0, BigDecimal.ROUND_DOWN));
+        model.addAttribute("absoluteMaxRent", absoluteMaxRent.setScale(0, BigDecimal.ROUND_DOWN));
+        model.addAttribute("minRentMap", minRentMap);
         model.addAttribute("billboards", billboardService.getAll());
         model.addAttribute("cities", cityRepository.getAll());
         model.addAttribute("billboardTypes", billboardTypeRepository.getAll());

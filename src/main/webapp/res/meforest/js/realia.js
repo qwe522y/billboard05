@@ -175,17 +175,17 @@ function InitAccordion() {
 }
 
 function InitPriceSlider() {
-    jQuery('.price-value .from').text(100);
+    jQuery('.price-value .from').text( window.absoluteMinRent);
     jQuery('.price-value .from').currency({ region: 'RUB', thousands: ' ', decimal: ',', decimals: 0 });
 
-    jQuery('.price-value .to').text(1000000);
+    jQuery('.price-value .to').text(window.absoluteMaxRent);
     jQuery('.price-value .to').currency({ region: 'RUB', thousands: ' ', decimal: ',', decimals: 0 });
 
     $('.property-filter .price-slider').slider({
         range: true,
-        min: 100,
-        max: 1000000,
-        values: [100, 1000000],
+        min: window.absoluteMinRent,
+        max: window.absoluteMaxRent,
+        values: [window.absoluteMinRent, window.absoluteMaxRent],
         slide: function(event, ui) {
             jQuery('.property-filter .price-from input').attr('value', ui.values[0]);
             jQuery('.property-filter .price-to input').attr('value', ui.values[1]);
