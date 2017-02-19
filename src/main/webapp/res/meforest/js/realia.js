@@ -348,10 +348,10 @@ function LoadMap() {
         });
 
 	    var myOptions = {
-	        content: '<div class="infobox"><div class="image"><img src="' + window.myrespath + '/photo/' + bb.id + '/0.jpg" alt="" height="100" width="74"></div><div class="title"><a href="detail.html">' + //100 74
+	        content: '<div class="infobox"><div class="image"><img src="' + window.myrespath + '/photo/' + bb.id + '/0.png" alt="" height="100" width="74"></div><div class="title"><a href="detail.html">' + //100 74
             bb.address + '</a></div>' +
-            '<div class="area"><span class="key">Тип:</span><span class="value">' + bb.type + '</span></div>' +
-            '<div class="area"><span class="key">Формат:</span><span class="value">' + bb.format + '</span></div>' + '' +
+            '<div class="area"><span class="key">Тип:</span><span class="value">&nbsp;' + bb.type.toLowerCase() + '</span></div>' +
+            '<div class="area"><span class="key">Формат:</span><span class="value">&nbsp;' + bb.format.toLowerCase() + '</span></div>' + '' +
             '<div class="price">' + bb.price +' руб.</div><div class="link"><a href="bb/' + bb.id +'">Подробнее...</a></div></div>',
 
 	        disableAutoPan: false,

@@ -78,7 +78,7 @@ window.billboards = [
                                             </div><!-- /.logo -->
 
                                             <div class="site-name">
-                                                <a href="/" title="Home" class="brand">Realia</a>
+                                                <a href="${root}" class="brand">Realia</a>
                                             </div><!-- /.site-name -->
 
                                             <div class="site-slogan">

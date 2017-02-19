@@ -15,7 +15,7 @@ function refilter() {
         $("#city_" + i).html(bb.city);
         $("#type_" + i).html(bb.type);
         $("#details_" + i).attr("href", "bb/" + bb.id + "/");
-        $("#photo_" + i).attr("src", window.myrespath + "photo/" + bb.id + "/0.jpg" )
+        $("#photo_" + i).attr("src", window.myrespath + "photo/" + bb.id + "/0.png" )
         nameEl = $("#name_" + i);
         nameEl.html(bb.address);
         nameEl.attr("href", "bb/" + bb.id + "/");
@@ -25,7 +25,7 @@ function refilter() {
         $("#height_" + i).html(bb.height);
         $("#width_" + i).html(bb.width);
         $("#side_details_" + i).attr("href", "bb/" + bb.id + "/");
-        $("#side_photo_" + i).attr("src", window.myrespath + "photo/" + bb.id + "/0.jpg" )
+        $("#side_photo_" + i).attr("src", window.myrespath + "photo/" + bb.id + "/0.png" )
         nameEl = $("#side_name_" + i);
         nameEl.html(bb.address);
         nameEl.attr("href", "bb/" + bb.id + "/")

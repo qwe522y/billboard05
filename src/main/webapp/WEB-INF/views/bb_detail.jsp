@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="${res}meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
     <link rel="stylesheet" href="${res}meforest/libraries/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
     <link rel="stylesheet" href="${res}meforest/css/realia-blue.css" type="text/css" id="color-variant-default">
-    <link rel="stylesheet" href="#" type="text/css" id="color-variant">
     <link href="${res}/bootstrap/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
     <title>Realia | HTML Template</title>
     <script>
@@ -98,7 +97,7 @@
                                             </div><!-- /.logo -->
 
                                             <div class="site-name">
-                                                <a href="/" title="Home" class="brand">Realia</a>
+                                                <a href="${root}" title="На главную" class="brand">Realia</a>
                                             </div><!-- /.site-name -->
 
                                             <div class="site-slogan">
