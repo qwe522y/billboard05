@@ -61,8 +61,10 @@ function filter_bb() {
             return false;
         }
 
-        bb.marker.setVisible(true);
-        bb.marker.marker.open(window.map, bb.marker);
+        if(bb.marker.visible == false) {
+            bb.marker.setVisible(true);
+            bb.marker.marker.open(window.map, bb.marker);
+        }
         return true;
     });
 }
@@ -77,10 +79,8 @@ window.afterInitMap = function () {
         if(window.inputPriceFrom_val != from || window.inputPriceTo_val != to) {
             window.inputPriceFrom_val = from;
             window.inputPriceTo_val = to;
-            console.log(from);
-            console.log(to);
-            console.log("--------------------");
+            console.log("rent filter from",from, "to", to );
             refilter();
         }
-    }, 700);
+    }, 500);
 };

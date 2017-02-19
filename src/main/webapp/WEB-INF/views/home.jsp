@@ -179,7 +179,7 @@ window.billboards = [
                                                         Price from
                                                     </label>
                                                     <div class="controls">
-                                                        <input type="text" id="inputPriceFrom" name="inputPriceFrom">
+                                                        <input type="text" id="inputPriceFrom" name="inputPriceFrom" value="${absoluteMinRent}">
                                                     </div><!-- /.controls -->
                                                 </div><!-- /.control-group -->
 
@@ -188,7 +188,7 @@ window.billboards = [
                                                         Price to
                                                     </label>
                                                     <div class="controls">
-                                                        <input type="text" id="inputPriceTo" name="inputPriceTo">
+                                                        <input type="text" id="inputPriceTo" name="inputPriceTo" value="${absoluteMaxRent}">
                                                     </div><!-- /.controls -->
                                                 </div><!-- /.control-group -->
 
