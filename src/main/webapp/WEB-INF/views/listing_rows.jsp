@@ -94,18 +94,17 @@ window.billboards = [
                                             <div class="body span6">
                                                 <div class="title-price row">
                                                     <div class="title span4">
-                                                        <h2><a href="detail.html" id="name_<%=i %>">27523 Pacific Coast</a></h2>
+                                                        <h2><a href="detail.html" id="name_<%=i %>"></a></h2>
                                                     </div><!-- /.title -->
 
                                                     <div class="price" id="price_<%=i %>">
-                                                        1 250 000€
                                                     </div><!-- /.price -->
                                                 </div><!-- /.title -->
 
-                                                <div class="location" id="city_<%=i %>">Palo Alto CA</div><!-- /.location -->
+                                                <div class="location" id="city_<%=i %>"></div><!-- /.location -->
                                                 <p>Etiam at ante id enim dictum posuere id vel est. Praesent at massa quis risus cursus tristique vel non orci. Phasellus ut nisi non odio</p>
-                                                <div class="bedrooms"><div class="content" style="background-image: url(${res}png/width.png)" id="width_<%=i%>"></div></div><!-- /.bedrooms -->
-                                                <div class="bathrooms"><div class="content" style="background-image: url(${res}png/height.png)" id="height_<%=i%>"></div></div><!-- /.bathrooms -->
+                                                <div class="bedrooms" style="background-image: url(${res}png/width.png)"><div class="content" id="width_<%=i%>"></div></div><!-- /.bedrooms -->
+                                                <div class="bathrooms" style="background-image: url(${res}png/height.png)"><div class="content" id="height_<%=i%>"></div></div><!-- /.bathrooms -->
                                             </div><!-- /.body -->
                                         </div><!-- /.property -->
                                     </div><!-- /.row -->
