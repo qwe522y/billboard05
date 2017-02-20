@@ -76,6 +76,12 @@ public class MainController {
         return "home";
     }
 
+    @RequestMapping(value = "list")
+    public String listView(Model model) {
+        home(model);
+        return "listing_rows";
+    }
+
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login() {
         return "login";

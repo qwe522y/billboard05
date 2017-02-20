@@ -12,4 +12,3 @@
 <c:set var="projectTitle" value="MarketBil" scope="application"/>
 <c:set var="projectTitleShort" value="MBil" scope="application"/>
 
-
