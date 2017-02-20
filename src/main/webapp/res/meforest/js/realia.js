@@ -328,6 +328,7 @@ function LoadMapProperty() {
 }
 */
 function LoadMap() {
+    console.log("init map");
 	var mapOptions = {
 		center: new google.maps.LatLng(42.975182, 47.503995),
 		zoom: 14,
@@ -409,6 +410,9 @@ function LoadMap() {
 }
 
 function InitMap() {
-	google.maps.event.addDomListener(window, 'load', LoadMap);
-    //google.maps.event.addDomListener(window, 'load', LoadMapProperty);
+    if($("#map").length > 0) {
+	    google.maps.event.addDomListener(window, 'load', LoadMap);
+    } else {
+        console.log("no map")
+    }
 }

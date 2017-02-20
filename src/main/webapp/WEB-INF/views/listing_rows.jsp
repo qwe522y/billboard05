@@ -12,13 +12,13 @@
     <meta name="author" content="Aviators - byaviators.com">
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="${res}/meforest/img/favicon.png" type="image/png">
-    <link rel="stylesheet" href="${res}/meforest/css/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="${res}/meforest/css/bootstrap-responsive.css" type="text/css">
-    <link rel="stylesheet" href="${res}/meforest/libraries/chosen/chosen.css" type="text/css">
-    <link rel="stylesheet" href="${res}/meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
-    <link rel="stylesheet" href="${res}/meforest/libraries/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
-    <link rel="stylesheet" href="${res}/meforest/css/realia-blue.css" type="text/css" id="color-variant-default">
+    <link rel="shortcut icon" href="${res}meforest/img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="${res}meforest/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="${res}meforest/css/bootstrap-responsive.css" type="text/css">
+    <link rel="stylesheet" href="${res}meforest/libraries/chosen/chosen.css" type="text/css">
+    <link rel="stylesheet" href="${res}meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.css" type="text/css">
+    <link rel="stylesheet" href="${res}meforest/libraries/jquery-ui-1.10.2.custom/css/ui-lightness/jquery-ui-1.10.2.custom.min.css" type="text/css">
+    <link rel="stylesheet" href="${res}meforest/css/realia-blue.css" type="text/css" id="color-variant-default">
     <title>Служба рекламы</title>
     <script type="text/javascript">
 window.myrespath = "${res}";
@@ -82,134 +82,35 @@ window.billboards = [
                                     </div><!-- /.filter -->
                                 </div><!-- /.properties-rows -->                <div class="properties-rows">
                                 <div class="row">
-                                    <div class="property span9">
+                                    <%for(int i=0; i<5; i++) { %>
+                                    <div class="property span9" id="bb_row_<%=i %>">
                                         <div class="row">
                                             <div class="image span3">
                                                 <div class="content">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}/meforest/img/tmp/property-small-1.png" alt="">
+                                                    <a href="detail.html" id="detail_<%=i %>"></a>
+                                                    <img id="photo_<%=i %>"src="${res}meforest/img/tmp/property-small-1.png" alt="">
                                                 </div><!-- /.content -->
                                             </div><!-- /.image -->
 
                                             <div class="body span6">
                                                 <div class="title-price row">
                                                     <div class="title span4">
-                                                        <h2><a href="detail.html">27523 Pacific Coast</a></h2>
+                                                        <h2><a href="detail.html" id="name_<%=i %>">27523 Pacific Coast</a></h2>
                                                     </div><!-- /.title -->
 
-                                                    <div class="price">
+                                                    <div class="price" id="price_<%=i %>">
                                                         1 250 000€
                                                     </div><!-- /.price -->
                                                 </div><!-- /.title -->
 
-                                                <div class="location">Palo Alto CA</div><!-- /.location -->
+                                                <div class="location" id="city_<%=i %>">Palo Alto CA</div><!-- /.location -->
                                                 <p>Etiam at ante id enim dictum posuere id vel est. Praesent at massa quis risus cursus tristique vel non orci. Phasellus ut nisi non odio</p>
-                                                <div class="area">
-                                                    <span class="key">Area:</span><!-- /.key -->
-                                                    <span class="value">120</span><!-- /.value -->
-                                                </div><!-- /.area -->
-                                                <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
-                                                <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->
+                                                <div class="bedrooms"><div class="content" style="background-image: url(${res}png/width.png)" id="width_<%=i%>"></div></div><!-- /.bedrooms -->
+                                                <div class="bathrooms"><div class="content" style="background-image: url(${res}png/height.png)" id="height_<%=i%>"></div></div><!-- /.bathrooms -->
                                             </div><!-- /.body -->
                                         </div><!-- /.property -->
                                     </div><!-- /.row -->
-
-                                    <div class="property span9">
-                                        <div class="row">
-                                            <div class="image span3">
-                                                <div class="content">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}/meforest/img/tmp/property-small-2.png" alt="">
-                                                </div><!-- /.content -->
-                                            </div><!-- /.image -->
-
-                                            <div class="body span6">
-                                                <div class="title-price row">
-                                                    <div class="title span4">
-                                                        <h2><a href="detail.html">27523 Pacific Coast</a></h2>
-                                                    </div><!-- /.title -->
-
-                                                    <div class="price">
-                                                        1 250 000€
-                                                    </div><!-- /.price -->
-                                                </div><!-- /.title -->
-
-                                                <div class="location">Palo Alto CA</div><!-- /.location -->
-                                                <p>Etiam at ante id enim dictum posuere id vel est. Praesent at massa quis risus cursus tristique vel non orci. Phasellus ut nisi non odio</p>
-                                                <div class="area">
-                                                    <span class="key">Area:</span><!-- /.key -->
-                                                    <span class="value">120</span><!-- /.value -->
-                                                </div><!-- /.area -->
-                                                <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
-                                                <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->
-                                            </div><!-- /.body -->
-                                        </div><!-- /.property -->
-                                    </div><!-- /.row -->
-
-                                    <div class="property span9">
-                                        <div class="row">
-                                            <div class="image span3">
-                                                <div class="content">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}/meforest/img/tmp/property-small-3.png" alt="">
-                                                </div><!-- /.content -->
-                                            </div><!-- /.image -->
-
-                                            <div class="body span6">
-                                                <div class="title-price row">
-                                                    <div class="title span4">
-                                                        <h2><a href="detail.html">27523 Pacific Coast</a></h2>
-                                                    </div><!-- /.title -->
-
-                                                    <div class="price">
-                                                        1 250 000€
-                                                    </div><!-- /.price -->
-                                                </div><!-- /.title -->
-
-                                                <div class="location">Palo Alto CA</div><!-- /.location -->
-                                                <p>Etiam at ante id enim dictum posuere id vel est. Praesent at massa quis risus cursus tristique vel non orci. Phasellus ut nisi non odio</p>
-                                                <div class="area">
-                                                    <span class="key">Area:</span><!-- /.key -->
-                                                    <span class="value">120</span><!-- /.value -->
-                                                </div><!-- /.area -->
-                                                <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
-                                                <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->
-                                            </div><!-- /.body -->
-                                        </div><!-- /.property -->
-                                    </div><!-- /.row -->
-
-
-                                    <div class="property span9">
-                                        <div class="row">
-                                            <div class="image span3">
-                                                <div class="content">
-                                                    <a href="detail.html"></a>
-                                                    <img src="${res}/meforest/img/tmp/property-small-4.png" alt="">
-                                                </div><!-- /.content -->
-                                            </div><!-- /.image -->
-
-                                            <div class="body span6">
-                                                <div class="title-price row">
-                                                    <div class="title span4">
-                                                        <h2><a href="detail.html">27523 Pacific Coast</a></h2>
-                                                    </div><!-- /.title -->
-
-                                                    <div class="price">
-                                                        1 250 000€
-                                                    </div><!-- /.price -->
-                                                </div><!-- /.title -->
-
-                                                <div class="location">Palo Alto CA</div><!-- /.location -->
-                                                <p>Etiam at ante id enim dictum posuere id vel est. Praesent at massa quis risus cursus tristique vel non orci. Phasellus ut nisi non odio</p>
-                                                <div class="area">
-                                                    <span class="key">Area:</span><!-- /.key -->
-                                                    <span class="value">120</span><!-- /.value -->
-                                                </div><!-- /.area -->
-                                                <div class="bedrooms"><div class="content">4</div></div><!-- /.bedrooms -->
-                                                <div class="bathrooms"><div class="content">3</div></div><!-- /.bathrooms -->
-                                            </div><!-- /.body -->
-                                        </div><!-- /.property -->
-                                    </div><!-- /.row -->
+                                    <% } %>
                                 </div><!-- /.row -->
                             </div><!-- /.properties-rows -->
                                 <div class="pagination pagination-centered">
@@ -304,10 +205,10 @@ window.billboards = [
                                 <div class="ad widget">
                                     <h2>Advertisements</h2>
                                     <div class="content">
-                                        <a href="#"><img src="${res}/meforest/img/banner/1.gif" alt="Banner"></a>
-                                        <a href="#"><img src="${res}/meforest/img/banner/2.gif" alt="Banner"></a>
-                                        <a href="#"><img src="${res}/meforest/img/banner/3.gif" alt="Banner"></a>
-                                        <a href="#"><img src="${res}/meforest/img/banner/4.gif" alt="Banner"></a>
+                                        <a href="#"><img src="${res}meforest/img/banner/1.gif" alt="Banner"></a>
+                                        <a href="#"><img src="${res}meforest/img/banner/2.gif" alt="Banner"></a>
+                                        <a href="#"><img src="${res}meforest/img/banner/3.gif" alt="Banner"></a>
+                                        <a href="#"><img src="${res}meforest/img/banner/4.gif" alt="Banner"></a>
                                     </div><!-- /.content -->
                                 </div><!-- /.ad -->
                             </div>
@@ -321,20 +222,18 @@ window.billboards = [
     </div><!-- /#wrapper -->
 </div><!-- /#wrapper-outer -->
 
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=true"></script>
-<script type="text/javascript" src="${res}/meforest/js/jquery.js"></script>
-<script type="text/javascript" src="${res}/meforest/js/jquery.ezmark.js"></script>
-<script type="text/javascript" src="${res}/meforest/js/jquery.currency.js"></script>
-<script type="text/javascript" src="${res}/meforest/js/jquery.cookie.js"></script>
-<script type="text/javascript" src="${res}/meforest/js/retina.js"></script>
-<script type="text/javascript" src="${res}/meforest/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${res}/meforest/js/carousel.js"></script>
-<script type="text/javascript" src="${res}/meforest/js/gmap3.min.js"></script>
-<script type="text/javascript" src="${res}/meforest/js/gmap3.infobox.min.js"></script>
-<script type="text/javascript" src="${res}/meforest/libraries/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
-<script type="text/javascript" src="${res}/meforest/libraries/chosen/chosen.jquery.min.js"></script>
-<script type="text/javascript" src="${res}/meforest/libraries/iosslider/_src/jquery.iosslider.min.js"></script>
-<script type="text/javascript" src="${res}/meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-<script type="text/javascript" src="${res}/meforest/js/realia.js"></script>
+<script type="text/javascript" src="${res}meforest/js/jquery.js"></script>
+<script type="text/javascript" src="${res}meforest/js/jquery.ezmark.js"></script>
+<script type="text/javascript" src="${res}meforest/js/jquery.currency.js"></script>
+<script type="text/javascript" src="${res}meforest/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="${res}meforest/js/retina.js"></script>
+<script type="text/javascript" src="${res}meforest/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${res}meforest/js/carousel.js"></script>
+<script type="text/javascript" src="${res}meforest/libraries/jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+<script type="text/javascript" src="${res}meforest/libraries/chosen/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="${res}meforest/libraries/iosslider/_src/jquery.iosslider.min.js"></script>
+<script type="text/javascript" src="${res}meforest/libraries/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+<script type="text/javascript" src="${res}meforest/js/realia.js"></script>
+<script type="text/javascript" src="${res}js/listing_rows.js"></script>
 </body>
 </html>

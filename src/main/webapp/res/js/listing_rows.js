@@ -1,13 +1,7 @@
-function change_location() {
-    // cмена центра карты при смене города
-    center = $("#inputLocation").val().split(",");
-    window.map.setCenter(new google.maps.LatLng(center[0], center[1]))
-    refilter();
-}
 function refilter() {
     // Горячие предложения
     filtered_bb_list = filter_bb()
-    for(i=0; i<6; i++) {
+    for(i=0; i<5; i++) {
         if(filtered_bb_list.length == 0) break;
 
         bb = filtered_bb_list[i % filtered_bb_list.length];
@@ -31,45 +25,33 @@ function refilter() {
         nameEl.attr("href", "bb/" + bb.id + "/")
     }
 }
+
 function filter_bb() {
     return billboards.filter(function(bb) {
         allWord = "Все";
-        bb.marker.infobox.close();
         if(bb.city !=  $("#inputLocation").find("option:selected").text()) {
-            bb.marker.marker.close();
-            bb.marker.setVisible(false);
             return false;
         }
 
         type = $("#inputType").find("option:selected").text();
         if(type != allWord && type != bb.type) {
-            bb.marker.marker.close();
-            bb.marker.setVisible(false);
             return false;
         }
 
         format = $("#inputFormat").find("option:selected").text();
         if(format != allWord && format != bb.format) {
-            bb.marker.marker.close();
-            bb.marker.setVisible(false);
             return false;
         }
 
         if(bb.price < Number(window.inputPriceFrom_val) || bb.price > Number(window.inputPriceTo_val)) {
-            bb.marker.marker.close();
-            bb.marker.setVisible(false);
             return false;
-        }
-
-        if(bb.marker.visible == false) {
-            bb.marker.setVisible(true);
-            bb.marker.marker.open(window.map, bb.marker);
         }
         return true;
     });
 }
-window.afterInitMap = function () {
-    $("#inputLocation").change(change_location);
+
+$(function () {
+    $("#inputLocation").change(refilter);
     $("#inputType").change(refilter);
     $("#inputFormat").change(refilter);
     refilter();
@@ -82,5 +64,5 @@ window.afterInitMap = function () {
             console.log("rent filter from",from, "to", to );
             refilter();
         }
-    }, 500);
-};
+    }, 500);refilter();
+});
