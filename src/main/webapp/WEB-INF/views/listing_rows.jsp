@@ -55,26 +55,25 @@ window.billboards = [
                                         <form action="?" method="get" class="form-horizontal">
                                             <div class="control-group">
                                                 <label class="control-label" for="inputSortBy">
-                                                    Sort by
+                                                    Поле
                                                     <span class="form-required" title="This field is required.">*</span>
                                                 </label>
                                                 <div class="controls">
                                                     <select id="inputSortBy">
-                                                        <option id="price">Price</option>
-                                                        <option id="published">Published</option>
+                                                        <option id="price">Цена</option>
                                                     </select>
                                                 </div><!-- /.controls -->
                                             </div><!-- /.control-group -->
 
                                             <div class="control-group">
                                                 <label class="control-label" for="inputOrder">
-                                                    Order
+                                                    Порядок
                                                     <span class="form-required" title="This field is required.">*</span>
                                                 </label>
                                                 <div class="controls">
                                                     <select id="inputOrder">
-                                                        <option id="asc">ASC</option>
-                                                        <option id="desc">DESC</option>
+                                                        <option value="asc">Возрастание</option>
+                                                        <option value="desc">Убывание</option>
                                                     </select>
                                                 </div><!-- /.controls -->
                                             </div><!-- /.control-group -->
@@ -113,6 +112,7 @@ window.billboards = [
                                     <% } %>
                                 </div><!-- /.row -->
                             </div><!-- /.properties-rows -->
+                                <%--
                                 <div class="pagination pagination-centered">
                                     <ul>
                                         <li><a href="#">1</a></li>
@@ -122,7 +122,9 @@ window.billboards = [
                                         <li><a href="#">next</a></li>
                                         <li><a href="#">last</a></li>
                                     </ul>
-                                </div><!-- /.pagination -->            </div>
+                                </div><!-- /.pagination -->
+                                --%>
+                                </div>
                             <div class="sidebar span3">
                                 <h2>Фильтр</h2>
                                 <div class="property-filter widget">
