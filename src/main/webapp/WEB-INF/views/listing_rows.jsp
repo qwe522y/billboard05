@@ -86,7 +86,7 @@ window.billboards = [
                                         <div class="row">
                                             <div class="image span3">
                                                 <div class="content">
-                                                    <a href="detail.html" id="detail_<%=i %>"></a>
+                                                    <a href="detail.html" id="details_<%=i %>"></a>
                                                     <img id="photo_<%=i %>"src="${res}meforest/img/tmp/property-small-1.png" alt="">
                                                 </div><!-- /.content -->
                                             </div><!-- /.image -->
