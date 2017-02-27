@@ -206,19 +206,19 @@ window.billboards = [
                             <div class="item span4">
                                 <div class="address decoration"></div>
                                 <h2><a>Интерактивная карта</a></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan dui ac nunc imperdiet rhoncus. Aenean vitae imperdiet lectus</p>
+                                <p>Выбрать нужное вам рекламное место проще и удобнее вместе с интерактивной картой</p>
                             </div><!-- /.item -->
 
                             <div class="item span4">
                                 <div class="gps decoration"></div>
                                 <h2><a>Актуальные данные</a></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan dui ac nunc imperdiet rhoncus. Aenean vitae imperdiet lectus</p>
+                                <p>Мы и наши партнеры стараемся каждый день обновлять данные на нашем сайте, чтобы вы всегда имели самую актуальную информацию</p>
                             </div><!-- /.item -->
 
                             <div class="item span4">
                                 <div class="key decoration"></div>
                                 <h2><a>Полное оформление</a></h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla accumsan dui ac nunc imperdiet rhoncus. Aenean vitae imperdiet lectus</p>
+                                <p>Мы поможем вам на не только найти и забронировать рекламную площадь, но и распечатать баннер соответствующего формата</p>
                             </div><!-- /.item -->
                         </div><!-- /.bottom-inner -->
                     </div><!-- /.bottom -->
