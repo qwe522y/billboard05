@@ -57,7 +57,7 @@
                                         <td>${i.billboardSide.name}${i.timetable.surface}</td>
                                         <td>${i.e.clientPhone}</td>
                                         <td>${i.e.clientComment}</td>
-                                        <td><a href="${i.e.id}/accept">бронировать</a> | <a href="${i.e.id}/reject">отлонить</a></td>
+                                        <td><a href="${i.e.id}/accept">бронировать</a> | <a href="${i.e.id}/reject">отклонить</a></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
