@@ -10,7 +10,7 @@
 
                 <div class="account pull-right">
                     <ul class="nav nav-pills">
-                        <li><a href="agent/">Вход</a></li>
+                        <li><a href="${root}agent/">Вход</a></li>
                     </ul>
                 </div>
             </div><!-- /.span12 -->
