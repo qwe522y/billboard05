@@ -1,0 +1,5 @@
+<dataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/dataset.xsd">
+    <billboards address="address" width="100" height="100"/>
+    <billboard_sides name="name1" surface_count="3" rent="100.00"/>
+    <billboard_sides name="name2" surface_count="3" rent="100.00"/>
+</dataset>

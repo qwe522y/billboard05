@@ -97,7 +97,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <sf:form method="post" modelAttribute="billboard" class="form-horizontal">
+                        <sf:form method="post" modelAttribute="billboard" class="form-horizontal" enctype="multipart/form-data">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label" for="cityField">Город</label>
@@ -179,6 +179,18 @@
                                     <label class="col-sm-3 control-label" for="heightField">Высота</label>
                                     <div class="col-sm-9">
                                         <input name="height" id="heightField" type="number" placeholder="введите высоту поверхности" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="miniPhoto">Мини изображение(PNG)</label>
+                                    <div class="col-sm-9">
+                                        <input name="miniPhoto" id="miniPhoto" type="file" class="form-control" required/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="photo">Фотография(JPEG)</label>
+                                    <div class="col-sm-9">
+                                        <input name="photo" id="photo" type="file" class="form-control" required/>
                                     </div>
                                 </div>
                                 <sf:hidden path="location" id="locationField"/>

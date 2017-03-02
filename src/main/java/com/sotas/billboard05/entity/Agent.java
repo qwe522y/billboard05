@@ -3,11 +3,12 @@ package com.sotas.billboard05.entity;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "agents")
-public class Agent {
+public class Agent implements Serializable {
     @Id @GeneratedValue
     private int id;
     private String login;

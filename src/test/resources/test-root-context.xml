@@ -63,6 +63,7 @@
         <property name="maxUploadSize" value="10000000" />
     </bean>
 
-    <bean id="photoDirFactory" class="com.sotas.billboard05.PhotoDir"/>
-    <bean id="photoDir" factory-bean="photoDirFactory" factory-method="toString"/>
+    <bean id="photoDir" class="java.lang.String">
+        <constructor-arg index="0" value="/tmp/billboard-test"/>
+    </bean>
 </beans>

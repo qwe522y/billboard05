@@ -3,10 +3,12 @@ package com.sotas.billboard05.service;
 import com.sotas.billboard05.dto.BillboardDto;
 import com.sotas.billboard05.entity.*;
 import com.sotas.billboard05.repository.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,18 +17,23 @@ import java.util.stream.Collectors;
 
 @Service
 public class BillboardServiceImpl implements BillboardService {
-    @Autowired
     private BillboardRepository repository;
-    @Autowired
     private CityRepository cityRepository;
-    @Autowired
     private OwnerRepository ownerRepository;
-    @Autowired
     private BillboardTypeRepository billboardTypeRepository;
-    @Autowired
     private BillboardFormatRepository billboardFormatRepository;
-    @Autowired
     private AgentRepository agentRepository;
+    private BillboardSideRepository billboardSideRepository;
+
+    public BillboardServiceImpl(BillboardRepository repository, CityRepository cityRepository, OwnerRepository ownerRepository, BillboardTypeRepository billboardTypeRepository, BillboardFormatRepository billboardFormatRepository, AgentRepository agentRepository, BillboardSideRepository billboardSideRepository) {
+        this.repository = repository;
+        this.cityRepository = cityRepository;
+        this.ownerRepository = ownerRepository;
+        this.billboardTypeRepository = billboardTypeRepository;
+        this.billboardFormatRepository = billboardFormatRepository;
+        this.agentRepository = agentRepository;
+        this.billboardSideRepository = billboardSideRepository;
+    }
 
     @Override
     public List<BillboardDto> getListByAgent(int agentId) {
@@ -76,8 +83,28 @@ public class BillboardServiceImpl implements BillboardService {
 
     @Override
     @Transactional
-    public Billboard add(Billboard billboard) {
-        return repository.add(billboard);
+    public Billboard add(Billboard billboard, List<BillboardSide> bbSideList, String photoDir, Map<String, byte[]> photoFiles) {
+        try {
+            Billboard bb = repository.add(billboard);
+            for (BillboardSide bbSide : bbSideList) {
+                bbSide.setBillboardId(bb.getId());
+                billboardSideRepository.add(bbSide);
+            }
+            File bbPhotoDir = new File(photoDir + "/" + bb.getId());
+            if (!bbPhotoDir.exists()) bbPhotoDir.mkdir();
+            for (Map.Entry<String, byte[]> entry : photoFiles.entrySet()) {
+                File file = new File(bbPhotoDir.getPath() + "/" + entry.getKey());
+                file.createNewFile();
+                try (FileOutputStream fos = new FileOutputStream(file)) {
+                    fos.write(entry.getValue());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return bb;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
