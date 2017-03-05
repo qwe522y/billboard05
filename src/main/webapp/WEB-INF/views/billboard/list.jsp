@@ -74,7 +74,7 @@
                                             <td>${i.type.name} - ${i.format.name}</td>
                                             <td>${i.owner.name}</td>
                                             <td>${i.owner.phone}</td>
-                                            <td><a href="side/${i.e.id}/">Стороны</a> | <a href="timetable/${i.e.id}/">Расписание</a></td>
+                                            <td><a href="side/${i.e.id}/">Стороны</a> | <a href="timetable/${i.e.id}/">Расписание</a> | <a href="${root}agent/${i.e.id}/edit">Править</a></td>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

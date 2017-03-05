@@ -10,12 +10,11 @@ import org.unitils.dbunit.annotation.ExpectedDataSet;
 import org.unitils.spring.annotation.SpringBeanByName;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -79,16 +78,26 @@ public class BillboardServiceImplTest extends AbstractServiceTest {
         File dir = new File("/tmp/billboard-test");
         FileUtils.deleteDirectory(dir);
         assertFalse(dir.exists());
-        dir.mkdir();
-        Map<String, byte[]> imgs = new HashMap<>();
-        imgs.put("0.png", new byte[]{0x61,0x62,0x63});
-        imgs.put("0.jpg", new byte[]{0x64,0x65,0x66});
-        imgs.put("1.jpg", new byte[]{0x67,0x68,0x69});
+        dir.mkdirs();
         Billboard bb = new Billboard(1, "address", 1, 1, true, "123,123", 1, 1, 100, 100);
-        billboardServiceImpl.add(bb, bbSideList, dir.getAbsolutePath(), imgs
-        );
-        assertTrue(new File(dir.getAbsolutePath() + "/" + bb.getId() + "/0.png").exists());
-        assertTrue(new File(dir.getAbsolutePath() + "/" + bb.getId() + "/0.jpg").exists());
-        assertTrue(new File(dir.getAbsolutePath() + "/" + bb.getId() + "/1.jpg").exists());
+        billboardServiceImpl.add(bb, bbSideList, new byte[]{(byte) 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, 0x00}, new byte[][]{{(byte) 0xFF, (byte)0xD8, 0x01},{(byte)0xFF, (byte)0xD8, 0x02}});
+
+        File f = new File(dir.getAbsolutePath() + "/" + bb.getId() + "/0.png");
+        assertTrue(f.exists());
+        assertEquals(new FileInputStream(f).read(), 0x89);
+
+        f = new File(dir.getAbsolutePath() + "/" + bb.getId() + "/0.jpg");
+        assertTrue(f.exists());
+        FileInputStream fis = new FileInputStream(f);
+        assertEquals(fis.read(), 0xFF);
+        assertEquals(fis.read(), 0xD8);
+        assertEquals(fis.read(), 0x01);
+
+        f = new File(dir.getAbsolutePath() + "/" + bb.getId() + "/1.jpg");
+        fis = new FileInputStream(f);
+        assertTrue(f.exists());
+        assertEquals(fis.read(), 0xFF);
+        assertEquals(fis.read(), 0xD8);
+        assertEquals(fis.read(), 0x02);
     }
 }

@@ -6,8 +6,6 @@ import com.sotas.billboard05.repository.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +22,10 @@ public class BillboardServiceImpl implements BillboardService {
     private BillboardFormatRepository billboardFormatRepository;
     private AgentRepository agentRepository;
     private BillboardSideRepository billboardSideRepository;
+    private ImgService imgService;
 
-    public BillboardServiceImpl(BillboardRepository repository, CityRepository cityRepository, OwnerRepository ownerRepository, BillboardTypeRepository billboardTypeRepository, BillboardFormatRepository billboardFormatRepository, AgentRepository agentRepository, BillboardSideRepository billboardSideRepository) {
+    public BillboardServiceImpl(ImgService imgService, BillboardRepository repository, CityRepository cityRepository, OwnerRepository ownerRepository, BillboardTypeRepository billboardTypeRepository, BillboardFormatRepository billboardFormatRepository, AgentRepository agentRepository, BillboardSideRepository billboardSideRepository) {
+        this.imgService = imgService;
         this.repository = repository;
         this.cityRepository = cityRepository;
         this.ownerRepository = ownerRepository;
@@ -83,23 +83,16 @@ public class BillboardServiceImpl implements BillboardService {
 
     @Override
     @Transactional
-    public Billboard add(Billboard billboard, List<BillboardSide> bbSideList, String photoDir, Map<String, byte[]> photoFiles) {
+    public Billboard add(Billboard billboard, List<BillboardSide> bbSideList, byte[] miniPhoto, byte[][] photoFiles) {
         try {
             Billboard bb = repository.add(billboard);
             for (BillboardSide bbSide : bbSideList) {
                 bbSide.setBillboardId(bb.getId());
                 billboardSideRepository.add(bbSide);
             }
-            File bbPhotoDir = new File(photoDir + "/" + bb.getId());
-            if (!bbPhotoDir.exists()) bbPhotoDir.mkdir();
-            for (Map.Entry<String, byte[]> entry : photoFiles.entrySet()) {
-                File file = new File(bbPhotoDir.getPath() + "/" + entry.getKey());
-                file.createNewFile();
-                try (FileOutputStream fos = new FileOutputStream(file)) {
-                    fos.write(entry.getValue());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+            imgService.setMiniImg(billboard.getId(), miniPhoto);
+            for(byte[] f : photoFiles) {
+                imgService.addImg(billboard.getId(), f);
             }
             return bb;
         } catch (IOException e) {
@@ -110,5 +103,11 @@ public class BillboardServiceImpl implements BillboardService {
     @Override
     public Billboard get(int id) {
         return repository.get(id);
+    }
+
+    @Override
+    @Transactional
+    public void update(Billboard billboard) {
+        repository.update(billboard);
     }
 }
