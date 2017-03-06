@@ -24,22 +24,28 @@ import java.util.*;
 @Controller
 @RequestMapping("/")
 public class MainController {
-    @Autowired
     private BillboardService billboardService;
-    @Autowired
     private CityRepository cityRepository;
-    @Autowired
     private TimetableService timetableService;
-    @Autowired
     private BillboardSideService billboardSideService;
-    @Autowired
     private ContractService contractService;
-    @Autowired
     private BillboardTypeRepository billboardTypeRepository;
-    @Autowired
     private BillboardFormatRepository billboardFormatRepository;
-    @Autowired
     private SessionMsgProvider sessionMsgProvider;
+    private ImgService imgService;
+
+    @Autowired
+    public MainController(BillboardService billboardService, CityRepository cityRepository, TimetableService timetableService, BillboardSideService billboardSideService, ContractService contractService, BillboardTypeRepository billboardTypeRepository, BillboardFormatRepository billboardFormatRepository, SessionMsgProvider sessionMsgProvider, ImgService imgService) {
+        this.billboardService = billboardService;
+        this.cityRepository = cityRepository;
+        this.timetableService = timetableService;
+        this.billboardSideService = billboardSideService;
+        this.contractService = contractService;
+        this.billboardTypeRepository = billboardTypeRepository;
+        this.billboardFormatRepository = billboardFormatRepository;
+        this.sessionMsgProvider = sessionMsgProvider;
+        this.imgService = imgService;
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String home(Model model) {
@@ -112,6 +118,7 @@ public class MainController {
         model.addAttribute("billboard", bb);
         model.addAttribute("bbFormat", billboardFormatRepository.get(bb.getFormatId()).getName().toLowerCase());
         model.addAttribute("light", bb.isLight() ? "есть" : "нет");
+        model.addAttribute("imgCount", imgService.getImgCount(bbId));
         return "bb_detail";
     }
 

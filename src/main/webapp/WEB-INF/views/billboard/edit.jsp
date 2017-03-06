@@ -188,6 +188,60 @@
                     <div id="map"></div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Изображения</h3>
+                        </div>
+                        <sf:form method="post" class="form-horizontal" action="updateMiniPhoto" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Мини изображение(PNG)</label>
+                                <div class="col-sm-1">
+                                    <img width="54" height="40" src="${root}res/photo/${billboard.id}/0.png"/>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input name="miniPhoto" id="miniPhoto" type="file" class="form-control" required/>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-info pull-right" type="submit">Заменить</button>
+                                </div>
+                            </div>
+                        </sf:form>
+                        <c:forEach begin="0" end="${imgCount-1}" var="i">
+                            <sf:form method="post" class="form-horizontal" action="updatePhoto" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">фотография #${i}(JPG)</label>
+                                    <div class="col-sm-2">
+                                        <img width="87" height="42" src="${root}res/photo/${billboard.id}/${i}.jpg"/>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input name="photo" id="photo_${i}" type="file" class="form-control"/>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-danger pull-right" type="submit" name="action" value="delete">Удалить</button>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button class="btn btn-info pull-right" type="submit" name="action" value="update">Заменить</button>
+                                    </div>
+                                    <input type="hidden" name="index" value="${i}"/>
+                                </div>
+                            </sf:form>
+                        </c:forEach>
+                        <sf:form method="post" class="form-horizontal" action="addPhoto" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Новая фотография(JPG)</label>
+                                <div class="col-sm-5">
+                                    <input name="photo" id="photo_${imgCount}" type="file" class="form-control" required/>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-info pull-right" type="submit">Добавить</button>
+                                </div>
+                            </div>
+                        </sf:form>
+                    </div>
+                </div>
+            </div> <!-- /row -->
             <!-- /.row -->
             <div style="padding: 10px 0px; text-align: center;">
                 <div class="text-muted">Excuse the ads! We need some help to keep our site up.</div>

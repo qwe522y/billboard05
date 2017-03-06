@@ -9,6 +9,7 @@ import com.sotas.billboard05.repository.BillboardTypeRepository;
 import com.sotas.billboard05.repository.CityRepository;
 import com.sotas.billboard05.service.AuthUserService;
 import com.sotas.billboard05.service.BillboardService;
+import com.sotas.billboard05.service.ImgService;
 import com.sotas.billboard05.service.OwnerService;
 import com.sotas.billboard05.utils.Utils;
 import org.apache.log4j.Logger;
@@ -36,9 +37,11 @@ public class BillboardController {
     private BillboardTypeRepository billboardTypeRepository;
     private CityRepository cityRepository;
     private BillboardFormatRepository billboardFormatRepository;
+    private ImgService imgService;
 
     @Autowired
-    public BillboardController(BillboardService billboardService, OwnerService ownerService, AuthUserService authUserService, BillboardTypeRepository billboardTypeRepository, CityRepository cityRepository, BillboardFormatRepository billboardFormatRepository) {
+    public BillboardController(ImgService imgService, BillboardService billboardService, OwnerService ownerService, AuthUserService authUserService, BillboardTypeRepository billboardTypeRepository, CityRepository cityRepository, BillboardFormatRepository billboardFormatRepository) {
+        this.imgService = imgService;
         this.billboardService = billboardService;
         this.ownerService = ownerService;
         this.authUserService = authUserService;
@@ -90,7 +93,7 @@ public class BillboardController {
         model.addAttribute("owners", ownerService.getByAgent(authUserService.getAuthUser().getAgent().getId()));
         model.addAttribute("billboardTypes", billboardTypeRepository.getAll());
         model.addAttribute("billboardFormats", billboardFormatRepository.getAll());
-
+        model.addAttribute("imgCount", imgService.getImgCount(id));
         return "billboard/edit";
     }
 
@@ -109,5 +112,32 @@ public class BillboardController {
         originBB.setLocation(bb.getLocation());
         billboardService.update(originBB);
         return "redirect:/agent/";
+    }
+
+    @RequestMapping(value = "/{id}/updateMiniPhoto", method = RequestMethod.POST)
+    public String updateMiniPhoto(@PathVariable int id, MultipartFile miniPhoto) throws IOException {
+        Utils.checkAccess(billboardService.get(id), authUserService.getAuthUser());
+        imgService.setMiniImg(id, miniPhoto.getBytes());
+        return "redirect:/agent/" + id + "/edit";
+    }
+
+    @RequestMapping(value = "/{id}/updatePhoto", method = RequestMethod.POST)
+    public String updatePhoto(@PathVariable int id, MultipartFile photo, int index, String action) throws IOException {
+        Utils.checkAccess(billboardService.get(id), authUserService.getAuthUser());
+        if(action.equals("update")) {
+            imgService.updateImg(id, photo.getBytes(), index);
+        } else if(action.equals("delete")) {
+            if(imgService.getImgCount(id) > 1) {
+                imgService.deleteImg(id, index);
+            }
+        }
+        return "redirect:/agent/" + id + "/edit";
+    }
+
+    @RequestMapping(value = "/{id}/addPhoto", method = RequestMethod.POST)
+    public String addPhoto(@PathVariable int id, MultipartFile photo, String action) throws IOException {
+        Utils.checkAccess(billboardService.get(id), authUserService.getAuthUser());
+        imgService.addImg(id, photo.getBytes());
+        return "redirect:/agent/" + id + "/edit";
     }
 }

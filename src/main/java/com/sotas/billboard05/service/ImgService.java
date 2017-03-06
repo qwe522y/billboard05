@@ -7,4 +7,5 @@ public interface ImgService {
     void updateImg(int bbId, byte[] data, int index) throws IOException;
     void addImg(int bbId, byte[] data) throws IOException;
     int getImgCount(int bbId);
+    void deleteImg(int id, int index) throws IOException;
 }

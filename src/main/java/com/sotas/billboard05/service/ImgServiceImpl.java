@@ -89,4 +89,13 @@ public class ImgServiceImpl implements ImgService{
         });
         return list == null ? 0 : list.length;
     }
+
+    @Override
+    public void deleteImg(int id, int index) {
+        int count = getImgCount(id);
+        new File(photoDir + "/" + id + "/" + index + ".jpg").delete();
+        for(int i=index+1; i<count; i++) {
+            new File(photoDir + "/" + id + "/" + i + ".jpg").renameTo(new File(photoDir + "/" + id + "/" + (i-1) + ".jpg"));
+        }
+    }
 }

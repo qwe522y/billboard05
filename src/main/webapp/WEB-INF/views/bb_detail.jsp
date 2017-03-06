@@ -78,30 +78,11 @@
                                     <a class="carousel-prev" href="#">Previous</a>
                                     <a class="carousel-next" href="#">Next</a>
                                     <ul>
-                                        <li class="active">
-                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
-                                        </li>
-                                        <li class="active">
-                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
-                                        </li>
-                                        <li class="active">
-                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
-                                        </li>
-                                        <li class="active">
-                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
-                                        </li>
-                                        <li class="active">
-                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
-                                        </li>
-                                        <li class="active">
-                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
-                                        </li>
-                                        <li class="active">
-                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
-                                        </li>
-                                        <li class="active">
-                                            <img src="${res}photo/${billboard.id}/0.jpg" alt="">
-                                        </li>
+                                        <c:forEach begin="0" end="${imgCount-1}" var="i">
+                                            <li <c:if test="${i==0}"> class="active" </c:if> >
+                                                <img src="${res}photo/${billboard.id}/${i}.jpg" alt="">
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                                 <!-- /.content -->
@@ -234,7 +215,7 @@
 <script type="text/javascript" src="${res}meforest/js/jquery.ezmark.js"></script>
 <script type="text/javascript" src="${res}meforest/js/jquery.currency.js"></script>
 <script type="text/javascript" src="${res}meforest/js/jquery.cookie.js"></script>
-<script type="text/javascript" src="${res}meforest/js/retina.js"></script>
+<!--<script type="text/javascript" src="${res}meforest/js/retina.js"></script>-->
 <script type="text/javascript" src="${res}meforest/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${res}meforest/js/carousel.js"></script>
 <script type="text/javascript" src="${res}meforest/js/gmap3.min.js"></script>

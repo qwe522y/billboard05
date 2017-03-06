@@ -1,6 +1,8 @@
 package com.sotas.billboard05.exception;
 
-public class ImgValidationErr extends RuntimeException {
+import java.io.IOException;
+
+public class ImgValidationErr extends IOException {
     public ImgValidationErr(String message) {
         super(message);
     }
