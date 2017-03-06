@@ -92,7 +92,7 @@
                     <li><a href="${root}">Главная</a></li>
                     <li><a href="${root}list">Список</a></li>
                     <li><a href="${root}">Как это работает</a></li>
-                    <li><a href="${root}">Стать партнером</a></li>
+                    <li><a href="${root}" onclick="fbq('track', 'Lead')">Стать партнером</a></li>
                     <li><a href="${root}">Контакты</a></li>
                 </ul><!-- /.nav -->
             </div><!-- /.navigation -->
