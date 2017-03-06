@@ -5,6 +5,7 @@
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -106,7 +107,7 @@
                                                         <tr>
                                                             <% for(Month m : (List<Month>)request.getAttribute("months")) { %>
                                                             <td>
-                                                                <%=side.get(surfaceId, m.getYear(), m.getNum()).getRent() %> руб.
+                                                                <%=side.get(surfaceId, m.getYear(), m.getNum()).getRent().intValue() %> руб.
                                                             </td>
                                                             <% } %>
                                                         </tr>
@@ -149,7 +150,7 @@
                                         <div class="image">
                                             <img src="${res}png/rub_icon.png" alt="" width="64px" height="64px">
                                         </div><!-- /.image -->
-                                        <div class="name">${minRent} руб.</div><!-- /.name -->
+                                        <div class="name"><fmt:formatNumber value="${minRent}" minFractionDigits="0" groupingUsed="true"/> руб.</div><!-- /.name -->
                                         <div class="email">* стоимость одной поверхности</div><!-- /.email -->
                                     </div><!-- /.agent -->
                                 </div><!-- /.content -->

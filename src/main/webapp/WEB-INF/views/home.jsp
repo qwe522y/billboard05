@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -30,7 +31,7 @@ window.inputPriceTo_val = "${absoluteMaxRent}";
 
 window.billboards = [
 <c:forEach items="${billboards}" var="i">
-    {"id": ${i.e.id}, "position": [${i.e.location}], "address": "${i.e.address}", "price": "${minRentMap[i.e.id]}",
+    {"id": ${i.e.id}, "position": [${i.e.location}], "address": "${i.e.address}", "price": "<fmt:formatNumber value="${minRentMap[i.e.id]}" minFractionDigits="0" groupingUsed="true"/>",
         "type": "${i.type.name}", "format": "${i.format.name}", "city": "${i.city.name}",
         "width": ${i.e.width}, "height": ${i.e.height}},
 </c:forEach>

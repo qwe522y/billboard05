@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:include page="parts/init.jsp"/>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -26,10 +27,10 @@ window.absoluteMinRent = ${absoluteMinRent};
 window.absoluteMaxRent = ${absoluteMaxRent};
 window.inputPriceFrom_val = "${absoluteMinRent}";
 window.inputPriceTo_val = "${absoluteMaxRent}";
-
+<fmt:setLocale value="en_US" />
 window.billboards = [
     <c:forEach items="${billboards}" var="i">
-    {"id": ${i.e.id}, "position": [${i.e.location}], "address": "${i.e.address}", "price": "${minRentMap[i.e.id]}",
+    {"id": ${i.e.id}, "position": [${i.e.location}], "address": "${i.e.address}", "price": "<fmt:formatNumber value="${minRentMap[i.e.id]}" minFractionDigits="0" groupingUsed="true"/>",
         "type": "${i.type.name}", "format": "${i.format.name}", "city": "${i.city.name}",
         "width": ${i.e.width}, "height": ${i.e.height}},
     </c:forEach>
