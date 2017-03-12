@@ -55,7 +55,7 @@
             center = cities[$("#cityField").val()].split(",");
             var pos = new google.maps.LatLng(center[0], center[1]);
             window.map.setCenter(pos);
-            moveMark(pos)
+            moveMark(pos);
             $("#locationField").val(center);
         }
     </script>
@@ -113,6 +113,12 @@
                                     <label class="col-sm-3 control-label" for="addressField">Адрес</label>
                                     <div class="col-sm-9">
                                         <sf:input path="address" id="addressField" type="text" placeholder="Адрес" class="form-control" required="required"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="addressField"> </label>
+                                    <div class="col-sm-9">
+                                        <button type="button" onclick="findAddr()" class="btn">Поиск</button>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -261,6 +267,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="${res}dist/js/demo.js"></script>
 <!-- Page script -->
+<script src="${res}js/gmap_util.js"></script>
 <script>
     $(function () {
         //Initialize Select2 Elements
@@ -356,6 +363,13 @@
         var p = pos.lat() + "," + pos.lng();
         $("#locationField").val(p);
         console.log("change center to " + p);
+    }
+    function findAddr() {
+        address = $("#cityField").find("option:selected").text() + " " + $("#addressField").val();
+        findLocation(address, function (location) {
+            moveMark(location);
+            window.map.setCenter(location);
+        });
     }
 </script>
 </body>
