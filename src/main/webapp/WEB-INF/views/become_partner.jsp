@@ -33,57 +33,47 @@
                 <div id="main">
                     <div class="row">
                         <div class="span9">
-                            <h1 class="page-header">Contact us</h1>
-                            <iframe class="map" width="425" height="350" src="https://maps.google.com/maps?q=37.440587,-122.139816&amp;num=1&amp;ie=UTF8&amp;ll=37.435681,-122.135696&amp;spn=0.041038,0.077162&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+                            <h1 class="page-header">Стать партнером</h1>
 
-                            <p>
-                                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
-                            </p>
+                            <sf:form method="post" class="contact-form">
 
-                            <div class="row">
-                                <div class="span3">
-                                    <h3 class="address">Address</h3>
-                                    <p class="content-icon-spacing">
-                                        13/2 Elizabeth Street<br>
-                                        Melbourne, Australia
-                                    </p>
-                                </div>
-                                <div class="span3">
-                                    <h3 class="call-us">Call us</h3>
-                                    <p class="content-icon-spacing">
-                                        1900-CO-WORKER<br>
-                                        1800-3322-4453
-                                    </p>
-                                </div>
-                                <div class="span3">
-                                    <h3 class="email">Email</h3>
-                                    <p class="content-icon-spacing">
-                                        <a href="mailto:info@byaviators.com">contact management</a><br>
-                                        <a href="mailto:support@byaviators.com">contact support</a>
-                                    </p>
-                                </div>
-                            </div>
-
-                            <h2>We'd love to hear from you. Say us hello!</h2>
-
-                            <form method="post" class="contact-form" action="?">
                                 <div class="name control-group">
-                                    <label class="control-label" for="inputContactName">
-                                        Name
+                                    <label class="control-label" for="name">
+                                        Название агенства
                                         <span class="form-required" title="This field is required.">*</span>
                                     </label>
                                     <div class="controls">
-                                        <input type="text" id="inputContactName">
+                                        <input type="text" id="name" name="name" required>
                                     </div><!-- /.controls -->
                                 </div><!-- /.control-group -->
 
                                 <div class="email control-group">
-                                    <label class="control-label" for="inputContactEmail">
+                                    <label class="control-label" for="phone">
+                                        Телефон
+                                        <span class="form-required" title="This field is required.">*</span>
+                                    </label>
+                                    <div class="controls">
+                                        <input type="text" id="phone" name="phone" required>
+                                    </div><!-- /.controls -->
+                                </div><!-- /.control-group -->
+
+                                <div class="name control-group">
+                                    <label class="control-label" for="email">
                                         Email
                                         <span class="form-required" title="This field is required.">*</span>
                                     </label>
                                     <div class="controls">
-                                        <input type="text" id="inputContactEmail">
+                                        <input type="text" id="email" name="email" required>
+                                    </div><!-- /.controls -->
+                                </div><!-- /.control-group -->
+
+                                <div class="email control-group">
+                                    <label class="control-label" for="region">
+                                        Регион развития
+                                        <span class="form-required" title="This field is required.">*</span>
+                                    </label>
+                                    <div class="controls">
+                                        <input type="text" id="region" name="region" required>
                                     </div><!-- /.controls -->
                                 </div><!-- /.control-group -->
 
@@ -94,101 +84,14 @@
                                     </label>
 
                                     <div class="controls">
-                                        <textarea id="inputContactMessage"></textarea>
+                                        <textarea id="inputContactMessage" name="msg"></textarea>
                                     </div><!-- /.controls -->
                                 </div><!-- /.control-group -->
 
                                 <div class="form-actions">
-                                    <input type="submit" class="btn btn-primary arrow-right" value="Send">
+                                    <input type="submit" class="btn btn-primary arrow-right" value="Отправить">
                                 </div><!-- /.form-actions -->
-                            </form>
-                        </div>
-
-                        <div class="sidebar span3">
-                            <div class="widget properties last">
-                                <div class="title">
-                                    <h2>Latest Properties</h2>
-                                </div><!-- /.title -->
-
-                                <div class="content">
-                                    <div class="property">
-                                        <div class="image">
-                                            <a href="detail.html"></a>
-                                            <img src="assets/img/tmp/property-small-4.png" alt="">
-                                        </div><!-- /.image -->
-
-                                        <div class="wrapper">
-                                            <div class="title">
-                                                <h3>
-                                                    <a href="detail.html">27523 Pacific Coast</a>
-                                                </h3>
-                                            </div><!-- /.title -->
-                                            <div class="location">Palo Alto CA</div><!-- /.location -->
-                                            <div class="price">€2 300 000</div><!-- /.price -->
-                                        </div><!-- /.wrapper -->
-                                    </div><!-- /.property -->
-
-                                    <div class="property">
-                                        <div class="image">
-                                            <a href="detail.html"></a>
-                                            <img src="assets/img/tmp/property-small-5.png" alt="">
-                                        </div><!-- /.image -->
-
-                                        <div class="wrapper">
-                                            <div class="title">
-                                                <h3>
-                                                    <a href="detail.html">27523 Pacific Coast</a>
-                                                </h3>
-                                            </div><!-- /.title -->
-                                            <div class="location">Palo Alto CA</div><!-- /.location -->
-                                            <div class="price">€2 300 000</div><!-- /.price -->
-                                        </div><!-- /.wrapper -->
-                                    </div><!-- /.property -->
-
-                                    <div class="property">
-                                        <div class="image">
-                                            <a href="detail.html"></a>
-                                            <img src="assets/img/tmp/property-small-6.png" alt="">
-                                        </div><!-- /.image -->
-
-                                        <div class="wrapper">
-                                            <div class="title">
-                                                <h3>
-                                                    <a href="detail.html">27523 Pacific Coast</a>
-                                                </h3>
-                                            </div><!-- /.title -->
-                                            <div class="location">Palo Alto CA</div><!-- /.location -->
-                                            <div class="price">€2 300 000</div><!-- /.price -->
-                                        </div><!-- /.wrapper -->
-                                    </div><!-- /.property -->
-
-                                    <div class="property">
-                                        <div class="image">
-                                            <a href="detail.html"></a>
-                                            <img src="assets/img/tmp/property-small-2.png" alt="">
-                                        </div><!-- /.image -->
-
-                                        <div class="wrapper">
-                                            <div class="title">
-                                                <h3>
-                                                    <a href="detail.html">27523 Pacific Coast</a>
-                                                </h3>
-                                            </div><!-- /.title -->
-                                            <div class="location">Palo Alto CA</div><!-- /.location -->
-                                            <div class="price">€2 300 000</div><!-- /.price -->
-                                        </div><!-- /.wrapper -->
-                                    </div><!-- /.property -->
-                                </div><!-- /.content -->
-                            </div><!-- /.properties -->
-                            <div class="ad widget">
-                                <h2>Advertisements</h2>
-                                <div class="content">
-                                    <a href="#"><img src="assets/img/banner/1.gif" alt="Banner"></a>
-                                    <a href="#"><img src="assets/img/banner/2.gif" alt="Banner"></a>
-                                    <a href="#"><img src="assets/img/banner/3.gif" alt="Banner"></a>
-                                    <a href="#"><img src="assets/img/banner/4.gif" alt="Banner"></a>
-                                </div><!-- /.content -->
-                            </div><!-- /.ad -->
+                            </sf:form>
                         </div>
                     </div>
                 </div>

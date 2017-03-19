@@ -33,9 +33,10 @@ public class MainController {
     private BillboardFormatRepository billboardFormatRepository;
     private SessionMsgProvider sessionMsgProvider;
     private ImgService imgService;
-
+    private MsgService mailMsgService;
     @Autowired
-    public MainController(BillboardService billboardService, CityRepository cityRepository, TimetableService timetableService, BillboardSideService billboardSideService, ContractService contractService, BillboardTypeRepository billboardTypeRepository, BillboardFormatRepository billboardFormatRepository, SessionMsgProvider sessionMsgProvider, ImgService imgService) {
+    public MainController(MsgService mailMsgService, BillboardService billboardService, CityRepository cityRepository, TimetableService timetableService, BillboardSideService billboardSideService, ContractService contractService, BillboardTypeRepository billboardTypeRepository, BillboardFormatRepository billboardFormatRepository, SessionMsgProvider sessionMsgProvider, ImgService imgService) {
+        this.mailMsgService = mailMsgService;
         this.billboardService = billboardService;
         this.cityRepository = cityRepository;
         this.timetableService = timetableService;
@@ -139,5 +140,12 @@ public class MainController {
     public String howItWorks() { return "how_it_works"; }
 
     @RequestMapping(value = "become_partner", method = RequestMethod.GET)
-    public String become_parner() { return "become_partner"; }
+    public String becomePartnerForm() { return "become_partner"; }
+
+    @RequestMapping(value = "become_partner", method = RequestMethod.POST)
+    public String becomePartner(String name, String phone, String email, String region, String msg, Model model) {
+        sessionMsgProvider.push("Сообщение отправлено", SessionMsg.Status.SUCCESS);
+        mailMsgService.send("contact@findboard.ru", String.format("Хочу стать партнером\nname: %s\nphone: %s\nemail: %s\nregion: %s\n------------\n%s", name, phone, email, region, msg));
+        return "redirect: .";
+    }
 }
