@@ -17,7 +17,7 @@
                             </tr>
                             <tr>
                                 <th class="email">E-mail:</th>
-                                <td><a href="mailto:info@yourcompany.com">murad1986@gmail.com</a></td>
+                                <td><a href="mailto:contact@findboard.ru">contact@findboard.ru</a></td>
                             </tr>
                             <tr>
                                 <th class="skype">Skype:</th>

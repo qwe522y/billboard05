@@ -79,7 +79,7 @@
 
                                 <div class="control-group">
                                     <label class="control-label" for="inputContactMessage">
-                                        Message
+                                        Сообщение
                                         <span class="form-required" title="This field is required.">*</span>
                                     </label>
 
