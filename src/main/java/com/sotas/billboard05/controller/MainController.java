@@ -134,4 +134,10 @@ public class MainController {
         sessionMsgProvider.push("Заявка принята, ожидайте пока с вами свяжутся", SessionMsg.Status.SUCCESS);
         return "redirect:/";
     }
+
+    @RequestMapping(value = "how_it_works", method = RequestMethod.GET)
+    public String howItWorks() { return "how_it_works"; }
+
+    @RequestMapping(value = "become_partner", method = RequestMethod.GET)
+    public String become_parner() { return "become_partner"; }
 }

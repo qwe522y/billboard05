@@ -67,7 +67,7 @@
 
                             <div class="info">
                                 <div class="site-email">
-                                    <a href="mailto:info@byaviators.com">murad1986@gmail.com</a>
+                                    <a href="mailto:contact@findboard.ru">contact@findboard.com</a>
                                 </div><!-- /.site-email -->
 
                                 <div class="site-phone">
@@ -91,8 +91,8 @@
                 <ul class="nav">
                     <li><a href="${root}">Главная</a></li>
                     <li><a href="${root}list">Список</a></li>
-                    <li><a href="${root}">Как это работает</a></li>
-                    <li><a href="${root}" onclick="fbq('track', 'Lead')">Стать партнером</a></li>
+                    <li><a href="${root}how_it_works">Как это работает</a></li>
+                    <li><a href="${root}become_partner" onclick="fbq('track', 'Lead')">Стать партнером</a></li>
                     <li><a href="${root}">Контакты</a></li>
                 </ul><!-- /.nav -->
             </div><!-- /.navigation -->
