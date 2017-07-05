@@ -53,6 +53,7 @@ public class ContractServiceImpl implements ContractService {
     @Override
     public List<ContractDto> getByAgentId(int agentId, int beginYear, int beginMonth) {
         List<Billboard> bbList = billboardRepository.getListByAgent(agentId);
+        if(bbList.isEmpty()) return new ArrayList<>();
         Map<Integer, Billboard> bbMap=  bbList.stream().collect(Collectors.toMap(Billboard::getId, Function.identity()));
         List<Integer> bbIdList = new ArrayList<>();
         for(Billboard bb : bbList) bbIdList.add(bb.getId());

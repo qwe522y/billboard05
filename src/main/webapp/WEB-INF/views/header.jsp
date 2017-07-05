@@ -67,7 +67,7 @@
 
                             <div class="info">
                                 <div class="site-email">
-                                    <a href="mailto:contact@findboard.ru">contact@findboard.com</a>
+                                    <a href="mailto:contact@findboard.ru">contact@findboard.ru</a>
                                 </div><!-- /.site-email -->
 
                                 <div class="site-phone">
