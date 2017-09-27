@@ -6,4 +6,5 @@ CREATE TABLE `billboard_types` (
 DELETE FROM billboard_types;
 INSERT INTO billboard_types VALUES
   (1, "Билборд"),
-  (2, "Пиларс");
+  (2, "Пиларс"),
+  (3, "Призматрон");
