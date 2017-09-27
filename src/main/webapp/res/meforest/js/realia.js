@@ -272,7 +272,7 @@ function LoadMap() {
         });
 
 	    var myOptions = {
-	        content: '<div class="infobox"><div class="image"><img src="' + window.myrespath + '/photo/' + bb.id + '/0.png" alt="" height="100" width="74"></div><div class="title"><a href="detail.html">' + //100 74
+	        content: '<div class="infobox"><div class="image"><img src="' + window.myrespath + '/photo/' + bb.id + '/0.png" alt="" height="100" width="74"></div><div class="title"><a href="bb/' + bb.id +'">' + //100 74
             bb.address + '</a></div>' +
             '<div class="area"><span class="key">Тип:</span><span class="value">&nbsp;' + bb.type.toLowerCase() + '</span></div>' +
             '<div class="area"><span class="key">Формат:</span><span class="value">&nbsp;' + bb.format.toLowerCase() + '</span></div>' + '' +
