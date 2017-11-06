@@ -1,14 +1,14 @@
 $(document).ready(function() {
-	//InitCarousel();
+    //InitCarousel();
     InitPropertyCarousel();
-	InitOffCanvasNavigation();
-	InitMap();
-	InitChosen();
-	InitEzmark();
-	InitPriceSlider();
-	InitImageSlider();
-	InitAccordion();
-	InitTabs();
+    InitOffCanvasNavigation();
+    InitMap();
+    InitChosen();
+    InitEzmark();
+    InitPriceSlider();
+    InitImageSlider();
+    InitAccordion();
+    InitTabs();
     InitPalette();
 });
 
@@ -121,47 +121,47 @@ function InitPropertyCarousel() {
 }
 
 function InitTabs() {
-	$('.tabs a').click(function (e) {
-  		e.preventDefault();
-  		$(this).tab('show');
-	});
+    $('.tabs a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
 }
 
 function InitImageSlider() {
-	$('.iosSlider').iosSlider({
-		desktopClickDrag: true,
-		snapToChildren: true,
-		infiniteSlider: true,
-		navSlideSelector: '.slider .navigation li',
-		onSlideComplete: function(args) {
-			if(!args.slideChanged) return false;
+    $('.iosSlider').iosSlider({
+        desktopClickDrag: true,
+        snapToChildren: true,
+        infiniteSlider: true,
+        navSlideSelector: '.slider .navigation li',
+        onSlideComplete: function(args) {
+            if(!args.slideChanged) return false;
 
-			$(args.sliderObject).find('.slider-info').attr('style', '');
+            $(args.sliderObject).find('.slider-info').attr('style', '');
 
-			$(args.currentSlideObject).find('.slider-info').animate({
-				left: '15px',
-				opacity: '.9'
-			}, 'easeOutQuint');
-		},
-		onSliderLoaded: function(args) {
-			$(args.sliderObject).find('.slider-info').attr('style', '');
+            $(args.currentSlideObject).find('.slider-info').animate({
+                left: '15px',
+                opacity: '.9'
+            }, 'easeOutQuint');
+        },
+        onSliderLoaded: function(args) {
+            $(args.sliderObject).find('.slider-info').attr('style', '');
 
-			$(args.currentSlideObject).find('.slider-info').animate({
-				left: '15px',
-				opacity: '.9'
-			}, 'easeOutQuint');
-		},
-		onSlideChange: function(args) {
-			$('.slider .navigation li').removeClass('active');
-			$('.slider .navigation li:eq(' + (args.currentSlideNumber - 1) + ')').addClass('active');
-		},
-		autoSlide: true,
-		scrollbar: true,
-		scrollbarContainer: '.sliderContainer .scrollbarContainer',
-		scrollbarMargin: '0',
-		scrollbarBorderRadius: '0',
-		keyboardControls: true
-	});
+            $(args.currentSlideObject).find('.slider-info').animate({
+                left: '15px',
+                opacity: '.9'
+            }, 'easeOutQuint');
+        },
+        onSlideChange: function(args) {
+            $('.slider .navigation li').removeClass('active');
+            $('.slider .navigation li:eq(' + (args.currentSlideNumber - 1) + ')').addClass('active');
+        },
+        autoSlide: true,
+        scrollbar: true,
+        scrollbarContainer: '.sliderContainer .scrollbarContainer',
+        scrollbarMargin: '0',
+        scrollbarBorderRadius: '0',
+        keyboardControls: true
+    });
 }
 
 function InitAccordion() {
@@ -200,63 +200,63 @@ function InitPriceSlider() {
 }
 
 function InitEzmark() {
-	$('input[type="checkbox"]').ezMark();
-	$('input[type="radio"]').ezMark();
+    $('input[type="checkbox"]').ezMark();
+    $('input[type="radio"]').ezMark();
 }
 
 function InitChosen() {
-	$('select').chosen({
-		disable_search_threshold: 10
-	});
+    $('select').chosen({
+        disable_search_threshold: 10
+    });
 }
 
 function InitOffCanvasNavigation() {
-	$('#btn-nav').on({
-		click: function() {
-			$('body').toggleClass('nav-open');
-		}
-	})
+    $('#btn-nav').on({
+        click: function() {
+            $('body').toggleClass('nav-open');
+        }
+    })
 }
 
 function InitCarousel() {
-	$('#main .carousel .content ul').carouFredSel({
-		scroll: {
-			items: 1
-		},
-		auto: false,
-		next: {
-    		button: '#main .carousel-next',
-    		key: 'right'
-		},
-		prev: {
-    		button: '#main .carousel-prev',
-    		key: 'left'
-		}
-	});
+    $('#main .carousel .content ul').carouFredSel({
+        scroll: {
+            items: 1
+        },
+        auto: false,
+        next: {
+            button: '#main .carousel-next',
+            key: 'right'
+        },
+        prev: {
+            button: '#main .carousel-prev',
+            key: 'left'
+        }
+    });
 
-	$('.carousel-wrapper .content ul').carouFredSel({
-		scroll: {
-			items: 1
-		},
-		auto: false,
-		next: {
-    		button: '.carousel-wrapper .carousel-next',
-    		key: 'right'
-		},
-		prev: {
-    		button: '.carousel-wrapper .carousel-prev',
-    		key: 'left'
-		}
-	});
+    $('.carousel-wrapper .content ul').carouFredSel({
+        scroll: {
+            items: 1
+        },
+        auto: false,
+        next: {
+            button: '.carousel-wrapper .carousel-next',
+            key: 'right'
+        },
+        prev: {
+            button: '.carousel-wrapper .carousel-prev',
+            key: 'left'
+        }
+    });
 }
 
 function LoadMap() {
     console.log("init map");
-	var mapOptions = {
-		center: new google.maps.LatLng(42.975182, 47.503995),
-		zoom: 14,
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		scrollwheel: false
+    var mapOptions = {
+        center: new google.maps.LatLng(42.975182, 47.503995),
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        scrollwheel: false
     };
     var markers = [];
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -271,41 +271,41 @@ function LoadMap() {
             draggable:false
         });
 
-	    var myOptions = {
-	        content: '<div class="infobox"><div class="image"><img src="' + window.myrespath + '/photo/' + bb.id + '/0.png" alt="" height="100" width="74"></div><div class="title"><a href="bb/' + bb.id +'">' + //100 74
+        var myOptions = {
+            content: '<div class="infobox"><div style="position: absolute; top: 3px; right: 3px"><a href="." onclick="return closeInfobox();">X</a></div><div class="image"><img src="' + window.myrespath + '/photo/' + bb.id + '/0.png" alt="" height="100" width="74"></div><div class="title"><a href="bb/' + bb.id +'">' + //100 74
             bb.address + '</a></div>' +
             '<div class="area"><span class="key">Тип:</span><span class="value">&nbsp;' + bb.type.toLowerCase() + '</span></div>' +
             '<div class="area"><span class="key">Формат:</span><span class="value">&nbsp;' + bb.format.toLowerCase() + '</span></div>' + '' +
             '<div class="price">' + bb.price +' руб.</div><div class="link"><a href="bb/' + bb.id +'">Подробнее...</a></div></div>',
 
-	        disableAutoPan: false,
-	        maxWidth: 0,
-	        pixelOffset: new google.maps.Size(-146, -190),
-	        zIndex: null,
-	        closeBoxURL: "",
-	        infoBoxClearance: new google.maps.Size(1, 1),
-	        position: new google.maps.LatLng(location[0], location[1]),
-	        isHidden: false,
-	        pane: "floatPane",
-	        enableEventPropagation: false
-	    };
-	    marker.infobox = new InfoBox(myOptions);
-		marker.infobox.isOpen = false;
+            disableAutoPan: false,
+            maxWidth: 0,
+            pixelOffset: new google.maps.Size(-146, -190),
+            zIndex: null,
+            closeBoxURL: "",
+            infoBoxClearance: new google.maps.Size(1, 1),
+            position: new google.maps.LatLng(location[0], location[1]),
+            isHidden: false,
+            pane: "floatPane",
+            enableEventPropagation: false
+        };
+        marker.infobox = new InfoBox(myOptions);
+        marker.infobox.isOpen = false;
 
-	    var myOptions = {
-	        draggable: true,
-			content: '<div class="marker"><div class="marker-inner"></div></div>',
-			disableAutoPan: true,
-			pixelOffset: new google.maps.Size(-21, -58),
-			position: new google.maps.LatLng(location[0], location[1]),
-			closeBoxURL: "",
-			isHidden: false,
-			// pane: "mapPane",
-			enableEventPropagation: true
-	    };
-	    marker.marker = new InfoBox(myOptions);
-		marker.marker.open(map, marker);
-		markers.push(marker);
+        var myOptions = {
+            draggable: true,
+            content: '<div class="marker"><div class="marker-inner"></div></div>',
+            disableAutoPan: true,
+            pixelOffset: new google.maps.Size(-21, -58),
+            position: new google.maps.LatLng(location[0], location[1]),
+            closeBoxURL: "",
+            isHidden: false,
+            // pane: "mapPane",
+            enableEventPropagation: true
+        };
+        marker.marker = new InfoBox(myOptions);
+        marker.marker.open(map, marker);
+        markers.push(marker);
 
         google.maps.event.addListener(marker, "click", function (e) {
             var curMarker = this;
@@ -334,8 +334,15 @@ function LoadMap() {
 
 function InitMap() {
     if($("#map").length > 0) {
-	    google.maps.event.addDomListener(window, 'load', LoadMap);
+        google.maps.event.addDomListener(window, 'load', LoadMap);
     } else {
         console.log("no map")
     }
+}
+
+function closeInfobox() {
+    $.each(window.billboards, function() {
+        this.marker.infobox.close();
+    });
+    return false;
 }
